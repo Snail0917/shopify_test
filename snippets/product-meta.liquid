@@ -25,83 +25,83 @@
 
     <span class="product_badge item_product">
         {% for tag in product.tags %}
-
+          
             {% if tag == 'Best Seller'%}
-              <span class="best_seller">Best Seller</span>
+              <span class="best_seller" style="display: inline-block;">Best Seller</span>
             {% endif %}
         
             {% if tag == 'Restocked'%}
-              <span class="restocked">Restocked</span>
+              <span class="restocked" style="display: inline-block;">Restocked</span>
             {% endif %}
         
             {% if tag == 'Out Of Stock'%}
-              <span class="out_of_stock">Out Of Stock</span>
+              <span class="out_of_stock" style="display: inline-block;">Out Of Stock</span>
             {% endif %}
         
             {% if tag == 'New Arrival'%}
-              <span class="new_product">New Arrival</span>
+              <span class="new_product" style="display: inline-block;">New Arrival</span>
             {% endif %}
            
             {% if tag == 'Vegan'%}
-              <span class="vegan">Vegan</span>
+              <span class="vegan" style="display: inline-block;">Vegan</span>
             {% endif %}
             
             {% if tag == 'Waterproof'%}
-              <span class="waterproof">Waterproof</span>
+              <span class="waterproof" style="display: inline-block;">Waterproof</span>
             {% endif %}
              
             {% if tag == 'Last Call'%}
-              <span class="last_call">Last Call</span>
+              <span class="last_call" style="display: inline-block;">Last Call</span>
             {% endif %}
 
             {% if tag == 'Final Sale'%}
-              <span class="last_call">Final Sale</span>
+              <span class="last_call" style="display: inline-block;">Final Sale</span>
             {% endif %}
         
             {% if tag == 'Collaboration'%}
-              <span class="collaboration">Collaboration</span>
+              <span class="collaboration" style="display: inline-block;">Collaboration</span>
             {% endif %}
         
             {% if tag == 'Limited Edition'%}
-              <span class="limited_edition">Limited Edition</span>
+              <span class="limited_edition" style="display: inline-block;">Limited Edition</span>
             {% endif %}
 
             {% if tag == 'Larger Sizes'%}
-              <span class="larger_sizes">Larger Sizes</span>
+              <span class="larger_sizes" style="display: inline-block;">Larger Sizes</span>
             {% endif %}
 
             {% if tag == 'Sale'%}
-              <span class="sale">Sale</span>
+              <span class="sale" style="display: inline-block;">Sale</span>
             {% endif %}
           
             {% if tag == 'save-$20'%}
-              <span class="bundle_set">BUNDLE SET & SAVE $20</span>
+              <span class="bundle_set" style="display: inline-block !important;">BUNDLE SET & SAVE $20</span>
+            {% endif %}
+
+            {% if tag == 'save-$50'%}
+              <span class="bundle_set" style="display: inline-block !important;">BUNDLE SET & SAVE $50</span>
             {% endif %}
 
             {% if tag == 'save-$10'%}
-              <span class="bundle_set">BUNDLE SET & SAVE $10</span>
+              <span class="bundle_set" style="display: inline-block !important;">BUNDLE SET & SAVE $10</span>
             {% endif %}
 
             {% if tag == 'sale-28% off'%}
-              <span class="bundle_set">SALE - 28% OFF</span>
+              <span class="bundle_set" style="display: inline-block !important;">SALE - 28% OFF</span>
             {% endif %}
 
             {% if tag == 'Clearance'%}
-              <span class="bundle_set">CLEARANCE - 40% OFF</span>
+              <span class="bundle_set" style="display: inline-block !important;">CLEARANCE - 40% OFF</span>
             {% endif %}
 
             {% if tag == 'sales-final'%}
-              <span class="bundle_set">ALL SALES FINAL</span>
+              <span class="bundle_set" style="display: inline-block;">ALL SALES FINAL</span>
             {% endif %}
 
         {% endfor %}
     </span>
-
-    
   </h1>
   
-  
-
   {%- if section.settings.show_sku and product.selected_or_first_available_variant.sku != blank -%}
     <p class="ProductMeta__Sku Heading Text--subdued u-h6">{{ 'product.form.sku' | t }}: <span class="ProductMeta__SkuNumber">{{ product.selected_or_first_available_variant.sku }}</span></p>
   {%- endif -%}
@@ -197,4 +197,5 @@
       {%- endif -%}
     </div>
   {%- endif -%}
+
 </div>

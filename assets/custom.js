@@ -31,9 +31,42 @@ for (let i = 0, linksLength = links.length ; i < linksLength ; i++) {
   }
 }   
 
+
 $(document).ready(function() { 
   $("#shopify-block-14952540001915115444").appendTo(".PageContainer");
+
+  // For Product Page - No option to change in Plugin Setting
+  const fixReviewText =  document.getElementsByClassName('loox-rating-label')[0];
+  fixReviewText.textContent = fixReviewText.textContent.substring(1);
 });
+
+
+function addtocartSuggestion_1(){
+    var variant = $("#variants_1").val(); 
+    console.log(variant);
+     var items = [{ quantity: 1, id: variant }];
+   $.ajax({
+       type: "POST",
+       url: '/cart/add.json',
+       data: { items: items },
+       success: function(data) {
+              console.log('success');
+           },
+       dataType: 'application/json'
+    });
+    // Now I will do a get to show the itens from cart
+   setTimeout(function() {
+   jQuery.getJSON('/cart.js', function(cart) {
+        let cartData = cart.items;
+        document.dispatchEvent(new CustomEvent('cart:build' , {bubbles: true})); 
+        document.dispatchEvent(new CustomEvent('cart:refresh', {
+            bubbles: true,
+             detail: cartData
+        })); 
+   });
+   }, 400); 
+}
+
 
 
 

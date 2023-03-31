@@ -68,7 +68,7 @@ o.parentNode.insertBefore(c,o)})()</script>
     {{ shop.metafields.fontify.stylesheets }}
 
     <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
-    <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
        
     <script>
       // This allows to expose several variables to the global scope, to be used in scripts
@@ -122,6 +122,7 @@ o.parentNode.insertBefore(c,o)})()</script>
         document.documentElement.className += ((window.CSS && window.CSS.supports('(position: sticky) or (position: -webkit-sticky)')) ? ' supports-sticky' : ' no-supports-sticky');
         document.documentElement.className += (window.matchMedia('(-moz-touch-enabled: 1), (hover: none)')).matches ? ' no-supports-hover' : ' supports-hover';
       }());
+      
     </script>
 
     <script src="{{ 'lazysizes.min.js' | asset_url }}" async></script>

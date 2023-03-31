@@ -1,7 +1,7 @@
-<div id="{{ div_id }}">
+<div id="{{ div_id }}" class="ProductForm__Option ProductForm__Option--labelled">
   {% for variant_option in variant.metafields.simple_bundles.variant_options.value %}
     {% assign option_name_param = variant_option.optionName | downcase | replace: " ", "-" | strip %}
-    <label for="{{ option_name_param }}">{{ variant_option.optionName }}</label>
+    <label for="{{ option_name_param }}" class="simple_bundle_label">{{ variant_option.optionName }}</label>
     <select id="{{ option_name_param }}" name="properties[{{ variant_option.optionName }}]" required>
       {% assign option_values = variant_option.optionValues | split: "," %}
       {% assign option_inventories = variant_option.optionInventories | split: "," %}

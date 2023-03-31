@@ -79,17 +79,27 @@
             {% if tag == 'Sale'%}
               <span class="sale">Sale</span>
             {% endif %}
+          
         {% endfor %}
       </div>
 
       <div class="product_badge bundle">
+        {% if product.tags contains "Fix Bundle Style" %}
+             {% assign fix_bundle_style_class = 'fix_bundle_style' %}
+        {% endif %}
+
+        {% if product.tags contains "Fix No Bundle Style" %}
+            {% assign fix_no_bundle_style_class = 'fix_no_bundle_style' %}
+        {% endif %}
+        
         {% for tag in product.tags %}
-             {% if tag == 'Fix Bundle Style'%}
-               {% assign fix_bundle_style_class = 'fix_bundle_style' %}
-             {% endif %}
         
             {% if tag == 'save-$20'%}
               <span class="bundle_set {{ fix_bundle_style_class }}">BUNDLE SET & SAVE $20</span>
+            {% endif %}
+
+            {% if tag == 'save-$50'%}
+              <span class="bundle_set {{ fix_bundle_style_class }}">BUNDLE SET & SAVE $50</span>
             {% endif %}
   
             {% if tag == 'save-$10'%}
@@ -101,7 +111,7 @@
             {% endif %}
   
             {% if tag == 'Clearance'%}
-              <span class="bundle_set {{ fix_bundle_style_class }}">CLEARANCE - 40% OFF</span>
+              <span class="bundle_set {{ fix_bundle_style_class }} {{ fix_no_bundle_style_class }} {{ tag }}">CLEARANCE - 40% OFF</span>
             {% endif %}
           
             {% if tag == 'sales-final'%}
@@ -109,6 +119,7 @@
             {% endif %}
            
         {% endfor %}
+       
       </div>
       
 
@@ -222,7 +233,7 @@
               {%- endif -%}
             {%- endfor -%}
           {%- endcapture -%}
-
+          
           {%- if color_swatch != blank -%}
             {%- capture color_swatch_list -%}
               <div class="ProductItem__ColorSwatchList">
@@ -253,7 +264,17 @@
               <span class="ProductItem__Price Price Text--subdued">{{ product.price | money_without_trailing_zeros }}</span>
             {%- endif -%}
           </div>
-
+        
+          {% if product.title contains 'Caesar 1 ' %}
+           <span class="bogo_msg">Buy One Get One 20% Off</span>
+          {%- endif -%}
+          {% if product.title contains 'Caesar 1S ' %}
+           <span class="bogo_msg">Buy One Get One 20% Off</span>
+          {%- endif -%}
+          {% if product.title contains 'Apollo 1' %}
+           <span class="bogo_msg">Buy One Get One 20% Off</span>
+          {%- endif -%}
+          
           {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
             <div class="ProductItem__UnitPriceMeasurement">
               <div class="UnitPriceMeasurement Heading Text--subdued">
