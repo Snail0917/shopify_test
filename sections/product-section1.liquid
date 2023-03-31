@@ -1,0 +1,919 @@
+<section class="Section {% unless section.settings.image %}Section--spacingNormal{% endunless %}">
+    {%- capture section_content -%}
+      <div class="FeatureText__ContentWrapper">
+        <div class="FeatureText__Content">
+          
+            <header class="SectionHeader">
+              {%- if section.settings.subheading != blank -%}
+                <h3 class="SectionHeader__SubHeading Heading u-h6">{{ section.settings.subheading | escape }}</h3>
+              {%- endif -%}
+  
+              {%- if section.settings.title != blank -%}
+                <h2 class="SectionHeader__Heading Heading u-h1">{{ section.settings.title | escape }}</h2>
+              {%- endif -%}
+  
+              {%- if section.settings.content != blank -%}
+                <div class="SectionHeader__Description Rte">
+                  {{ section.settings.content }}
+                </div>
+              <div class="new-product-cls">
+<!--               <a class="popUpBtn" data-modal="myModal1">Start Now</a> -->
+                <a class="popUpBtn_startnow">Start Now</a>
+              </div>
+              {%- endif -%}
+  
+              {%- if section.settings.link_text != blank -%}
+                <a href="{{ section.settings.link_url }}" class="Link Link--underline">{{ section.settings.link_text | escape }}</a>
+              {%- endif -%}
+            </header>
+          
+        </div>
+      </div>
+    {%- endcapture -%}
+  
+    {%- capture section_image -%}
+      {%- if section.settings.image != blank -%}
+        <div class="FeatureText__ImageWrapper">
+          {%- capture supported_sizes -%}{%- render 'image-size', sizes: '400,600,700,800,900,1000,1200', image: section.settings.image -%}{%- endcapture -%}
+  
+          <div class="sizechart-main">
+          <p class="sizechart-title"><b>Search for your dog's breed or their most similar breed below.</b></p>
+            
+          <div class="size-chart-inner">
+                <select id="select-news" class="choose-size">
+                  <option value="sizechart0" >Find your dog's breed...</option>
+                  <option value="sizechart1">American Bulldog</option>
+                  <option value="sizechart2">American Bully</option>
+                  <option value="sizechart3">American Staffordshire Terrier</option>
+                  <option value="sizechart4">Aussiedoodle</option>
+                  <option value="sizechart5">Australian Shepherd</option>
+                  <option value="sizechart6">Basenji</option>
+                  <option value="sizechart7">Basset Hound</option>
+                  <option value="sizechart8">Beagle</option>
+                  <option value="sizechart9">Bernese Mountain Dog</option>
+                  <option value="sizechart10">Bichon Frise</option>
+                  <option value="sizechart11">Border Collie</option>
+                  <option value="sizechart12">Boston Terrier</option>
+                  <option value="sizechart13">Boxer</option>
+                  <option value="sizechart14">Cane Corso</option>
+                  <option value="sizechart15">Cavalier King Charles Spaniel</option>
+                  <option value="sizechart16">Cavapoo</option>
+                  <option value="sizechart17">Chihuahua</option>
+                  <option value="sizechart18">Chinese Crested Dog</option>
+                  <option value="sizechart19">Chow Chow</option>
+                  <option value="sizechart20">Cockapoo</option>
+                  <option value="sizechart21">Cocker Spaniel</option>
+                  <option value="sizechart22">Corgi</option>
+                  <option value="sizechart23">Dalmatian</option>
+                  <option value="sizechart24">Dachshund</option>
+                  <option value="sizechart25">Doberman Pinscher</option>
+                  <option value="sizechart26">English Bulldog</option>
+                  <option value="sizechart27">French Bulldog</option>
+                  <option value="sizechart28">German Shorthaired Pointer</option>
+                  <option value="sizechart29">Golden Doodle</option>
+                  <option value="sizechart30">Golden Retriever</option>
+                  <option value="sizechart31">Havanese</option>
+                  <option value="sizechart32">Husky</option>
+                  <option value="sizechart33">Irish Setter</option>
+                  <option value="sizechart34">Italian Greyhound</option>
+                  <option value="sizechart35">Jack Russell Terrier</option>
+                  <option value="sizechart36">Labradoodle</option>
+                  <option value="sizechart37">Labrador Retriever</option>
+                  <option value="sizechart38">Maltese</option>
+                  <option value="sizechart39">Maltese Shih Tzu</option>
+                  <option value="sizechart40">Maltipoo</option>
+                  <option value="sizechart41">Mini Goldendoodle</option>
+                  <option value="sizechart42">Mini Schnoodle</option>
+                  <option value="sizechart43">Miniature Pinscher</option>
+                  <option value="sizechart44">Miniature Schnauzer</option>
+                  <option value="sizechart45">Morkie</option>
+                  <option value="sizechart46">Pitbull</option>
+                  <option value="sizechart47">Pomeranian</option>
+                  <option value="sizechart48">Poodle (miniature)</option>
+                  <option value="sizechart49">Pug</option>
+                  <option value="sizechart50">Puggle</option>
+                  <option value="sizechart51">Rat Terrier</option>
+                  <option value="sizechart52">Rhodesian Ridgeback</option>
+                  <option value="sizechart53">Rottweiler</option>
+                  <option value="sizechart54">Shar Pei</option>
+                  <option value="sizechart55">Shiba Inu</option>
+                  <option value="sizechart56">Shih Tzu</option>
+                  <option value="sizechart57">Shorkie</option>
+                  <option value="sizechart58">Staffordshire Bull Terrier</option>
+                  <option value="sizechart59">Standard Poodle</option>
+                  <option value="sizechart60">Tibetan Terrier</option>
+                  <option value="sizechart61">Vizsla</option>
+                  <option value="sizechart62">Weimaraner</option>
+                  <option value="sizechart63">West Highland White Terrier</option>
+                  <option value="sizechart64">Wheaten Terrier</option>
+                  <option value="sizechart65">Whippet</option>
+                  <option value="sizechart66">Yorkipoo</option>
+                  <option value="sizechart67">Yorkshire Terrier</option>
+                </select>
+          </div>
+            
+            
+            <div class="size-chart-content">
+            <h2>RIFRUF Breed Smart Size Guide</h2>
+            <hr>
+            <div class="size-chart-content-inner">
+              
+             <div class="sizechartcontent sizechart0 box">
+              <h3>Please select drop down list to show size chart guide.</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart1 box">
+              <h3>On the smaller side (<80 lbs)? Get a size 6</h3>
+              <h3>Right in the middle (80-115 lbs)? Get a size 6</h3>  
+              <h3>On the bigger side (>115lbs)? Get a size 7</h3>  
+              </div>
+
+              <div class="sizechartcontent sizechart2 box">
+              <h3>On the smaller side (<80 lbs)? Get a size 6</h3>
+              <h3>Right in the middle (80-115 lbs)? Get a size 6</h3>
+              <h3>On the bigger side (>115lbs)? Get a size 7</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart3 box">
+              <h3>On the smaller side (<50 lbs)? Get a size 5</h3>
+              <h3>Right in the middle (50-65 lbs)? Get a size 6</h3>
+              <h3>On the bigger side (>65lbs)? Get a size 7</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart4 box">
+              <h3>On the smaller side (<23 lbs)? Get a size 5</h3>
+              <h3>Right in the middle (23-28 lbs)? Get a size 6</h3>
+              <h3>On the bigger side (>28lbs)? Get a size 7</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart5 box">
+              <h3>On the smaller side (<45 lbs)? Get a size 4</h3>	
+              <h3>Right in the middle (45-60 lbs)? Get a size 4</h3>
+                  <h3>On the bigger side (>60lbs)? Get a size 5</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart6 box">
+              <h3>On the smaller side (<20 lbs)? Get a size 2</h3>
+                  <h3>Right in the middle (20-25 lbs)? Get a size 3</h3>
+                      <h3>On the bigger side (>25lbs)? Get a size 3</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart7 box">
+              <h3>On the smaller side (<45 lbs)? Get a size 4</h3>
+                  <h3>Right in the middle (45-60 lbs)? Get a size 5</h3>
+                      <h3>On the bigger side (>60lbs)? Get a size 5</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart8 box">
+              <h3>On the smaller side (<13 lbs)? Get a size 3</h3><h3>Right in the middle (13-18 lbs)? Get a size 3</h3><h3>On the bigger side (>18lbs)? Get a size 4</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart9 box">
+              <h3>On the smaller side (<90 lbs)? Get a size 6</h3><h3>Right in the middle (90-105 lbs)? Get a size 6</h3><h3>On the bigger side (>105lbs)? Get a size 7</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart10 box">
+              <h3>On the smaller side (<10 lbs)? Get a size 0</h3><h3>Right in the middle (10-15 lbs)? Get a size 1</h3><h3>On the bigger side (>15lbs)? Get a size 2</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart11 box">
+              <h3>On the smaller side (<35 lbs)? Get a size 4</h3><h3>Right in the middle (35-50 lbs)? Get a size 5</h3><h3>On the bigger side (>50lbs)? Get a size 5</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart12 box">
+              <h3>On the smaller side (<23 lbs)? Get a size 2</h3><h3>Right in the middle (23-28 lbs)? Get a size 3</h3><h3>On the bigger side (>28lbs)? Get a size 3</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart13 box">
+              <h3>On the smaller side (<60 lbs)? Get a size 5</h3><h3>Right in the middle (60-65 lbs)? Get a size 5</h3><h3>On the bigger side (>65lbs)? Get a size 6</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart14 box">
+              <h3>On the smaller side (<95 lbs)? Get a size 6</h3><h3>Right in the middle (95-105 lbs)? Get a size 7</h3><h3>On the bigger side (>105lbs)? Get a size 7</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart15 box">
+              <h3>On the smaller side (<15 lbs)? Get a size 3</h3><h3>Right in the middle (15-20 lbs)? Get a size 3</h3><h3>On the bigger side (>20lbs)? Get a size 4</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart16 box">
+              <h3>On the smaller side (<22 lbs)? Get a size 2</h3><h3>Right in the middle (22-26 lbs)? Get a size 3</h3><h3>On the bigger side (>26lbs)? Get a size 3</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart17 box">
+              <h3>We recommend a size 0 for your dog</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart18 box">
+              <h3>On the smaller side (<9 lbs)? Get a size 0</h3><h3>Right in the middle (9-12 lbs)? Get a size 0</h3><h3>On the bigger side (>12lbs)? Get a size 1</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart19 box">
+              <h3>On the smaller side (<11 lbs)? Get a size 6</h3><h3>Right in the middle (11-14 lbs)? Get a size 6</h3><h3>On the bigger side (>14lbs)? Get a size 7</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart20 box">
+              <h3>On the smaller side (<15 lbs)? Get a size 2</h3><h3>Right in the middle (15-20 lbs)? Get a size 3</h3><h3>On the bigger side (>20lbs)? Get a size 3</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart21 box">
+              <h3>On the smaller side (<25 lbs)? Get a size 3</h3><h3>Right in the middle (25-30 lbs)? Get a size 3</h3><h3>On the bigger side (>30lbs)? Get a size 4</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart22 box">
+              <h3>On the smaller side (<25 lbs)? Get a size 3</h3><h3>Right in the middle (25-30 lbs)? Get a size 3</h3><h3>On the bigger side (>30lbs)? Get a size 4</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart23 box">
+              <h3>On the smaller side (<50 lbs)? Get a size 4</h3><h3>Right in the middle (50-18 lbs)? Get a size 5</h3><h3>On the bigger side (>18lbs)? Get a size 5</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart24 box">
+              <h3>On the smaller side (<8 lbs)? Get a size 1</h3><h3>Right in the middle (8-25 lbs)? Get a size 2</h3><h3>On the bigger side (>25lbs)? Get a size 3</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart25 box">
+              <h3>On the smaller side (<13 lbs)? Get a size 6</h3><h3>Right in the middle (13-18 lbs)? Get a size 6</h3><h3>On the bigger side (>18lbs)? Get a size 7</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart26 box">
+              <h3>On the smaller side (<9 lbs)? Get a size 4</h3><h3>Right in the middle (9-12 lbs)? Get a size 5</h3><h3>On the bigger side (>12lbs)? Get a size 5</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart27 box">
+              <h3>On the smaller side (<20 lbs)? Get a size 3</h3><h3>Right in the middle (20-25 lbs)? Get a size 3</h3><h3>On the bigger side (>25lbs)? Get a size 3/4</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart28 box">
+              <h3>On the smaller side (<11 lbs)? Get a size 4</h3><h3>Right in the middle (11-14 lbs)? Get a size 4</h3><h3>On the bigger side (>14lbs)? Get a size 5</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart29 box">
+              <h3>On the smaller side (<15 lbs)? Get a size 5</h3><h3>Right in the middle (15-18 lbs)? Get a size 6</h3><h3>On the bigger side (>18lbs)? Get a size 7</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart30 box">
+              <h3>On the smaller side (<60 lbs)? Get a size 6</h3><h3>Right in the middle (60-70 lbs)? Get a size 7</h3><h3>On the bigger side (>70lbs)? Get a size 7</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart31 box">
+              <h3>On the smaller side (<10 lbs)? Get a size 0</h3><h3>Right in the middle (10-15 lbs)? Get a size 1</h3><h3>On the bigger side (>15lbs)? Get a size 1</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart32 box">
+              <h3>On the smaller side (<11 lbs)? Get a size 6</h3><h3>Right in the middle (11-55 lbs)? Get a size 6</h3><h3>On the bigger side (>55lbs)? Get a size 7</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart33 box">
+              <h3>On the smaller side (<8 lbs)? Get a size 5</h3><h3>Right in the middle (8-13 lbs)? Get a size 6</h3><h3>On the bigger side (>13lbs)? Get a size 7</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart34 box">
+              <h3>On the smaller side (<33 lbs)? Get a size 1</h3><h3>Right in the middle (33-38 lbs)? Get a size 1</h3><h3>On the bigger side (>38lbs)? Get a size 2</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart35 box">
+              <h3>On the smaller side (<10 lbs)? Get a size 2</h3><h3>Right in the middle (10-15 lbs)? Get a size 3</h3><h3>On the bigger side (>15lbs)? Get a size 3</h3>
+
+              </div>
+
+              <div class="sizechartcontent sizechart36 box">
+              <h3>On the smaller side (<55 lbs)? Get a size 4</h3><h3>Right in the middle (55-60 lbs)? Get a size 5</h3><h3>On the bigger side (>60lbs)? Get a size 6</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart37 box">
+              <h3>On the smaller side (<60 lbs)? Get a size 6</h3><h3>Right in the middle (60-75 lbs)? Get a size 6</h3><h3>On the bigger side (>75lbs)? Get a size 7</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart38 box">
+              <h3>On the smaller side (<5 lbs)? Get a size 0</h3><h3>Right in the middle (5-10 lbs)? Get a size 0</h3><h3>On the bigger side (>10lbs)? Get a size 1</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart39 box">
+              <h3>On the smaller side (<10 lbs)? Get a size 0</h3><h3>Right in the middle (10-15 lbs)? Get a size 0</h3><h3>On the bigger side (>15lbs)? Get a size 1</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart40 box">
+              <h3>On the smaller side (<10 lbs)? Get a size 0</h3><h3>Right in the middle (10-15 lbs)? Get a size 0</h3><h3>On the bigger side (>15lbs)? Get a size 1</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart41 box">
+              <h3>On the smaller side (<20 lbs)? Get a size 3</h3><h3>Right in the middle (20-30 lbs)? Get a size 3</h3><h3>On the bigger side (>30lbs)? Get a size 4</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart42 box">
+              <h3>On the smaller side (<15 lbs)? Get a size 2</h3><h3>Right in the middle (15-20 lbs)? Get a size 2</h3><h3>On the bigger side (>20lbs)? Get a size 3</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart43 box">
+              <h3>On the smaller side (<5 lbs)? Get a size 1</h3><h3>Right in the middle (5-10 lbs)? Get a size 2</h3><h3>On the bigger side (>10lbs)? Get a size 2</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart44 box">
+              <h3>On the smaller side (<15 lbs)? Get a size 2</h3><h3>Right in the middle (15-20 lbs)? Get a size 3</h3><h3>On the bigger side (>20lbs)? Get a size 3</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart45 box">
+              <h3>On the smaller side (<10 lbs)? Get a size 0</h3><h3>Right in the middle (10-15 lbs)? Get a size 1</h3><h3>On the bigger side (>15lbs)? Get a size 2</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart46 box">
+              <h3>On the smaller side (<40 lbs)? Get a size 5</h3><h3>Right in the middle (40-55 lbs)? Get a size 5</h3><h3>On the bigger side (>55lbs)? Get a size 6</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart47 box">
+              <h3>On the smaller side (<5 lbs)? Get a size 0</h3><h3>Right in the middle (5-10 lbs)? Get a size 0</h3><h3>On the bigger side (>10lbs)? Get a size 1</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart48 box">
+              <h3>On the smaller side (<10 lbs)? Get a size 1</h3><h3>Right in the middle (10-15 lbs)? Get a size 2</h3><h3>On the bigger side (>15lbs)? Get a size 3</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart49 box">
+              <h3>On the smaller side (<15 lbs)? Get a size 1</h3><h3>Right in the middle (15-20 lbs)? Get a size 2</h3><h3>On the bigger side (>20lbs)? Get a size 3</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart50 box">
+              <h3>On the smaller side (<20 lbs)? Get a size 3</h3><h3>Right in the middle (20-25 lbs)? Get a size 3</h3><h3>On the bigger side (>25lbs)? Get a size 4</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart51 box">
+              <h3>On the smaller side (<15 lbs)? Get a size 2</h3><h3>Right in the middle (15-20 lbs)? Get a size 3</h3><h3>On the bigger side (>20lbs)? Get a size 3</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart52 box">
+              <h3>On the smaller side (<70 lbs)? Get a size 6</h3><h3>Right in the middle (70-85 lbs)? Get a size 7</h3><h3>On the bigger side (>85lbs)? Get a size 7</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart53 box">
+              <h3>On the smaller side (<90 lbs)? Get a size 6</h3><h3>Right in the middle (90-115 lbs)? Get a size 6</h3><h3>On the bigger side (>115lbs)? Get a size 7</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart54 box">
+              <h3>On the smaller side (<45 lbs)? Get a size 5</h3><h3>Right in the middle (45-60 lbs)? Get a size 6</h3><h3>On the bigger side (>60lbs)? Get a size 6</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart55 box">
+              <h3>On the smaller side (<15 lbs)? Get a size 3</h3><h3>Right in the middle (15-20 lbs)? Get a size 3</h3><h3>On the bigger side (>20lbs)? Get a size 4</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart56 box">
+              <h3>On the smaller side (<10 lbs)? Get a size 0</h3><h3>Right in the middle (10-15 lbs)? Get a size 1</h3><h3>On the bigger side (>15lbs)? Get a size 2</h3>
+              </div>
+
+              <div class="sizechartcontent sizechart57 box">
+              <h3>On the smaller side (<10 lbs)? Get a size 0</h3><h3>Right in the middle (10-15 lbs)? Get a size 1</h3><h3>On the bigger side (>15lbs)? Get a size 2</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart58 box">
+              <h3>On the smaller side (<25 lbs)? Get a size 5</h3><h3>Right in the middle (25-35 lbs)? Get a size 5</h3><h3>On the bigger side (>35lbs)? Get a size 6</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart59 box">
+              <h3>On the smaller side (<50 lbs)? Get a size 5</h3><h3>Right in the middle (50-65 lbs)? Get a size 5</h3><h3>On the bigger side (>65lbs)? Get a size 6</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart60 box">
+              <h3>On the smaller side (<20 lbs)? Get a size 3</h3><h3>Right in the middle (20-30 lbs)? Get a size 3</h3><h3>On the bigger side (>30lbs)? Get a size 4</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart61 box">
+              <h3>On the smaller side (<45 lbs)? Get a size 5</h3><h3>Right in the middle (45-60 lbs)? Get a size 6</h3><h3>On the bigger side (>60lbs)? Get a size 7</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart62 box">
+              <h3>On the smaller side (<65 lbs)? Get a size 6</h3><h3>Right in the middle (65-80 lbs)? Get a size 7</h3><h3>On the bigger side (>80lbs)? Get a size 7</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart63 box">
+              <h3>On the smaller side (<15 lbs)? Get a size 3</h3><h3>Right in the middle (15-20 lbs)? Get a size 3</h3><h3>On the bigger side (>20lbs)? Get a size 4</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart64 box">
+              <h3>On the smaller side (<35 lbs)? Get a size 4</h3><h3>Right in the middle (35-40 lbs)? Get a size 4</h3><h3>On the bigger side (>40lbs)? Get a size 5</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart65 box">
+              <h3>On the smaller side (<30 lbs)? Get a size 3</h3><h3>Right in the middle (30-35 lbs)? Get a size 4</h3><h3>On the bigger side (>35lbs)? Get a size 4</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart66 box">
+              <h3>On the smaller side (<5 lbs)? Get a size 0</h3><h3>Right in the middle (5-10 lbs)? Get a size 0</h3><h3>On the bigger side (>10lbs)? Get a size 1</h3>
+              </div> 
+
+              <div class="sizechartcontent sizechart67 box">
+              <h3>On the smaller side (<5 lbs)? Get a size 0</h3><h3>Right in the middle (5-10 lbs)? Get a size 0</h3><h3>On the bigger side (>10lbs)? Get a size 1</h3>
+              </div> 
+              
+                
+                
+            </div>
+            <hr>
+            <p style="text-align:center; font-style: italic;">Dog breed not listed? <a href = "mailto: team@rifrufqueens.com" style="font-weight: bold;">Contact us</a> with your dog's info and we'll help you find a size!</p>
+          </div>
+            
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endcapture -%}
+  
+    <div class="FeatureText {% if section.settings.image != blank %}FeatureText--withImage FeatureText--image{{ section.settings.image_position | capitalize }}{% endif %}">
+      {%- if section.settings.image_position == 'left' -%}
+        {{- section_image -}}
+        {{- section_content -}}
+      {%- else -%}
+        {{- section_content -}}
+        {{- section_image -}}
+      {%- endif -%}
+    </div>
+  </section>
+  
+  
+  
+  <!-- The Modal1 -->
+  <div id="myModal1" class="modal">
+  
+    <!-- Modal content -->
+    <div class="modal-content size-chart-main">
+      <div class="modal-header">
+        <span class="close">×</span>
+        <h2>Dog Shoes Size Guide</h2>
+        <p class="font_8"><span>Please read below for detailed instructions on how to properly size your dog's paws. For video instruction please click <span style="font-family:avenir-lt-w01_85-heavy1475544,sans-serif"><span style="text-decoration:underline"><a href="https://www.youtube.com/watch?v=rhhuQFnz2P0" target="_blank" rel="noopener">HERE.</a></span></span></span></p>
+      </div>
+      <div class="modal-body size-chart-inner">
+        <div class="size-setup-cls">
+          
+          <div class="size-setup-text">
+            <div class="mobile-chart1">
+            <img src="https://cdn.shopify.com/s/files/1/0411/3845/4681/files/setup01.jpg?v=1625040250" />
+            </div>
+            <div class="mobile-chart2">
+            <h2>Step 1</h2>
+            <p>First, place your dog’s paw on a piece of paper. For the most accurate result, make sure your dog is standing to ensure proper weight distribution.</p>
+            </div>
+          </div>
+          <div class="size-setup-text">
+             <div class="mobile-chart1">
+            <img src="https://cdn.shopify.com/s/files/1/0411/3845/4681/files/setup02.jpg?v=1625040250" />
+            </div>   
+            <div class="mobile-chart2">
+            <h2>Step 2</h2>
+            <p>Next, with a pen or pencil, draw two lines as indicated above.</p>	
+            </div>
+          </div>
+          <div class="size-setup-text">
+            <div class="mobile-chart1">
+            <img src="https://cdn.shopify.com/s/files/1/0411/3845/4681/files/setup03.jpg?v=1625040249" />
+            </div>
+            <div class="mobile-chart2">
+            <h2>Step 3</h2>
+            <p>Last, measure the space between the two lines. Compare that result to the chart below and that is your dog’s shoe size! If your dog is in-between sizes we recommend you buy the next size up.</p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="size-chart-bottom">
+          <div class="size-chart-inner-bottom">
+            <p>Size 0<br>1.00in - 1.24in</p>
+          </div>
+          <div class="size-chart-inner-bottom">
+            <p>Size 1<br>1.25in - 1.49in</p>
+          </div>
+          <div class="size-chart-inner-bottom">
+            <p>Size 2<br>1.50in - 1.74in</p>
+          </div>
+          <div class="size-chart-inner-bottom">
+            <p>Size 3<br>1.75in - 1.99in</p>
+          </div>
+          <div class="size-chart-inner-bottom">
+            <p>Size 4<br>2.00in - 2.24in</p>
+          </div>
+          <div class="size-chart-inner-bottom">
+            <p>Size 5<br>2.25in - 2.74in</p>
+          </div>
+          <div class="size-chart-inner-bottom">
+            <p>Size 6<br>2.75in - 3.24in</p>
+          </div>
+          <div class="size-chart-inner-bottom">
+            <p>Size 7<br>3.25in - 4.00in</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+               
+                
+                
+                
+                
+    <script>
+      const myTimeout = setTimeout(myGreeting, 100);
+      function myGreeting() {
+        $(document).ready(function(){
+          $(".choose-size").change(function(){
+            $(this).find("option:selected").each(function(){
+              var optionValue = $(this).attr("value");
+              if(optionValue){
+                $(".box").not("." + optionValue).hide();
+                $("." + optionValue).show();
+              } else{
+                $(".box").hide();
+              }
+            });
+          }).change();
+        });
+      }
+    </script>
+  
+  
+  
+    <script>
+      
+      $(document).ready(function(){
+          $('.popUpBtn').on('click', function(){
+              $('#'+$(this).data('modal')).css('display','block');
+          })
+          $('span.close').on('click', function(){
+              $('.modal').css('display','none');
+          })
+          $(window).on('click', function(event){
+              if (jQuery.inArray( event.target, $('.modal') ) != "-1") {
+                  $('.modal').css('display','none');
+              }
+          })
+          
+      })
+
+      // Get the modal
+      // var modal = document.getElementById('myModal');
+
+      // Get the button that opens the modal
+      // var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      // var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal 
+      // btn.onclick = function() {
+      //     modal.style.display = "block";
+      // }
+
+      // When the user clicks on <span> (x), close the modal
+      // span.onclick = function() {
+      //     modal.style.display = "none";
+      // }
+
+      // When the user clicks anywhere outside of the modal, close it
+      // window.onclick = function(event) {
+      //     if (event.target == modal) {
+      //         modal.style.display = "none";
+      //     }
+      // }
+
+
+      $(document).ready(function(){
+
+
+          $('.popUpBtn').on('click', function(){
+              $('#'+$(this).data('modal')).css('display','block');
+          });
+
+
+          $('span.close').on('click', function(){
+              $('.modal').css('display','none');
+          });
+
+
+          $(window).on('click', function(event){
+              if (jQuery.inArray( event.target, $('.modal') ) != "-1") {
+                  $('.modal').css('display','none');
+              }
+          });
+        
+        $('a.popUpBtn_startnow').click(function() {
+           $('span.ks-calculator-modal-link.sizing-calculator-modal-link.with-icon').click();
+        });
+
+        $('a.sizeguide_popup_btn').click(function() {
+           $('span.ks-calculator-modal-link.sizing-calculator-modal-link').click();
+        });
+      });
+    </script>
+  
+  <style>
+    a.popUpBtn_startnow {
+        cursor: pointer;
+    }  
+    /* The Modal (background) */
+  .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 11111; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+      position: relative;
+      background-color: #fefefe;
+      margin: auto;
+      padding: 0;
+      border: 1px solid #888;
+      width: 80%;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+      -webkit-animation-name: animatetop;
+      -webkit-animation-duration: 0.4s;
+      animation-name: animatetop;
+      animation-duration: 0.4s
+  }
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+      from {top:-300px; opacity:0} 
+      to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+      from {top:-300px; opacity:0}
+      to {top:0; opacity:1}
+  }
+  
+  /* The Close Button */
+  .close {
+      color: white;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+  }
+  
+  .modal-header {
+          padding: 2px 16px;
+      background-color: #000;
+      color: white;
+      text-align: center;
+      font-size: 24px;
+  }
+  .modal-body img {
+      width: 100%;
+      max-width: 1024px;
+      text-align: center;
+      margin: 0 auto;
+  }
+  .modal-body {padding: 2px 16px; text-align:center; }
+  
+  .modal-footer {
+      padding: 2px 16px;
+      background-color: #5cb85c;
+      color: white;
+  }
+    .size-chart-main .modal-header p {
+          font-size: 15px;
+      padding-bottom: 18px;
+    }
+    .size-chart-main .modal-header h2 {
+      margin: 0px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+    .size-setup-cls { margin:0 auto; text-align:center; display: flex; }  
+    .size-setup-text {
+      width: 100%;
+      margin: 0 auto;
+      padding: 15px 40px 55px 40px;
+    }
+    .size-setup-text h2 {
+      margin: 0 auto;
+      font-size: 26px;
+      font-weight: bold;
+      padding-top: 20px;
+      padding-bottom: 30px;
+  }
+    .size-chart-bottom { margin:0 auto; 
+      text-align:center; 
+      display: flex; 
+      flex-wrap: wrap;
+  }
+    .size-chart-inner-bottom {     
+      background: #e8eaed;
+      padding: 15px 15px;
+      margin: 20px 15px;
+      flex: 1 0 21%;
+  }
+    .size-chart-inner-bottom p {
+      font-size: 18px;
+      line-height: 25px;
+      font-weight: bold;
+      width: 100%;
+  }
+  
+/*   @media all and (min-width: 1200px) {
+   	div#shopify-section-product-section1 {
+      margin-top: -200px;
+    } 
+  }     */
+    
+  @media all and (min-width: 320px) and (max-width: 780px) {
+    .size-chart-inner-bottom {
+        background: #e8eaed;
+        padding: 15px 15px;
+        margin: 5px 0px;
+        width: 100%;
+    }
+    .size-chart-bottom {
+        margin: 0 auto;
+        text-align: center;
+        display: block;
+    }  
+    .modal-content {
+        width: 97%;
+    }
+    .modal-body {
+        padding: 2px 2px;
+        text-align: center;
+    }
+    .size-setup-cls {
+        margin: 0 auto;
+        text-align: center;
+        display: block;
+    }
+      .size-setup-text {
+        width: 100%;
+        margin: 20px auto;
+        padding: 0px;
+            display: flex;
+    }
+    .mobile-chart1 {
+        width: 38%;
+        display: inline-block;
+        vertical-align: middle;
+        align-self: center;
+    }  
+    .mobile-chart1 img {
+        padding-right: 9px;
+    }  
+    .mobile-chart2 {
+        width: 60%;
+        display: inline-block;
+        vertical-align: top;
+        align-self: center;
+    } 
+    .size-setup-text h2 {
+        margin: 0 auto;
+        font-size: 16px;
+        font-weight: bold;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        text-align: left;
+      line-height: 17px;
+    }
+    .mobile-chart2 p {
+        text-align: left;
+        font-size: 12px;
+        line-height: 16px;
+    } 
+    .modal {
+        padding-top: 20px;
+    }  
+      .size-chart-inner-bottom {
+        background: #e8eaed;
+        padding: 9px 15px;
+        margin: 5px 0px;
+        width: 100%;
+    }
+    .size-chart-main .modal-header p {
+        font-size: 14px;
+        padding-bottom: 10px;
+        line-height: 17px;
+    }
+    .size-chart-main .modal-header h2 {
+        margin: 0px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+  }
+  
+  @media all and (max-width: 640px) {
+    #shopify-section-product-section1{
+      margin-top: -100px;
+    }
+    #shopify-section-product-section1 .SectionHeader__Description {
+      max-width: 100%;
+    }
+    #shopify-section-product-section1 .FeatureText__ContentWrapper {
+      padding-left: 15px; 
+      padding-right: 15px; 
+    }
+    #shopify-section-product-section1 .size-chart-content {
+      max-width: 100%;
+    }
+    #shopify-section-product-section1 .sizechart-main {
+      padding: 0px 15px 10px 15px;
+    }
+    
+  } 
+       
+  </style>
+  
+  {% schema %}
+  {
+    "name": "Product Section1",
+    "class": "shopify-section--bordered",
+    "settings": [
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub-heading",
+        "default": "Sub-heading"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "1200 x 1200px .png recommended"
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "label": "Image position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "right"
+      },
+      {
+        "type": "textarea",
+        "id": "content",
+        "label": "Text",
+        "default": "<p>Add your own custom content to give more information about your store, availability details...</p>"
+      },
+      {
+        "type": "text",
+        "id": "link_text",
+        "label": "Link text"
+      },
+      {
+        "type": "url",
+        "id": "link_url",
+        "label": "Link URL"
+      }
+    ],
+    "presets": [
+      {
+        "category": "Text",
+        "name": "Product Section",
+        "settings": {}
+      }
+    ]
+  }
+  {% endschema %}

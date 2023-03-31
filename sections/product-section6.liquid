@@ -1,0 +1,401 @@
+<header>
+  {%- if section.settings.title_heading != blank -%}
+  <h1 class="title_heading">{{ section.settings.title_heading| escape }}</h1>
+  {%- endif -%}
+</header>
+<div style="position:relative;">
+<section id="section-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="CollectionList CollectionList--grid {% if section.settings.add_spacing %}CollectionList--spaced{% endif %}">
+    {%- if linklist.handle != blank -%}
+    {%- for link in linklist.links -%}
+    {%- if link.type != 'collection_link' -%}
+    {%- continue -%}
+    {%- endif -%}
+
+    {%- render 'product-collection-item', collection: link.object, apply_overlay: section.settings.apply_overlay -%}
+    {%- endfor -%}
+    {%- else -%}
+    {%- if section.settings.collections_to_show == 'all' -%}
+    {%- for collection in collections -%}
+    {%- unless collection.handle == 'frontpage' -%}
+    {%- render 'product-collection-item', collection: collection, apply_overlay: section.settings.apply_overlay -%}
+    {%- endunless -%}
+    {%- endfor -%}
+    {%- else -%}
+    {%- for block in section.blocks -%}
+    {%- assign collection = collections[block.settings.collection] -%}
+    {%- render 'product-collection-item', collection: collection, apply_overlay: section.settings.apply_overlay, block: block -%}
+    {%- endfor -%}
+    {%- endif -%}
+    {%- endif -%}
+    
+  </div>
+</section>
+
+<button class="prev_img"> &#10094; </button>
+<button class="next_img"> &#10095; </button>
+</div>
+<style>
+  #section-{{ section.id }} .CollectionItem .Heading {
+    color: {{ section.settings.text_color }};
+  }
+
+  #section-{{ section.id }} .CollectionItem__Link {
+    color: {{ section.settings.button_color }};
+    border-color: {{ section.settings.text_color }};
+  }
+
+  #section-{{ section.id }} .CollectionItem__Link::before {
+    background-color: {{ section.settings.text_color }};
+  }
+
+  @media (-moz-touch-enabled: 0), (hover: hover) {
+    #section-{{ section.id }} .CollectionItem__Link:hover {
+      color: {{ section.settings.text_color }};
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Section6",
+  "settings": [
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "text",
+      "id": "title_heading",
+      "label": "Title Heading",
+      "default": "Wearing shoes are as easy as..."
+    },
+    {
+      "type": "checkbox",
+      "id": "add_spacing",
+      "label": "Add spacing",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "expand_collection",
+      "label": "Expand collections to fill row",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "apply_overlay",
+      "label": "Apply overlay on image",
+      "info": "This can improve text visibility.",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button text",
+      "default": "#363636"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1120 x 1200px .jpg recommended"
+        },
+        {
+          "type": "select",
+          "id": "image_alignment",
+          "label": "Image alignment",
+          "options": [
+            {
+              "value": "top left",
+              "label": "Top left"
+            },
+            {
+              "value": "top center",
+              "label": "Top center"
+            },
+            {
+              "value": "top right",
+              "label": "Top right"
+            },
+            {
+              "value": "center left",
+              "label": "Middle left"
+            },
+            {
+              "value": "center center",
+              "label": "Middle center"
+            },
+            {
+              "value": "center right",
+              "label": "Middle right"
+            },
+            {
+              "value": "bottom left",
+              "label": "Bottom left"
+            },
+            {
+              "value": "bottom center",
+              "label": "Bottom center"
+            },
+            {
+              "value": "bottom right",
+              "label": "Bottom right"
+            }
+          ],
+          "default": "center center"
+        },
+        {
+          "type": "select",
+          "id": "content_position",
+          "label": "Text position",
+          "options": [
+            {
+              "value": "top left",
+              "label": "Top left"
+            },
+            {
+              "value": "middleLeft",
+              "label": "Middle left"
+            },
+            {
+              "value": "middleRight",
+              "label": "Middle right"
+            },
+            {
+              "value": "middleCenter",
+              "label": "Middle center"
+            },
+            {
+              "value": "bottomLeft",
+              "label": "Bottom left"
+            },
+            {
+              "value": "bottomRight",
+              "label": "Bottom right"
+            },
+            {
+              "value": "bottomCenter",
+              "label": "Bottom center"
+            }
+          ],
+          "default": "bottomLeft"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Sub-heading",
+          "default": "Sub-heading"
+        },
+		{
+          "type": "richtext",
+          "id": "description",
+          "label": "Content Description",
+          "default": "<p>Content Description...</p>"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+<style>
+  div#shopify-section-product-section6 {
+      padding: 0px 20px 50px;
+      position: relative;
+  }
+  div#shopify-section-product-section6 h1.title_heading {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      padding: 10px 5px 15px;
+  }
+  div#shopify-section-product-section6 #section-product-section6 {
+      overflow-x: scroll;
+  }
+  div#shopify-section-product-section6 .CollectionList.CollectionList--grid.CollectionList--spaced {
+  	  width: max-content;
+      margin: 0px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  div#shopify-section-product-section6 .CollectionItem.CollectionItem--expand {
+      margin: 3px;
+      min-width: 500px;
+      max-width: 500px
+  }
+  div#shopify-section-product-section6 .CollectionItem.CollectionItem--expand .CollectionItem__Wrapper{
+      max-height: 600px;
+  }
+  
+  @media only screen and (max-width: 1500px) and (min-width: 1000px) {
+    div#shopify-section-product-section6 .CollectionItem.CollectionItem--expand {
+        min-width: 450px;
+        max-width: 450px
+    }
+    div#shopify-section-product-section6 .CollectionItem.CollectionItem--expand .CollectionItem__Wrapper{
+        max-height: 550px;
+    }
+  }
+  @media only screen and (max-width: 999px) {
+    div#shopify-section-product-section6 .CollectionItem.CollectionItem--expand {
+        min-width: 400px;
+        max-width: 400px
+    }
+    div#shopify-section-product-section6 .CollectionItem.CollectionItem--expand .CollectionItem__Wrapper{
+        max-height: 500px;
+    }
+  }
+  @media only screen and (max-width: 640px) {
+    div#shopify-section-product-section6 h1.title_heading {
+        font-size: 25px;
+        line-height: 1.2em;
+    }
+  }
+  
+  div#shopify-section-product-section6 .CollectionItem__Content {
+      position: initial;
+  }
+  div#shopify-section-product-section6 .CollectionItem__Content h3.SectionHeader__SubHeading {
+      position: absolute;
+      top:0px;
+      left: 0px;
+      padding: 15px 20px 10px;
+      background: rgb(0, 0, 0);
+      font-size: 18px;
+  }
+  div#shopify-section-product-section6 .CollectionItem__Content div.content_description {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      padding: 20px 40px;
+      background: rgb(0, 0, 0);
+      color: #ffffff;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      line-height: 18px;
+  }
+  
+  /* width */
+  #section-product-section6::-webkit-scrollbar {
+    height: 0px;
+  }
+
+  /* Track */
+  #section-product-section6::-webkit-scrollbar-track {
+    background: #888;
+    border-radius: 5px;
+  }
+
+  /* Handle */
+  #section-product-section6::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+  }
+
+  /* Handle on hover */
+  #section-product-section6::-webkit-scrollbar-thumb:hover {
+    background: #000000;
+  }
+  
+/* next, prev button  */
+  div#shopify-section-product-section6 button.next_img {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 50px;
+  }
+  div#shopify-section-product-section6 button.prev_img {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 50px;
+  } 
+  
+  
+  
+  @media only screen and (max-width: 640px) {
+	div#shopify-section-product-section6 {
+      padding: 0px;
+    }
+  }
+  
+  
+</style>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    var i = 0;
+    var j = 0;
+    $('div#shopify-section-product-section6 button.prev_img').click(function(){
+        var scroll_left = $('div#shopify-section-product-section6 #section-product-section6').scrollLeft();
+        $('div#shopify-section-product-section6 #section-product-section6').scrollLeft(scroll_left - 150);
+//         setInterval(step_left, 1);
+//         function step_left(){
+//           $('div#shopify-section-product-section6 #section-product-section6').scrollLeft(scroll_left-i);
+//           i = i + 1;
+//           if(i > 200) {
+//             clearInterval(step_left)
+//           }  
+//         }
+    });
+    
+    $('div#shopify-section-product-section6 button.next_img').click(function(){
+        var scroll_left = $('div#shopify-section-product-section6 #section-product-section6').scrollLeft();
+        $('div#shopify-section-product-section6 #section-product-section6').scrollLeft(scroll_left + 150);
+//         setInterval(step_right, 1);
+//         function step_right() {
+//           $('div#shopify-section-product-section6 #section-product-section6').scrollLeft(scroll_left+j);
+//           j = j + 1;
+//           if(j > 200) {
+//             clearInterval(step_right)
+//           }  
+//         }
+    });
+    
+  });
+</script>
+<br>
+<br>
+<div class="reeview-app-widget" id="reeview-app-widget_62716cf146ce42002b795603"></div>

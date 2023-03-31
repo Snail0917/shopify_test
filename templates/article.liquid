@@ -1,0 +1,53 @@
+{% render 'shogun-products', content: article %}
+{% section 'slideshow-article' %}
+{% section 'article-template' %}
+{% section 'shop-now' %}
+
+<style>
+  div#shopify-section-article-template aside.ArticleToolbar.hidden-phone {
+    display: none !important;
+  }
+  div#shopify-section-article-template .Article__ImageWrapper .Article__Image {
+    transform: none !important;
+  }
+  
+  ul#easy-table-of-content h2.title.ignore {
+    margin-top: 15px;
+  }
+  div#view_hide {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  span#view_more {
+    color: #000;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  span#view_less {
+    color: #000;
+    cursor: pointer;
+    display: none;
+    text-decoration: underline;
+  }
+  span#view_more:hover, span#view_less:hover {
+    color: red;
+  }
+  ul#easy-table-of-content {
+    display: none;
+  }
+</style>
+
+<script>
+$(document).ready(function(){
+  $("span#view_more").click(function(){
+    $("ul#easy-table-of-content").show();
+    $("span#view_less").show();
+    $(this).hide();
+  });
+  $("span#view_less").click(function(){
+    $("ul#easy-table-of-content").hide();
+    $("span#view_more").show();
+    $(this).hide();
+  });
+});
+</script>

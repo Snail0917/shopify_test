@@ -1,0 +1,239 @@
+<section class="Section {% unless section.settings.image %}Section--spacingNormal{% endunless %}">
+  {%- capture section_content -%}
+    <div class="FeatureText__ContentWrapper">
+      <div class="FeatureText__Content">
+        
+          <header class="SectionHeader">
+            {%- if section.settings.subheading != blank -%}
+              <h3 class="SectionHeader__SubHeading Heading u-h6">{{ section.settings.subheading | escape }}</h3>
+            {%- endif -%}
+
+            {%- if section.settings.title != blank -%}
+              <h2 class="SectionHeader__Heading Heading u-h1">{{ section.settings.title | escape }}</h2>
+            {%- endif -%}
+
+            {%- if section.settings.content != blank -%}
+              <div class="SectionHeader__Description Rte">
+                {{ section.settings.content }}
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.link_text != blank -%}
+              <div class="faq_btn"><a href="{{ section.settings.link_url }}" class="button Link Link--underline">{{ section.settings.link_text | escape }}</a><div>
+            {%- endif -%}
+          </header>
+      </div>
+    </div>
+  {%- endcapture -%}
+
+  {%- capture section_image -%}
+    {%- if section.settings.image_video_block != blank -%}
+      <div class="FeatureText__ImageWrapper">
+         <div class="AspectRatio" style="max-width: {{ section.settings.image.width }}px; --aspect-ratio: {{ section.settings.image.aspect_ratio }}">
+         {{ section.settings.image_video_block }}
+         
+        </div>
+		
+        
+      </div>
+    {%- endif -%}
+  {%- endcapture -%}
+
+  <div class="FeatureText {% if section.settings.image_video_block != blank %}FeatureText--withImage FeatureText--image{{ section.settings.image_position | capitalize }}{% endif %}">
+    {%- if section.settings.image_position == 'left' -%}
+      {{- section_image -}}
+      {{- section_content -}}
+    {%- else -%}
+      {{- section_content -}}
+      {{- section_image -}}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Section3 Raincoat",
+  "class": "shopify-section--bordered",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Sub-heading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "image_video_block",
+      "label": "video"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Text",
+      "default": "<p>Add your own custom content to give more information about your store, availability details...</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Product Section",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
+
+
+
+
+<style>
+  .faq-heading{
+    margin: 15px !important;
+    font-size: 30px !important;
+    text-align: left;
+  }
+  .faq-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .hr-line{
+    width: 100%;
+    margin: auto;
+
+  }
+  /* Style the buttons that are used to open and close the faq-page body */
+  .faq-page {
+      cursor: pointer;
+      padding: 15px;
+      border: none;
+      outline: none;
+      transition: 0.5s;
+      margin: 0 !important;
+      font-size: 18px !important;
+      text-align: left;
+
+  }
+  .faq-body{
+      width: 100%;  
+      padding: 15px;
+      background-color: white;
+      display: none;
+      overflow: hidden;
+      text-align: left;
+  }
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .faq-page:hover {
+      background-color: #F9F9F9;
+  }
+
+  .faq-page:after {
+    float: right;
+    margin-top: 8px;
+    content: "";
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    width: 10px;
+    height: 10px;
+    transform: rotate(135deg);
+  }
+  .faq-page.active:after {
+    transform: rotate(-45deg);
+    margin-top: 12px;
+  }
+  .faq_btn {
+    text-align: right;
+    margin-top: 30px;
+    margin-right: 35px;
+  }
+  .faq_btn:before {
+    content: "→";
+    position: absolute;
+    margin-left: 100px;
+  }
+  
+  @media only screen and (min-width: 1250px) {
+    #shopify-section-product-section3-raincoat {
+        margin-top: 50px;
+    }
+  }
+  
+  @media only screen and (max-width: 640px) {
+    .faq-page:after {
+      position: absolute;
+      right: 30px;
+    }
+    .faq-page {
+      font-size: 16px !important;
+  	}
+    
+    #shopify-section-product-section3-raincoat .FeatureText__ContentWrapper {
+      padding: 15px;
+    }
+    #shopify-section-product-section3-raincoat .FeatureText__Content {
+      margin: 0 0 30px;
+    }
+    #shopify-section-product-section3-raincoat .faq-heading {
+      margin-top: 0px;
+      line-height: 1.2em;
+    }
+  }
+  
+</style>
+
+
+
+
+<script>
+  var faq = document.getElementsByClassName("faq-page");
+  var i;
+  for (i = 0; i < faq.length; i++) {
+      faq[i].addEventListener("click", function () {
+          /* Toggle between adding and removing the "active" class,
+          to highlight the button that controls the panel */
+          $('h1.faq-page').removeClass('active');
+          this.classList.toggle("active");
+          /* Toggle between hiding and showing the active panel */
+          var body = this.nextElementSibling;
+          if (body.style.display === "block") {
+              $('div.faq-body').css('display', 'none');
+              body.style.display = "none";
+          } else {
+              $('div.faq-body').css('display', 'none');
+              body.style.display = "block";
+          }
+      });
+  }
+</script>

@@ -1,0 +1,64 @@
+<!-- proudct custom section -->
+<div class="custom-product-section">
+  <div class="Container">
+    {% section 'product-size-guide' %}
+  </div>
+</div>
+
+<style>
+  #corner-sticky-atc-outer-container {
+    display: none;
+  }
+</style>  
+
+<script type="text/javascript">
+  //smart size popup js
+  function myTimeout1(){
+    if ($(".ks-code select#select-new").length >=1) {
+    	var selected_opt = $(".ks-code select#select-new").val();
+        $(".ks-code .box").not("." + selected_opt).hide();
+        $(".ks-code ." + selected_opt).show(); 
+    }
+  }
+    
+  $(document).ready(function(){
+    setInterval(myTimeout1, 100);
+
+    //size guide popup header 
+    setInterval(function () {
+      var head_check_title = $('.ks-modal-content-wrapper .ks-calculator-header span.hidden_content').text();
+      if (head_check_title.includes('Hoodie')) {
+        $('.ks-modal-content-wrapper .modal-title-header').text('Hoodie Size Guide');
+      }
+      if (head_check_title.includes('Jacket And Coat')) {
+        $('.ks-modal-content-wrapper .modal-title-header').text('Jacket And Coat Size Guide');
+      }
+      if (head_check_title.includes('Harness')) {
+        $('.ks-modal-content-wrapper .modal-title-header').text('Harness Size Guide');
+      }
+      if (head_check_title.includes('Sneaker')) {
+        $('.ks-modal-content-wrapper .modal-title-header').text('Sneaker Size Guide');
+      }
+    }, 300);
+
+    //size guide button click by product images
+    $('div#shopify-section-product-size-guide .CollectionList .product_item__ImageWrapper img').click(function(){
+      $(this).parent().find('div.Sectionbutton button').click();
+    });
+    
+    //size guide button click by custom buttons
+    $('button.all.sneaker.and.boot.size.guide').click(function(){
+      $('div.size_guide_buttons div.size_guide_but1 span.ks-calculator-modal-link').click();
+    });
+    $('button.jacket.and.coat.size.guide').click(function(){
+      $('div.size_guide_buttons div.size_guide_but2 span.ks-calculator-modal-link').click();
+    });
+    $('button.harness.size.guide').click(function(){
+      $('div.size_guide_buttons div.size_guide_but3 span.ks-calculator-modal-link').click();
+    });
+    $('button.hoodie.size.guide').click(function(){
+      $('div.size_guide_buttons div.size_guide_but4 span.ks-calculator-modal-link').click();
+    });
+    
+  });
+</script>

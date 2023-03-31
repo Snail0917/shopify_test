@@ -1,0 +1,200 @@
+{% capture bb_original_price %}{% render 'bb', type: 'bb_original_price', item: line_item %}{% endcapture %}{% assign bb_original_price = bb_original_price | plus: 0 %}
+<div class="ProductMeta">
+  {%- if section.settings.show_vendor and product.vendor != blank -%}
+    <h2 class="ProductMeta__Vendor Heading u-h6">
+      {%- assign vendor_handle = product.vendor | handle -%}
+      {%- assign collection_for_vendor = collections[vendor_handle] -%}
+
+      {%- unless collection_for_vendor.empty? -%}
+        <a href="{{ collection_for_vendor.url }}">{{ product.vendor }}</a>
+      {%- else -%}
+        {{- product.vendor -}}
+      {%- endunless -%}
+    </h2>
+  {%- endif -%}
+
+  <h1 class="ProductMeta__Title Heading u-h2">
+    {%- if template.name == 'product' -%}
+      <span class="product_name">
+      {{- product.title -}}
+      </span>
+    {%- else -%}
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    {%- endif -%}
+
+
+    <span class="product_badge item_product">
+        {% for tag in product.tags %}
+
+            {% if tag == 'Best Seller'%}
+              <span class="best_seller">Best Seller</span>
+            {% endif %}
+        
+            {% if tag == 'Restocked'%}
+              <span class="restocked">Restocked</span>
+            {% endif %}
+        
+            {% if tag == 'Out Of Stock'%}
+              <span class="out_of_stock">Out Of Stock</span>
+            {% endif %}
+        
+            {% if tag == 'New Arrival'%}
+              <span class="new_product">New Arrival</span>
+            {% endif %}
+           
+            {% if tag == 'Vegan'%}
+              <span class="vegan">Vegan</span>
+            {% endif %}
+            
+            {% if tag == 'Waterproof'%}
+              <span class="waterproof">Waterproof</span>
+            {% endif %}
+             
+            {% if tag == 'Last Call'%}
+              <span class="last_call">Last Call</span>
+            {% endif %}
+
+            {% if tag == 'Final Sale'%}
+              <span class="last_call">Final Sale</span>
+            {% endif %}
+        
+            {% if tag == 'Collaboration'%}
+              <span class="collaboration">Collaboration</span>
+            {% endif %}
+        
+            {% if tag == 'Limited Edition'%}
+              <span class="limited_edition">Limited Edition</span>
+            {% endif %}
+
+            {% if tag == 'Larger Sizes'%}
+              <span class="larger_sizes">Larger Sizes</span>
+            {% endif %}
+
+            {% if tag == 'Sale'%}
+              <span class="sale">Sale</span>
+            {% endif %}
+          
+            {% if tag == 'save-$20'%}
+              <span class="bundle_set">BUNDLE SET & SAVE $20</span>
+            {% endif %}
+
+            {% if tag == 'save-$10'%}
+              <span class="bundle_set">BUNDLE SET & SAVE $10</span>
+            {% endif %}
+
+            {% if tag == 'sale-28% off'%}
+              <span class="bundle_set">SALE - 28% OFF</span>
+            {% endif %}
+
+            {% if tag == 'Clearance'%}
+              <span class="bundle_set">CLEARANCE - 40% OFF</span>
+            {% endif %}
+
+            {% if tag == 'sales-final'%}
+              <span class="bundle_set">ALL SALES FINAL</span>
+            {% endif %}
+
+        {% endfor %}
+    </span>
+
+    
+  </h1>
+  
+  
+
+  {%- if section.settings.show_sku and product.selected_or_first_available_variant.sku != blank -%}
+    <p class="ProductMeta__Sku Heading Text--subdued u-h6">{{ 'product.form.sku' | t }}: <span class="ProductMeta__SkuNumber">{{ product.selected_or_first_available_variant.sku }}</span></p>
+  {%- endif -%}
+
+  {%- if product.template_suffix != 'coming-soon' -%}
+    <div class="ProductMeta__PriceList Heading">
+      {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+        <span class="ProductMeta__Price Price Price--highlight Text--subdued u-h4">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
+        <span class="ProductMeta__Price Price Price--compareAt Text--subdued u-h4">{{ product.selected_or_first_available_variant.compare_at_price | money_without_trailing_zeros }}</span>
+      {%- else -%}
+         {% if product.selected_or_first_available_variant.price != 0 %}
+              <span class="ProductMeta__Price Price Text--subdued u-h4">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
+          {% else %}
+              <span class="ProductMeta__Price Price Text--subdued u-h4" style="color: green;">FREE</span>
+          {% endif %}
+      {%- endif -%}
+    </div>
+
+    <div class="ProductMeta__UnitPriceMeasurement" style="display: {%- if product.selected_or_first_available_variant.unit_price_measurement -%}block{% else %}none{% endif %}">
+      <div class="UnitPriceMeasurement Heading u-h6 Text--subdued">
+        <span class="UnitPriceMeasurement__Price">{{ product.selected_or_first_available_variant.unit_price | money_without_trailing_zeros }}</span>
+        <span class="UnitPriceMeasurement__Separator">/ </span>
+
+        {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+          <span class="UnitPriceMeasurement__ReferenceValue">{{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}</span>
+        {%- endif -%}
+
+        <span class="UnitPriceMeasurement__ReferenceUnit">{{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}</span>
+      </div>
+    </div>
+  {%- endif -%}
+  
+  <!-- product review section start -->
+  <a href="#looxReviews"><div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div></a>
+  <!-- product review section end -->
+  
+  {%- if section.settings.show_taxes_included -%}
+    {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+      <p class="ProductMeta__TaxNotice Rte">
+        {%- if shop.taxes_included -%}
+          {{ 'product.general.include_taxes' | t }}
+        {%- endif -%}
+
+        {%- if shop.shipping_policy.body != blank -%}
+          {{ 'product.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if show_description and section.settings.description_below_add_to_cart == false -%}
+    
+    {% assign productDescription = product.description | split:"<!-- split -->" %}
+    
+    <div class="ProductMeta__Description">
+      <div class="Rte">
+        {%- comment -%}
+        We have figured out that some merchants were copy-pasting huge chunk of code into the product description,
+        which can make the theme crashes if it contains some special attributes used by the theme. We therefore make sure to process this
+        {%- endcomment -%}
+
+        <div class="mobile_hide">
+          {{ productDescription | first }}
+        </div>
+        
+        <div class="desktop_hide">
+          <div id="truncated">
+            {{ productDescription | first | truncatewords: 15, " ... <a class='read-more-product'>Read More</a>" }}
+          </div>
+          <div id="fullDescription" style="display: none;">
+            {{ productDescription | first }}
+            <a class='read-less-product'>Read Less</a>
+          </div>
+        </div>
+    
+      </div>
+
+      {%- if section.settings.show_share_buttons -%}
+        <div class="ProductMeta__ShareButtons hidden-pocket">
+          <span class="ProductMeta__ShareTitle Heading Text--subdued u-h7">{{ 'product.form.share' | t }}</span>
+
+          {%- assign share_url = shop.url | append: product.url -%}
+          {%- assign twitter_text = product.title -%}
+          {%- assign pinterest_description = product.description | strip_html | truncatewords: 15 | url_param_escape -%}
+          {%- assign pinterest_image = product.featured_image | img_url: 'large' | prepend: 'https:' -%}
+
+          <div class="ProductMeta__ShareList Text--subdued">
+            <a class="ProductMeta__ShareItem" href="https://www.facebook.com/sharer.php?u={{ share_url }}" target="_blank" rel="noopener" aria-label="Facebook">{%- render 'icon' with 'facebook' -%}</a>
+            <a class="ProductMeta__ShareItem" href="https://twitter.com/share?{% if twitter_text != blank %}text={{twitter_text}}&{% endif %}url={{ share_url }}" target="_blank" rel="noopener" aria-label="Twitter">{%- render 'icon' with 'twitter' -%}</a>
+            <a class="ProductMeta__ShareItem" href="https://pinterest.com/pin/create/button/?url={{ share_url }}{% if pinterest_image != blank %}&media={{ pinterest_image }}{% endif %}&description={{ pinterest_description }}" target="_blank" rel="noopener" aria-label="Pinterest">{%- render 'icon' with 'pinterest' -%}</a>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>

@@ -1,0 +1,65 @@
+<div class="size_guide_popup">
+<!-- START KiwiSizing code !-->
+  <div id="KiwiSizingChart" 
+    data-sizing-id="19566751"
+    data-display-mode="1"
+    data-recommender-display-mode="1"
+    data-layout-type="0">
+  </div>
+<!-- END KiwiSizing code !-->
+</div>
+
+
+<style>
+  div.size_guide_popup {
+     padding: 80px;
+     text-align: center;
+  }
+</style>
+
+<script type="text/javascript">
+    const myInterval1 = setInterval(myTimeout1, 300);
+    function myTimeout1() {
+      if ($('div.kiwi-sizing-modal .ks-modal-tab-wrapper .ks-modal-tab').length >= 1) {
+        $('div.kiwi-sizing-modal .ks-modal-tab-wrapper .ks-modal-tab').removeClass('selected');
+        $('div.kiwi-sizing-modal .ks-modal-tab-wrapper .ks-modal-tab:nth-child(1)').addClass('selected');
+        
+        $('div.kiwi-sizing-modal .ks-chart-tab-container').removeClass('hide');
+        $('div.kiwi-sizing-modal .ks-calculator-tab-container').addClass('hide');
+        clearInterval(myInterval1);
+      } 
+    }
+</script>  
+
+<script>
+  $(document).ready(function(){
+    var recent_path = $(location).attr("href");
+    if (recent_path.includes('/pages/size-guide-popup')) {
+      const myInterval = setInterval(myTimer, 300);
+      function myTimer() {
+        var but_visible = $('span.ks-calculator-modal-link.sizing-calculator-modal-link.with-icon').length;
+        if (but_visible>=1) {
+          $('span.ks-calculator-modal-link.sizing-calculator-modal-link.with-icon').click();
+          const myTimeout = setTimeout(myGreeting, 300);
+          clearInterval(myInterval);
+        }
+      }   
+    }
+
+    function myGreeting() {
+      $(document).ready(function(){
+        $(".choose-size").change(function(){
+          $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+              $(".box").not("." + optionValue).hide();
+              $("." + optionValue).show();
+            } else{
+              $(".box").hide();
+            }
+          });
+        }).change();
+      });
+    }
+  });
+</script>

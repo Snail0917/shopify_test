@@ -1,0 +1,25 @@
+<div data-section-id="{{ section.id }}" data-section-type="InstaPics-Instafeed">
+    <section class="home-section {% if  section.settings.title != blank %}has-heading{% endif %}">   
+      <div id="evm-instagram-feed"></div>
+    </section>
+  </div>
+  {% schema %}
+    {
+      "name": "InstaPics Instafeed",
+      "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "InstaPics Instafeed"
+        }
+    ],
+    "presets": [
+      {
+        "category": "InstaPics Instafeed",
+        "name": "InstaPics Instafeed"
+      }
+    ]
+  }
+  {% endschema %}<script src="https://expertvillagemedia.com/instagramfeed/embed.js" data-shop-id="rifruf.myshopify.com">
+  </script>

@@ -1,0 +1,10 @@
+{%- assign collection_image = block.settings.image | default: collection.image | default: collection.products.first.featured_image -%}
+
+<div class="product_item__ImageWrapper">
+  <img src= "{{ collection_image | img_url: '1000x' }}"/>
+  <div class="Sectionbutton">
+    {%- if block.settings.subheading != blank -%}
+      <button class="{{ block.settings.subheading }}">{{ block.settings.subheading | escape }}</button>
+    {%- endif -%}
+  </div>
+</div>

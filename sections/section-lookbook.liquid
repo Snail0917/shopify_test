@@ -1,0 +1,432 @@
+<div class="page-width">
+  {% if section.settings.title != blank %}
+  <div class="section-header text-center">
+  <h4 class="h2">{{ section.settings.title | escape }}</h4>
+  </div>
+  {% endif %}
+
+  <div class="custom-content">
+  {% for block in section.blocks %}
+  {% case block.settings.width %}
+  {% when '25%' %}
+  <style>
+    .custom__item--{{block.id}} .custom__image {
+    	max-height: initial;
+    }
+  </style>
+  {%- assign block_width = 'lookbook_1' -%}
+  {%- assign image_size = '250x250' -%}
+  {% when '33%' %}
+  <style>   
+    .custom__item--{{block.id}} .custom__image {
+    	max-height: 400px;
+    }
+  </style>
+  {%- assign block_width = 'lookbook_2' -%}
+  {%- assign image_size = '345x345' -%}
+  {% when '50%' %}
+  <style>    
+    .custom__item--{{block.id}} .custom__image {
+    	max-height: 530px;
+    }
+  </style>
+  {%- assign block_width = 'lookbook_3' -%}
+  {%- assign image_size = '530x530' -%}
+  {% when '66%' %}
+  <style> 
+    .custom__item--{{block.id}} .custom__image {
+    	max-height: 720px;
+    }
+  </style>
+  {%- assign block_width = 'lookbook_4' -%}
+  {%- assign image_size = '720x720' -%}
+  {% when '75%' %}
+  <style>   
+    .custom__item--{{block.id}} .custom__image {
+    	max-height: 810px;
+    }
+  </style>
+  {%- assign block_width = 'lookbook_5' -%}
+  {%- assign image_size = '810x810' -%}
+  {% when '100%' %}
+  <style>   
+    .custom__item--{{block.id}} .custom__image {
+    	max-height: 1090px;
+    }
+  </style>
+  {%- assign block_width = 'lookbook_6' -%}
+  {%- assign image_size = '1090x1090' -%}
+  {% endcase %}
+  <div class="custom__item custom__item--{{block.id}} {{ block_width }} {% if block.settings.alignment %}align--{{ block.settings.alignment }}{% endif %}" {{ block.shopify_attributes }}>
+  <div class="custom__item-inner custom__item-inner--{{ block.type }}">
+  {% case block.type %}
+  {% when 'image' %}
+  <div class="lookbook-cls">  
+  {% if block.settings.image != blank %}
+  {%- assign image_alt = block.settings.image.alt -%}
+    <a data-fancybox="gallery" href="{{ block.settings.image | img_url: 'master' }}">
+    {{ block.settings.image | img_url: image_size, scale: 2, crop: 'top' | img_tag: image_alt, 'custom__image' }}
+    </a>
+  {% else %}
+  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+  {% endif %}
+    
+  </div>  
+  {% when 'text' %}
+  <div class="medium-up--text-{{ block.settings.align_text }}">
+  {% if block.settings.title != blank %}
+  <h4 class="h3" style="background:{{ block.settings.backgrond_color_heading }};color:{{ block.settings.text_color_heading }};">{{ block.settings.title | escape }}</h4>
+  {% endif %}
+  {% if block.settings.text != blank %}
+  <div class="rte-setting">{{ block.settings.text }}</div>
+  {% endif %}
+    </div>
+
+  {% when 'html' %}
+  <div class="image-three-box"> 
+    {{  block.settings.custom_html_block }}
+  </div>
+    
+  {% endcase %}
+  </div>
+  </div>
+
+  {% endfor %}
+  </div>
+
+  
+</div>
+
+<style>
+  .medium-up--text-left { text-align:left; }
+  .medium-up--text-center { text-align:center; }
+  .medium-up--text-right { text-align:right; }
+  .image-three-box td {
+    margin: 0 auto;
+    padding: 0px;
+    border: none;
+}
+  .lookbook_1 { width:25% }
+  .lookbook_2 { width:33.33% }
+  .lookbook_3 { width:50% }
+  .lookbook_4 { width:66.66% }
+  .lookbook_5 { width:75% }
+  .lookbook_6 { width:100% }
+  .custom__item {
+    -webkit-flex: 0 0 auto;
+    -moz-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    padding-left: 30px;
+    max-width: 100%;
+}
+  .custom-content {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -ms-flex-align: stretch;
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    -ms-align-items: stretch;
+    -o-align-items: stretch;
+    align-items: stretch;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: auto;
+    margin-bottom: -30px;
+    margin-left: -30px;
+}
+  .custom__item-inner--html, .custom__item-inner--video {
+    display: block;
+}
+.custom__item-inner {
+    position: relative;
+    max-width: 100%;
+}
+  .image-three-box {     width: 100%;
+    text-align: center;
+    /* padding: 10%;*/ }
+  .image-three-box  h2 {
+    font-family: Perpetua, Baskerville, "Big Caslon", "Palatino Linotype", Palatino, "URW Palladio L", "Nimbus Roman No9 L", serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;
+    color: #000;
+  }
+  .image-three-box p { color: #000;
+    font-size: 22px; }
+  .lookbook-cls h2 {
+        text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 18px;
+    padding-top: 10px;
+  }
+  .lookbook-cls p {
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+  }
+  #shopify-section-section-lookbook h4.h3 {
+        font-size: 24px;
+    margin: 0px 0px 10px 0px;
+    background: #000;
+    color: #FFF;
+    text-align: center;
+  }
+  .lookbook-cls img { width:100%; }
+</style>  
+
+<!-- 1. Add latest jQuery and fancybox files -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+{% schema %}
+{
+"name": "My Custom Page",
+"settings": [
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Heading",
+    "default": "Custom content"
+  }
+  ],
+  "blocks": [
+  {
+  "type": "text",
+  "name": "Text",
+  "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Talk about your brand"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+      },
+      {
+        "type": "color",
+        "id": "backgrond_color_heading",
+        "label": "Background Color",
+        "default": "#000"
+      },
+	  {
+        "type": "color",
+        "id": "text_color_heading",
+        "label": "Text Color",
+        "default": "#000"
+      },
+      {
+      "type": "select",
+      "id": "width",
+      "label": "Container width",
+      "default": "50%",
+      "options": [
+          {
+            "value": "25%",
+            "label": "25%"
+          },
+          {
+            "value": "33%",
+            "label": "33%"
+          },
+          {
+            "value": "50%",
+            "label": "50%"
+          },
+          {
+            "value": "66%",
+            "label": "66%"
+          },
+          {
+            "value": "75%",
+            "label": "75%"
+          },
+            {
+            "value": "100%",
+            "label": "100%"
+          }
+        ]
+      },
+      {
+      "type": "select",
+      "id": "alignment",
+      "label": "Vertical alignment",
+      "default": "center",
+      "options": [
+          {"value": "top-middle", "label": "Top"},
+          {"value": "center", "label": "Middle"},
+          {"value": "bottom-middle", "label": "Bottom"}
+      ]
+      },
+      {
+      "type": "select",
+      "id": "align_text",
+      "label": "Horizontal alignment",
+      "default": "left",
+      "options": [
+          {"value": "left", "label": "Left"},
+          {"value": "center", "label": "Centered"},
+          {"value": "right", "label": "Right"}
+      ]
+      }
+    ]
+  },
+  {
+  "type": "image",
+  "name": "Image",
+  "settings": [
+      {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+      },
+      {
+          "type": "url",
+          "id": "image_url",
+          "label": "Image URL"
+      },
+  {
+  "type": "select",
+  "id": "width",
+  "label": "Container width",
+  "default": "50%",
+  "options": [
+      {
+        "value": "25%",
+        "label": "25%"
+      },
+      {
+        "value": "33%",
+        "label": "33%"
+      },
+      {
+        "value": "50%",
+        "label": "50%"
+      },
+      {
+        "value": "66%",
+        "label": "66%"
+      },
+      {
+        "value": "75%",
+        "label": "75%"
+      },
+      {
+        "value": "100%",
+        "label": "100%"
+      }
+  ]
+  },
+  {
+  "type": "select",
+  "id": "alignment",
+  "label": "Vertical alignment",
+  "default": "center",
+  "options": [
+      {
+        "value": "top-left",
+        "label": "Top left"
+      },
+      {
+        "value": "top-middle",
+        "label": "Top middle"
+      },
+      {
+        "value": "top-right",
+        "label": "Top right"
+      },
+      {
+        "value": "middle-left",
+        "label": "Middle left"
+      },
+      {
+        "value": "center",
+        "label": "Middle"
+      },
+      {
+        "value": "middle-right",
+        "label": "Middle right"
+      },
+      {
+        "value": "bottom-left",
+        "label": "Bottom left"
+      },
+      {
+        "value": "bottom-middle",
+        "label": "Bottom middle"
+      },
+      {
+        "value": "bottom-right",
+        "label": "Bottom right"
+      }
+      ]
+      }
+  ]
+  },
+  {
+  "type": "html",
+  "name": "Custom HTML",
+  "settings": [
+      {
+          "type": "textarea",
+          "id": "custom_html_block",
+          "label": "Custom HTML"
+      },
+      {
+      "type": "select",
+      "id": "align_text_new",
+      "label": "Horizontal alignment",
+      "default": "left",
+      "options": [
+          {"value": "left", "label": "Left"},
+          {"value": "center", "label": "Centered"},
+          {"value": "right", "label": "Right"}
+      ]
+      }, 
+      {
+      "type": "select",
+      "id": "width",
+      "label": "Container width",
+      "default": "50%",
+      "options": [
+          {
+            "value": "25%",
+            "label": "25%"
+          },
+          {
+            "value": "33%",
+            "label": "33%"
+          },
+          {
+            "value": "50%",
+            "label": "50%"
+          },
+          {
+            "value": "66%",
+            "label": "66%"
+          },
+          {
+            "value": "75%",
+            "label": "75%"
+          },
+          {
+            "value": "100%",
+            "label": "100%"
+          }
+      ]
+    }
+  ]
+}
+]
+}
+
+{% endschema %} 

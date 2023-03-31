@@ -1,0 +1,135 @@
+<section class="Section {% unless section.settings.image %}Section--spacingNormal{% endunless %}">
+  {%- capture section_image -%}
+    {%- if section.settings.image_video_block != blank -%}
+      <div class="FeatureText__ImageWrapper">
+          {%- if section.settings.title != blank -%}
+            <h2 class="SectionHeader__Heading Heading u-h1">{{ section.settings.title | escape }}</h2>
+          {%- endif -%}
+          <div class="image_section">
+            {{ section.settings.image_video_block }}
+          </div>
+      </div>
+    {%- endif -%}
+  {%- endcapture -%}
+  
+  {%- capture section_content -%}
+    <div class="FeatureText__ContentWrapper">
+        {%- if section.settings.title1 != blank -%}
+          <h2 class="SectionHeader__Heading Heading u-h1">{{ section.settings.title1 | escape }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.content != blank -%}
+          <div class="image_section">
+            {{ section.settings.content }}
+          </div>
+        {%- endif -%}
+    </div>
+  {%- endcapture -%}
+
+  <div class="FeatureText {% if section.settings.image_video_block != blank %}FeatureText--withImage FeatureText--image{{ section.settings.image_position | capitalize }}{% endif %}">
+    {%- if section.settings.image_position == 'left' -%}
+      {{- section_image -}}
+      {{- section_content -}}
+    {%- else -%}
+      {{- section_content -}}
+      {{- section_image -}}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Section5 AP/CO",
+  "class": "shopify-section--bordered",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading1",
+      "default": "Title1"
+    },
+    {
+      "type": "textarea",
+      "id": "image_video_block",
+      "label": "video"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Heading2",
+      "default": "Title2"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Product Section",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
+
+
+<style>
+  #shopify-section-product-section5-apollo-coat {
+      padding: 25px;
+  }
+  #shopify-section-product-section5-apollo-coat h2.SectionHeader__Heading {
+      text-align: center;
+      font-size: 30px;
+  }
+  #shopify-section-product-section5-apollo-coat .FeatureText__ContentWrapper video {
+      width: 97.5%;
+  }
+  
+  #shopify-section-product-section5-apollo-coat .FeatureText__ContentWrapper {
+      padding: 0px !important;
+  }
+  #shopify-section-product-section5-apollo-coat .FeatureText__ImageWrapper img{
+      width: 97.5%;
+      margin-left: 2.5%;
+      margin-top: -8px;
+  }
+  
+  @media only screen and (max-width: 640px) {
+    #shopify-section-product-section5-apollo-coat {
+      padding: 15px;
+    }
+    #shopify-section-product-section5-apollo-coat .FeatureText__ContentWrapper video {
+        width: 100%;
+    }
+    #shopify-section-product-section5-apollo-coat .FeatureText__ImageWrapper img{
+        width: 100%;
+        margin-left: 0;
+    }
+    #shopify-section-product-section5-apollo-coat .FeatureText__ImageWrapper {
+        margin-top: 30px;
+    }
+    #shopify-section-product-section5-apollo-coat h2.SectionHeader__Heading {
+        text-align: center;
+        font-size: 24px;
+    }
+  }
+</style>

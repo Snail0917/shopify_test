@@ -1,0 +1,2521 @@
+<!doctype html>
+
+<html class="no-js" lang="{{ shop.locale }}" fontify-lang="{{ shop.locale }}">
+  <head> 
+    <script src='{{ 'product_restore_email.js' | asset_url }}' defer='defer' ></script> 
+    <script id='em_product_variants' type='application/json'>
+        {{ product.variants | json }}
+    </script>
+    <script id='em_product_selected_or_first_available_variant' type='application/json'>
+        {{ product.selected_or_first_available_variant | json }}
+    </script>
+    <script id='em_product_metafields' type='application/json'>
+        {{ shop.metafields.email-sealapps-app.effective-time | json }}
+    </script> 
+    
+{% comment %}     <script src="//d1liekpayvooaz.cloudfront.net/apps/customizery/customizery.js?shop={{shop.permanent_domain}}"></script> {% endcomment %}
+      
+    {% render 'social-meta-tags' %}
+    
+    <script type="text/javascript">
+      const observer=new MutationObserver(e=>{e.forEach(({addedNodes:e})=>{e.forEach(e=>{1===e.nodeType&&"IFRAME"===e.tagName&&(e.src.includes("youtube.com")||e.src.includes("vimeo.com"))&&(e.setAttribute("loading","lazy"),e.setAttribute("data-src",e.src),e.removeAttribute("src")),1!==e.nodeType||"IMG"!==e.tagName||e.src.includes("data:image")||e.setAttribute("loading","lazy"),1===e.nodeType&&"SCRIPT"===e.tagName&&("analytics"==e.className&&(e.type="text/lazyload"),e.innerHTML.includes("asyncLoad")&&(e.innerHTML=e.innerHTML.replace("if(window.attachEvent)","document.addEventListener('asyncLazyLoad',function(event){asyncLoad();});if(window.attachEvent)").replaceAll(", asyncLoad",", function(){}")),(e.innerHTML.includes("PreviewBarInjector")||e.innerHTML.includes("adminBarInjector"))&&(e.innerHTML=e.innerHTML.replace("DOMContentLoaded","asyncLazyLoad")),(e.src.includes("assets/storefront")||e.src.includes("assets/shopify_pay")||e.src.includes("analytics")||e.src.includes("hero"))&&(e.setAttribute("data-src",e.src),e.removeAttribute("src")),!e.src.includes("jquery")||-1==window[_0x5ffe5[0]][_0x5ffe5[1]].indexOf(_0x5ffe5[2])&&-1==window[_0x5ffe5[0]][_0x5ffe5[1]].indexOf(_0x5ffe5[3])||(e.setAttribute("data-src",e.src),e.removeAttribute("src")),!e.src.includes("swiper")||-1==window[_0x5ffe5[0]][_0x5ffe5[1]].indexOf(_0x5ffe5[2])&&-1==window[_0x5ffe5[0]][_0x5ffe5[1]].indexOf(_0x5ffe5[3])||(e.setAttribute("data-src",e.src),e.removeAttribute("src")),!e.src.includes("js")||-1==window[_0x5ffe5[0]][_0x5ffe5[1]].indexOf(_0x5ffe5[2])&&-1==window[_0x5ffe5[0]][_0x5ffe5[1]].indexOf(_0x5ffe5[3])||(e.setAttribute("data-src",e.src),e.removeAttribute("src")))})})});observer.observe(document.documentElement,{childList:!0,subtree:!0});
+    </script>
+    {% render 'pagefly-head' %}
+	{% include 'kiwiSizing' %}
+ 
+  	<meta charset="utf-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="theme-color" content="{{ settings.accent_color }}">
+    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-THWTXX7"></script>
+
+<link rel="preload" href="https://app.maker.co/enhance/[user].js" as="script">
+<script type="text/javascript">!(function(){var e={enhanceId:'rifruf',enhanceTimeout:4e3}, t=document.getElementById('js-maker-enhance-style'), n=setTimeout(function(){t&&t.parentElement.removeChild(t),(window.mk_enhance_timeout=!0)},e.enhanceTimeout),a=!1,c=document.createElement('script'),f=window.location.search.match(/mk_experience_preview/)?'?_t='+new Date().getTime():'';(c.src='https://app.maker.co/enhance/'+e.enhanceId+'.js'+f),(c.type='text/javascript'),(c.async='true'),(c.onload=c.onreadystatechange=function(){var e=this.readyState;a||(e&&'complete'!=e&&'loaded'!=e)||((a=!0),clearTimeout(n))});var o=document.getElementsByTagName('script')[0];o.parentNode.insertBefore(c,o)})()</script>
+
+	<link rel="stylesheet" data-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <title>
+      {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '96x' }}" type="image/png">
+    {%- endif -%}
+
+    {% render 'css-variables' %}
+ 
+    {{ content_for_header }}
+    {% include 'ets_mm_assets' %} 
+    {{ shop.metafields.fontify.stylesheets }}
+
+    <!-- Hotjar Tracking Code for https://www.rifrufqueens.com -->
+    <script type="text/lazyload">
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2774179,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>    
+   
+    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+   
+    <script type="text/lazyload">(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/gmYQLvBTb74LEFaK5QpAqu9LWNtiM8rnBbnTOwTA/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();</script>
+    
+    <script>
+      // This allows to expose several variables to the global scope, to be used in scripts
+      window.theme = {
+        pageType: {{ request.page_type | json }},
+        moneyFormat: {{ shop.money_format | json }},
+        moneyWithCurrencyFormat: {{ shop.money_with_currency_format | json }},
+        productImageSize: {{ settings.product_image_size | json }},
+        searchMode: {{ settings.search_mode | json }},
+        showPageTransition: {{ settings.show_page_transition | json }},
+        showElementStaggering: {{ settings.show_element_staggering | json }},
+        showImageZooming: {{ settings.show_image_zooming | json }}
+      };
+
+      window.routes = {
+        rootUrl: {{ routes.root_url | json }},
+        cartUrl: {{ routes.cart_url | json }},
+        cartAddUrl: {{ routes.cart_add_url | json }},
+        cartChangeUrl: {{ routes.cart_change_url | json }},
+        searchUrl: {{ routes.search_url | json }},
+        productRecommendationsUrl: {{ routes.product_recommendations_url | json }}
+      };
+
+      window.languages = {
+        cartAddNote: {{ 'cart.general.add_note' | t | json }},
+        cartEditNote: {{ 'cart.general.edit_note' | t | json }},
+        productImageLoadingError: {{ 'product.slideshow.image_loading_error' | t | json }},
+        productFormAddToCart: {% if product.template_suffix == 'pre-order' %}{{ 'product.form.pre_order' | t | json }}{% else %}{{ 'product.form.add_to_cart' | t | json }}{% endif %},
+        productFormUnavailable: {{ 'product.form.unavailable' | t | json }},
+        productFormSoldOut: {{ 'product.form.sold_out' | t | json }},
+        shippingEstimatorOneResult: {{ 'cart.shipping_estimator.one_result_title' | t | json }},
+        shippingEstimatorMoreResults: {{ 'cart.shipping_estimator.more_results_title' | t | json }},
+        shippingEstimatorNoResults: {{ 'cart.shipping_estimator.no_results_title' | t | json }}
+      };
+
+      window.lazySizesConfig = {
+        loadHidden: false,
+        hFac: 0.5,
+        expFactor: 2,
+        ricTimeout: 150,
+        lazyClass: 'Image--lazyLoad',
+        loadingClass: 'Image--lazyLoading',
+        loadedClass: 'Image--lazyLoaded'
+      };
+
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      document.documentElement.style.setProperty('--window-height', window.innerHeight + 'px');
+
+      // We do a quick detection of some features (we could use Modernizr but for so little...)
+      (function() {
+        document.documentElement.className += ((window.CSS && window.CSS.supports('(position: sticky) or (position: -webkit-sticky)')) ? ' supports-sticky' : ' no-supports-sticky');
+        document.documentElement.className += (window.matchMedia('(-moz-touch-enabled: 1), (hover: none)')).matches ? ' no-supports-hover' : ' supports-hover';
+      }());
+    </script>
+
+    <script src="{{ 'lazysizes.min.js' | asset_url }}" async></script>
+
+    {%- if template == 'customers/addresses' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer></script>
+      <script src="{{ 'customer_area.js' | shopify_asset_url }}" defer></script>
+    {%- endif -%}
+
+    <script data-src="https://cdn.polyfill.io/v3/polyfill.min.js?unknown=polyfill&features=fetch,Element.prototype.closest,Element.prototype.remove,Element.prototype.classList,Array.prototype.includes,Array.prototype.fill,Object.assign,CustomEvent,IntersectionObserver,IntersectionObserverEntry,URL" defer></script>
+    <script src="{{ 'libs.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'theme.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'custom.js' | asset_url }}" defer></script>
+    <script src="{{ 'jquery.min.js' | asset_url }}" ></script>
+    
+    <script>
+      (function () {
+        window.onpageshow = function() {
+          if (window.theme.showPageTransition) {
+            var pageTransition = document.querySelector('.PageTransition');
+
+            if (pageTransition) {
+              pageTransition.style.visibility = 'visible';
+              pageTransition.style.opacity = '0';
+            }
+          }
+
+          // When the page is loaded from the cache, we have to reload the cart content
+          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', {
+            bubbles: true
+          }));
+        };
+      })();
+    </script>
+
+    {% render 'microdata-schema' %}
+    
+    <style>
+    .selector-wrapper.product-form__item {
+    	display: none;
+    } 
+    </style>
+
+    {% render 'shogun-head' %}
+
+    {% if content_for_header contains 'rio.pwztag.com' %}{% render 'productwiz-rio', product: product, shop: shop, installGuard: true %}{% endif %}
+    
+    <!-- SegMetrics -->
+    <script type="text/lazyload">
+    var _segq = _segq || [];
+    var _segs = _segs || {};
+    (function () {var dc = document.createElement('script');dc.type = 'text/javascript';dc.async = true;dc.src = '//tag.segmetrics.io/aE8vPp.js';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(dc,s);})();
+    </script>
+    <!-- SegMetrics END -->
+
+    {% render 'qikify-apps' %}
+	  
+    <!-- RYVIU APP :: Settings global -->	
+        <script> var ryviu_global_settings = {{shop.metafields.ryviu.user_settings }};</script>
+    <!-- RYVIU APP -->
+
+    <!-- GSSTART Show variants. Do not change -->
+    {% if request.path contains "/products/" %}{% else %}{% endif %}
+    <!-- Show variants code end. Do not change GSEND -->
+  
+	<style>
+       /* sticky add to cart */
+      @media screen and (min-width: 993px){
+          #corner-sticky-atc-outer-container {
+              right: 5px !important;
+              top: auto!important;
+              width: 325px !important;
+              bottom: 95px !important;
+              z-index: 9;
+          }
+          #corner-sticky-atc-outer-container button#corner-sticky-atc-cta_button .ml-2.text-sm {
+              margin-bottom: 0px !important;
+              margin-left: 0px !important;
+              text-transform: uppercase;
+          }
+          #corner-sticky-atc-outer-container #corner-sticky-atc-container {
+              padding: 5px !important;
+          }
+          #corner-sticky-atc-outer-container #corner-sticky-atc-cta_section #corner-sticky_atc-counter_container {
+              margin-left: 5px !important;
+              margin-bottom: 0px !important;
+          }
+          #corner-sticky-atc-outer-container button#corner-sticky-atc-cta_button {
+              width: 100% !important;
+          }
+          #corner-sticky-atc-outer-container p#corner-sticky-atc-product_price {
+              margin-left: 0px !important;
+          }
+      }
+      
+      @media screen and (max-width: 992px){
+          div#corner-sticky-atc-outer-container {
+              display: none;
+          }
+          #corner-sticky-atc-outer-container button#corner-sticky-atc-cta_button {
+              margin: 5px !important;
+          }
+      }
+    </style>    
+
+	{{ shop.metafields.loox["global_html_head"] }}
+
+    {% comment %} Please do not edit this section. It is automatically generated by Videowise{% endcomment %}
+    	<link rel="stylesheet" href="https://doui4jqs03un3.cloudfront.net/style.css.gz">
+    	<script src="https://doui4jqs03un3.cloudfront.net/vendors.js.gz"></script>
+    	<script src="https://doui4jqs03un3.cloudfront.net/client.js.gz" defer="defer"></script>
+    {% comment %} End Videowise section.{% endcomment %}
+    
+    {% include 'bss-product-labels-configs' %}
+    
+  
+{% render 'gsf-conversion-pixels' %}
+</head>
+              
+  {%- capture classes -%}features--heading-{{ settings.heading_size }}{%- endcapture -%}
+
+  {%- if settings.uppercase_heading -%}
+    {%- assign classes = classes | append: ' features--heading-uppercase' -%}
+  {%- endif -%}
+
+  {%- if settings.product_show_price_on_hover -%}
+    {%- assign classes = classes | append: ' features--show-price-on-hover' -%}
+  {%- endif -%}
+
+  {%- if settings.show_page_transition -%}
+    {%- assign classes = classes | append: ' features--show-page-transition' -%}
+  {%- endif -%}
+
+  {%- if settings.show_button_transition -%}
+    {%- assign classes = classes | append: ' features--show-button-transition' -%}
+  {%- endif -%}
+
+  {%- if settings.show_image_zooming -%}
+    {%- assign classes = classes | append: ' features--show-image-zooming' -%}
+  {%- endif -%}
+
+  {%- if settings.show_element_staggering -%}
+    {%- assign classes = classes | append: ' features--show-element-staggering' -%}
+  {%- endif -%}
+
+  <body class="prestige--v4 {{ classes }} {% if template.directory %}template-{{ template.directory | handle }}{% endif %} template-{{ template.name | handle }}">
+    <a class="PageSkipLink u-visually-hidden" href="#main">{{ 'header.navigation.skip_to_content' | t }}</a>
+    <span class="LoadingBar"></span>
+    <div class="PageOverlay"></div>
+
+    {%- if settings.show_page_transition -%}
+      <div class="PageTransition"></div>
+    {%- endif -%}
+
+    {% section 'popup' %}
+    {% section 'sidebar-menu' %}
+
+    {%- if template != 'cart' -%}
+      {% render 'cart-drawer' %}
+    {%- endif -%}
+
+    <div class="PageContainer">
+      <div class="shopify-section shopify-section--header shopify-section--header-new ">
+      {% section 'hura-announcement-bar' %}
+      </div>
+      {% section 'header' %}
+
+      <main id="main" role="main">
+        <!--LayoutHub-Workspace-Start-->{% capture ICART_FULL_PAGE_LAYOUT %}{{ content_for_layout }}{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}<!--LayoutHub-Workspace-End-->
+      </main>
+
+      {% section 'footer' %}
+    </div>
+    
+<script>
+  //Unavailable variant button hidden
+  $('#shopify-section-product-template li.HorizontalList__Item:has(#option-product-template-1-11)').hide();
+  $('#shopify-section-product-template li.HorizontalList__Item:has(#option-product-template-1-12)').hide();
+  $('#shopify-section-product-template li.HorizontalList__Item:has(#option-product-template-1-13)').hide();
+  $('#shopify-section-product-template li.HorizontalList__Item:has(#option-product-template-1-14)').hide();
+  
+  $('#shopify-section-product-template ul.ColorSwatchList li.HorizontalList__Item label.ColorSwatch').click(function(){
+  	var selected_color = $(this).attr('data-tooltip');
+    var recent_location = $(location).attr("href");
+    if (recent_location.includes('/products/caesar-1')) {
+      if (selected_color == 'Black'){
+        $('li.HorizontalList__Item:has(#option-product-template-1-11)').show();
+        $('li.HorizontalList__Item:has(#option-product-template-1-12)').show();
+        $('li.HorizontalList__Item:has(#option-product-template-1-13)').show();
+        $('li.HorizontalList__Item:has(#option-product-template-1-14)').show();
+        
+        if ($('ul.SizeSwatchList li.HorizontalList__Item:eq(6) input').val() != 6) {
+           $('ul.SizeSwatchList li.HorizontalList__Item:eq(5)').after($('ul.SizeSwatchList li.HorizontalList__Item:eq(11)'));
+           $('ul.SizeSwatchList li.HorizontalList__Item:eq(6)').after($('ul.SizeSwatchList li.HorizontalList__Item:eq(12)'));
+        }
+      } else {
+        $('li.HorizontalList__Item:has(#option-product-template-1-11)').hide();
+        $('li.HorizontalList__Item:has(#option-product-template-1-12)').hide();
+        $('li.HorizontalList__Item:has(#option-product-template-1-13)').hide();
+        $('li.HorizontalList__Item:has(#option-product-template-1-14)').hide();	
+      }
+    }
+  }); 
+  
+  var variant_url = $(location).attr("href");
+  if (variant_url.includes('caesar-1?variant=41445607669913')) {
+    $('li.HorizontalList__Item:has(#option-product-template-1-11)').show();
+    $('li.HorizontalList__Item:has(#option-product-template-1-12)').show();
+    $('li.HorizontalList__Item:has(#option-product-template-1-13)').show();
+    $('li.HorizontalList__Item:has(#option-product-template-1-14)').show();
+    
+    $('ul.SizeSwatchList li.HorizontalList__Item:eq(5)').after($('ul.SizeSwatchList li.HorizontalList__Item:eq(11)'));
+    $('ul.SizeSwatchList li.HorizontalList__Item:eq(6)').after($('ul.SizeSwatchList li.HorizontalList__Item:eq(12)'));
+  } 
+  
+  
+    
+  // store page js start. 
+  $(document).ready(function(){   
+    $('.popup').hide();
+    $('.pet_project_la').click(function(){
+      $('.popup').hide();
+      $('.popup.pet_project_la_content').show(500);
+    });
+    
+    $('.dog_co').click(function(){
+      $('.popup').hide();
+      $('.popup.dog_co_content').show(500);
+    }); 
+    
+    $('.bark_shanghai').click(function(){
+      $('.popup').hide();
+      $('.popup.bark_shanghai_content').show(500);
+    });
+    
+    $('.makit').click(function(){
+      $('.popup').hide();
+      $('.popup.makit_content').show(500);
+    }); 
+    
+    $('.bien_bien').click(function(){
+      $('.popup').hide();
+      $('.popup.bien_bien_content').show(500);
+    }); 
+    
+    $('.paws_living').click(function(){
+      $('.popup').hide();
+      $('.popup.paws_living_content').show(500);
+    }); 
+    
+    $('.coco_kina').click(function(){
+      $('.popup').hide();
+      $('.popup.coco_kina_content').show(500);
+    }); 
+    
+    $('.gentle_pet_store').click(function(){
+      $('.popup').hide();
+      $('.popup.gentle_pet_store_content').show(500);
+    }); 
+    
+    $('.tiny_paws').click(function(){
+      $('.popup').hide();
+      $('.popup.tiny_paws_content').show(500);
+    }); 
+    
+    $('.marlon_shop').click(function(){
+      $('.popup').hide();
+      $('.popup.marlon_shop_content').show(500);
+    }); 
+    
+    $('.kkoul').click(function(){
+      $('.popup').hide();
+      $('.popup.kkoul_content').show(500);
+    }); 
+    
+    $('.design_milk').click(function(){
+      $('.popup').hide();
+      $('.popup.design_milk_content').show(500);
+    });
+    
+    $('div.mobile_category_filter .button.button').click(function(){
+      $('.category_filter').addClass('active');
+      $('body').addClass('active');
+    });
+    $('button.close_filter').click(function(){
+      $('.category_filter').removeClass('active');
+      $('body').removeClass('active');
+    });
+    
+    //instagram feed close feature
+    setInterval(delay, 100);
+    function delay(){
+      $('.instafeed-lightbox').click(function(){
+          $(this).addClass('close');
+      });
+      $('div.instafeed-container').click(function(){
+          $('.instafeed-lightbox').removeClass('close');
+      });
+    }
+    
+
+    //Swatch Hover Image Change...
+    var mouseenter_index = 0;
+    var taro_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-taro-4side_v2_6a1ae07d-9a78-4643-9477-3d7e7460ce77_200x.jpg?v=1650466046 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-taro-4side_v2_6a1ae07d-9a78-4643-9477-3d7e7460ce77_400x.jpg?v=1650466046 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-taro-4side_v2_6a1ae07d-9a78-4643-9477-3d7e7460ce77_600x.jpg?v=1650466046 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-taro-4side_v2_6a1ae07d-9a78-4643-9477-3d7e7460ce77_700x.jpg?v=1650466046 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-taro-4side_v2_6a1ae07d-9a78-4643-9477-3d7e7460ce77_800x.jpg?v=1650466046 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-taro-4side_v2_6a1ae07d-9a78-4643-9477-3d7e7460ce77_900x.jpg?v=1650466046 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-taro-4side_v2_6a1ae07d-9a78-4643-9477-3d7e7460ce77_1000x.jpg?v=1650466046 1000w';
+    var black_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-productpage-black-sideview_bcef90ec-891b-4ac3-8c85-26df7e66c84e_200x.jpg?v=1646180799 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-productpage-black-sideview_bcef90ec-891b-4ac3-8c85-26df7e66c84e_400x.jpg?v=1646180799 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-productpage-black-sideview_bcef90ec-891b-4ac3-8c85-26df7e66c84e_600x.jpg?v=1646180799 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-productpage-black-sideview_bcef90ec-891b-4ac3-8c85-26df7e66c84e_700x.jpg?v=1646180799 700w';
+    var bone_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-productpage-bone-sideview_1_9fbb7e31-5c5b-4a2b-83f3-95d160afe7f1_200x.jpg?v=1646181763 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-productpage-bone-sideview_1_9fbb7e31-5c5b-4a2b-83f3-95d160afe7f1_400x.jpg?v=1646181763 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-productpage-bone-sideview_1_9fbb7e31-5c5b-4a2b-83f3-95d160afe7f1_600x.jpg?v=1646181763 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-productpage-bone-sideview_1_9fbb7e31-5c5b-4a2b-83f3-95d160afe7f1_700x.jpg?v=1646181763 700w';
+    var birch_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-birch-4side_v2_3d1f61be-41a1-4644-8dd9-92f981fae238_200x.jpg?v=1650465168 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-birch-4side_v2_3d1f61be-41a1-4644-8dd9-92f981fae238_400x.jpg?v=1650465168 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-birch-4side_v2_3d1f61be-41a1-4644-8dd9-92f981fae238_600x.jpg?v=1650465168 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-birch-4side_v2_3d1f61be-41a1-4644-8dd9-92f981fae238_700x.jpg?v=1650465168 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-birch-4side_v2_3d1f61be-41a1-4644-8dd9-92f981fae238_800x.jpg?v=1650465168 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-birch-4side_v2_3d1f61be-41a1-4644-8dd9-92f981fae238_900x.jpg?v=1650465168 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-birch-4side_v2_3d1f61be-41a1-4644-8dd9-92f981fae238_1000x.jpg?v=1650465168 1000w';
+    var blush_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-productpage-blush-sideview_1_ffcabcdf-6585-4076-bcef-385d38e8579f_200x.jpg?v=1646181611 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-productpage-blush-sideview_1_ffcabcdf-6585-4076-bcef-385d38e8579f_400x.jpg?v=1646181611 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-productpage-blush-sideview_1_ffcabcdf-6585-4076-bcef-385d38e8579f_600x.jpg?v=1646181611 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-productpage-blush-sideview_1_ffcabcdf-6585-4076-bcef-385d38e8579f_700x.jpg?v=1646181611 700w';
+    var borough_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-borough-4side_596f5c55-c634-4f8e-a213-c0adf9a97c2e_200x.jpg?v=1646182790 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-borough-4side_596f5c55-c634-4f8e-a213-c0adf9a97c2e_400x.jpg?v=1646182790 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-borough-4side_596f5c55-c634-4f8e-a213-c0adf9a97c2e_600x.jpg?v=1646182790 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-borough-4side_596f5c55-c634-4f8e-a213-c0adf9a97c2e_700x.jpg?v=1646182790 700w';
+    var ice_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-ice-4side_316d540e-9499-4665-b2b2-1b3bab86af4c_200x.jpg?v=1646189800 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-ice-4side_316d540e-9499-4665-b2b2-1b3bab86af4c_400x.jpg?v=1646189800 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-ice-4side_316d540e-9499-4665-b2b2-1b3bab86af4c_600x.jpg?v=1646189800 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-ice-4side_316d540e-9499-4665-b2b2-1b3bab86af4c_700x.jpg?v=1646189800 700w';
+    var bolt_img ='//cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-product-page-caesar1s-bolt3_af5c132d-b793-4301-a892-767a4a5d633a_200x.png?v=1646182652 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-product-page-caesar1s-bolt3_af5c132d-b793-4301-a892-767a4a5d633a_400x.png?v=1646182652 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-product-page-caesar1s-bolt3_af5c132d-b793-4301-a892-767a4a5d633a_600x.png?v=1646182652 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-product-page-caesar1s-bolt3_af5c132d-b793-4301-a892-767a4a5d633a_700x.png?v=1646182652 700w';
+    var guava_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Guava-4side_7e16960d-b084-4bd5-8761-c28432cf60ff_200x.jpg?v=1652451436 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Guava-4side_7e16960d-b084-4bd5-8761-c28432cf60ff_400x.jpg?v=1652451436 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Guava-4side_7e16960d-b084-4bd5-8761-c28432cf60ff_600x.jpg?v=1652451436 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Guava-4side_7e16960d-b084-4bd5-8761-c28432cf60ff_700x.jpg?v=1652451436 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Guava-4side_7e16960d-b084-4bd5-8761-c28432cf60ff_800x.jpg?v=1652451436 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Guava-4side_7e16960d-b084-4bd5-8761-c28432cf60ff_900x.jpg?v=1652451436 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Guava-4side_7e16960d-b084-4bd5-8761-c28432cf60ff_1000x.jpg?v=1652451436 1000w';
+    var jade_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Birch-Sweater-Back_d04217d4-47de-4723-8714-a36db5676b58_200x.jpg?v=1646232675 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Birch-Sweater-Back_d04217d4-47de-4723-8714-a36db5676b58_400x.jpg?v=1646232675 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Birch-Sweater-Back_d04217d4-47de-4723-8714-a36db5676b58_600x.jpg?v=1646232675 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Birch-Sweater-Back_d04217d4-47de-4723-8714-a36db5676b58_700x.jpg?v=1646232675 700w';
+    var hoodie_black_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Black-Sweater-Back_9f1edb9b-3920-4524-bb21-cc42017a41b2_200x.jpg?v=1646232811 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Black-Sweater-Back_9f1edb9b-3920-4524-bb21-cc42017a41b2_400x.jpg?v=1646232811 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Black-Sweater-Back_9f1edb9b-3920-4524-bb21-cc42017a41b2_600x.jpg?v=1646232811 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/RIFRUF-Black-Sweater-Back_9f1edb9b-3920-4524-bb21-cc42017a41b2_700x.jpg?v=1646232811 700w';
+    var midnight_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-midnight-4side_70d3e91f-f97d-4ce5-8ac7-c8df182a9214_200x.jpg?v=1653519171 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-midnight-4side_70d3e91f-f97d-4ce5-8ac7-c8df182a9214_400x.jpg?v=1653519171 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-midnight-4side_70d3e91f-f97d-4ce5-8ac7-c8df182a9214_600x.jpg?v=1653519171 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/rifruf-midnight-4side_70d3e91f-f97d-4ce5-8ac7-c8df182a9214_700x.jpg?v=1653519171 700w';
+    
+    var wool_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Wool-4side_200x.png?v=1666877869 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Wool-4side_400x.png?v=1666877869 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Wool-4side_600x.png?v=1666877869 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Wool-4side_700x.png?v=1666877869 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Wool-4side_800x.png?v=1666877869 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Wool-4side_900x.png?v=1666877869 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Wool-4side_1000x.png?v=1666877869 1000w';
+    var barley_img = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Barley-4side_200x.png?v=1666878242 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Barley-4side_400x.png?v=1666878242 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Barley-4side_600x.png?v=1666878242 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Barley-4side_700x.png?v=1666878242 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Barley-4side_800x.png?v=1666878242 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Barley-4side_900x.png?v=1666878242 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1RIFRUF-Barley-4side_1000x.png?v=1666878242 1000w';
+
+    var harness_black = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/Black-harness-front_0265d676-0400-42c8-8137-cf6a03846f45_200x.png?v=1668623894 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/Black-harness-front_0265d676-0400-42c8-8137-cf6a03846f45_400x.png?v=1668623894 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/Black-harness-front_0265d676-0400-42c8-8137-cf6a03846f45_600x.png?v=1668623894 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/Black-harness-front_0265d676-0400-42c8-8137-cf6a03846f45_700x.png?v=1668623894 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/Black-harness-front_0265d676-0400-42c8-8137-cf6a03846f45_800x.png?v=1668623894 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/Black-harness-front_0265d676-0400-42c8-8137-cf6a03846f45_900x.png?v=1668623894 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/Black-harness-front_0265d676-0400-42c8-8137-cf6a03846f45_1000x.png?v=1668623894 1000w';
+    var harness_taro = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-harness-front_97a0efbb-7fdf-43d5-9f2f-92a6320baa77_200x.png?v=1668449627 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-harness-front_97a0efbb-7fdf-43d5-9f2f-92a6320baa77_400x.png?v=1668449627 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-harness-front_97a0efbb-7fdf-43d5-9f2f-92a6320baa77_600x.png?v=1668449627 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-harness-front_97a0efbb-7fdf-43d5-9f2f-92a6320baa77_700x.png?v=1668449627 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-harness-front_97a0efbb-7fdf-43d5-9f2f-92a6320baa77_800x.png?v=1668449627 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-harness-front_97a0efbb-7fdf-43d5-9f2f-92a6320baa77_900x.png?v=1668449627 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-harness-front_97a0efbb-7fdf-43d5-9f2f-92a6320baa77_1000x.png?v=1668449627 1000w';
+    var harness_borough = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-harness-front_24d93f22-709d-46bb-b574-ecbb40c9c586_200x.png?v=1668449609 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-harness-front_24d93f22-709d-46bb-b574-ecbb40c9c586_400x.png?v=1668449609 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-harness-front_24d93f22-709d-46bb-b574-ecbb40c9c586_600x.png?v=1668449609 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-harness-front_24d93f22-709d-46bb-b574-ecbb40c9c586_700x.png?v=1668449609 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-harness-front_24d93f22-709d-46bb-b574-ecbb40c9c586_800x.png?v=1668449609 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-harness-front_24d93f22-709d-46bb-b574-ecbb40c9c586_900x.png?v=1668449609 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-harness-front_24d93f22-709d-46bb-b574-ecbb40c9c586_1000x.png?v=1668449609 1000w';
+    var harness_bone = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-harness-front_9d78b195-c6d7-4d8f-bad0-9d51808b9453_200x.png?v=1668449591 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-harness-front_9d78b195-c6d7-4d8f-bad0-9d51808b9453_400x.png?v=1668449591 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-harness-front_9d78b195-c6d7-4d8f-bad0-9d51808b9453_600x.png?v=1668449591 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-harness-front_9d78b195-c6d7-4d8f-bad0-9d51808b9453_700x.png?v=1668449591 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-harness-front_9d78b195-c6d7-4d8f-bad0-9d51808b9453_800x.png?v=1668449591 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-harness-front_9d78b195-c6d7-4d8f-bad0-9d51808b9453_900x.png?v=1668449591 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-harness-front_9d78b195-c6d7-4d8f-bad0-9d51808b9453_1000x.png?v=1668449591 1000w';
+
+    var leash_black = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black-Leash-angle-3-parts_b3f6f0bc-6207-4ee5-9bb3-72002596336f_200x.png?v=1668451160 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black-Leash-angle-3-parts_b3f6f0bc-6207-4ee5-9bb3-72002596336f_400x.png?v=1668451160 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black-Leash-angle-3-parts_b3f6f0bc-6207-4ee5-9bb3-72002596336f_600x.png?v=1668451160 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black-Leash-angle-3-parts_b3f6f0bc-6207-4ee5-9bb3-72002596336f_700x.png?v=1668451160 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black-Leash-angle-3-parts_b3f6f0bc-6207-4ee5-9bb3-72002596336f_800x.png?v=1668451160 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black-Leash-angle-3-parts_b3f6f0bc-6207-4ee5-9bb3-72002596336f_900x.png?v=1668451160 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black-Leash-angle-3-parts_b3f6f0bc-6207-4ee5-9bb3-72002596336f_1000x.png?v=1668451160 1000w';
+    var leash_taro = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-Leash-angle-3-parts_0b497b29-d3dc-417c-b821-35e494baf4ee_200x.png?v=1668451207 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-Leash-angle-3-parts_0b497b29-d3dc-417c-b821-35e494baf4ee_400x.png?v=1668451207 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-Leash-angle-3-parts_0b497b29-d3dc-417c-b821-35e494baf4ee_600x.png?v=1668451207 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-Leash-angle-3-parts_0b497b29-d3dc-417c-b821-35e494baf4ee_700x.png?v=1668451207 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-Leash-angle-3-parts_0b497b29-d3dc-417c-b821-35e494baf4ee_800x.png?v=1668451207 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-Leash-angle-3-parts_0b497b29-d3dc-417c-b821-35e494baf4ee_900x.png?v=1668451207 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro-Leash-angle-3-parts_0b497b29-d3dc-417c-b821-35e494baf4ee_1000x.png?v=1668451207 1000w';
+    var leash_borough = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-Leash-angle-3-parts_3a18337a-d40f-4c8d-8c50-9b19761d0727_200x.png?v=1668451192 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-Leash-angle-3-parts_3a18337a-d40f-4c8d-8c50-9b19761d0727_400x.png?v=1668451192 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-Leash-angle-3-parts_3a18337a-d40f-4c8d-8c50-9b19761d0727_600x.png?v=1668451192 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-Leash-angle-3-parts_3a18337a-d40f-4c8d-8c50-9b19761d0727_700x.png?v=1668451192 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-Leash-angle-3-parts_3a18337a-d40f-4c8d-8c50-9b19761d0727_800x.png?v=1668451192 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-Leash-angle-3-parts_3a18337a-d40f-4c8d-8c50-9b19761d0727_900x.png?v=1668451192 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough-Leash-angle-3-parts_3a18337a-d40f-4c8d-8c50-9b19761d0727_1000x.png?v=1668451192 1000w';
+    var leash_bone = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-Leash-angle-3-parts_87ee51c9-4d1b-43ae-9e6c-8474b81f12da_200x.png?v=1668451176 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-Leash-angle-3-parts_87ee51c9-4d1b-43ae-9e6c-8474b81f12da_400x.png?v=1668451176 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-Leash-angle-3-parts_87ee51c9-4d1b-43ae-9e6c-8474b81f12da_600x.png?v=1668451176 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-Leash-angle-3-parts_87ee51c9-4d1b-43ae-9e6c-8474b81f12da_700x.png?v=1668451176 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-Leash-angle-3-parts_87ee51c9-4d1b-43ae-9e6c-8474b81f12da_800x.png?v=1668451176 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-Leash-angle-3-parts_87ee51c9-4d1b-43ae-9e6c-8474b81f12da_900x.png?v=1668451176 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone-Leash-angle-3-parts_87ee51c9-4d1b-43ae-9e6c-8474b81f12da_1000x.png?v=1668451176 1000w';
+
+    var apollo1_truffle = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_4side_200x.png?v=1669141327 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_4side_400x.png?v=1669141327 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_4side_600x.png?v=1669141327 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_4side_700x.png?v=1669141327 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_4side_800x.png?v=1669141327 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_4side_900x.png?v=1669141327 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_4side_1000x.png?v=1669141327 1000w';
+    var apollo1_bb = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_4side_200x.png?v=1669141289 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_4side_400x.png?v=1669141289 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_4side_600x.png?v=1669141289 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_4side_700x.png?v=1669141289 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_4side_800x.png?v=1669141289 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_4side_900x.png?v=1669141289 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_4side_1000x.png?v=1669141289 1000w';
+    var apollo1_sakura = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_4side_200x.png?v=1669141310 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_4side_400x.png?v=1669141310 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_4side_600x.png?v=1669141310 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_4side_700x.png?v=1669141310 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_4side_800x.png?v=1669141310 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_4side_900x.png?v=1669141310 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_4side_1000x.png?v=1669141310 1000w';
+
+    var raincoat_truffle = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_side_200x.png?v=1669142583 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_side_400x.png?v=1669142583 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_side_600x.png?v=1669142583 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_side_700x.png?v=1669142583 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_side_800x.png?v=1669142583 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_side_900x.png?v=1669142583 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_side_1000x.png?v=1669142583 1000w';
+    var raincoat_bb = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_side_200x.png?v=1669142536 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_side_400x.png?v=1669142536 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_side_600x.png?v=1669142536 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_side_700x.png?v=1669142536 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_side_800x.png?v=1669142536 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_side_900x.png?v=1669142536 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_side_1000x.png?v=1669142536 1000w';
+    var raincoat_sakura = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_side_200x.png?v=1669142559 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_side_400x.png?v=1669142559 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_side_600x.png?v=1669142559 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_side_700x.png?v=1669142559 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_side_800x.png?v=1669142559 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_side_900x.png?v=1669142559 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_side_1000x.png?v=1669142559 1000w';
+
+    var harness_leash_set_black = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_a9dc1471-fc48-404e-b2f6-6767b24f9ac7_200x.png?v=1668451877 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_a9dc1471-fc48-404e-b2f6-6767b24f9ac7_400x.png?v=1668451877 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_a9dc1471-fc48-404e-b2f6-6767b24f9ac7_600x.png?v=1668451877 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_a9dc1471-fc48-404e-b2f6-6767b24f9ac7_700x.png?v=1668451877 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_a9dc1471-fc48-404e-b2f6-6767b24f9ac7_800x.png?v=1668451877 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_a9dc1471-fc48-404e-b2f6-6767b24f9ac7_900x.png?v=1668451877 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_a9dc1471-fc48-404e-b2f6-6767b24f9ac7_1000x.png?v=1668451877 1000w';
+    var harness_leash_set_taro = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_6d37560b-cabc-4df6-a8ff-07cf2387d66b_200x.png?v=1668451924 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_6d37560b-cabc-4df6-a8ff-07cf2387d66b_400x.png?v=1668451924 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_6d37560b-cabc-4df6-a8ff-07cf2387d66b_600x.png?v=1668451924 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_6d37560b-cabc-4df6-a8ff-07cf2387d66b_700x.png?v=1668451924 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_6d37560b-cabc-4df6-a8ff-07cf2387d66b_800x.png?v=1668451924 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_6d37560b-cabc-4df6-a8ff-07cf2387d66b_900x.png?v=1668451924 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_6d37560b-cabc-4df6-a8ff-07cf2387d66b_1000x.png?v=1668451924 1000w';
+    var harness_leash_set_borough = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_e36ac617-7f7d-4deb-adb7-73b4b37e0d73_200x.png?v=1668451909 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_e36ac617-7f7d-4deb-adb7-73b4b37e0d73_400x.png?v=1668451909 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_e36ac617-7f7d-4deb-adb7-73b4b37e0d73_600x.png?v=1668451909 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_e36ac617-7f7d-4deb-adb7-73b4b37e0d73_700x.png?v=1668451909 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_e36ac617-7f7d-4deb-adb7-73b4b37e0d73_800x.png?v=1668451909 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_e36ac617-7f7d-4deb-adb7-73b4b37e0d73_900x.png?v=1668451909 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_e36ac617-7f7d-4deb-adb7-73b4b37e0d73_1000x.png?v=1668451909 1000w';
+    var harness_leash_set_bone = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_bb9b12d5-7e0b-4370-b3cb-be8398388f81_200x.png?v=1668451893 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_bb9b12d5-7e0b-4370-b3cb-be8398388f81_400x.png?v=1668451893 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_bb9b12d5-7e0b-4370-b3cb-be8398388f81_600x.png?v=1668451893 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_bb9b12d5-7e0b-4370-b3cb-be8398388f81_700x.png?v=1668451893 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_bb9b12d5-7e0b-4370-b3cb-be8398388f81_800x.png?v=1668451893 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_bb9b12d5-7e0b-4370-b3cb-be8398388f81_900x.png?v=1668451893 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_bb9b12d5-7e0b-4370-b3cb-be8398388f81_1000x.png?v=1668451893 1000w';
+
+    var sneaker_harness_leash_set_black = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_4a0d6b8b-4a40-40ca-98c9-6fcb4b74f68c_200x.png?v=1668535065 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_4a0d6b8b-4a40-40ca-98c9-6fcb4b74f68c_400x.png?v=1668535065 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_4a0d6b8b-4a40-40ca-98c9-6fcb4b74f68c_600x.png?v=1668535065 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_4a0d6b8b-4a40-40ca-98c9-6fcb4b74f68c_700x.png?v=1668535065 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_4a0d6b8b-4a40-40ca-98c9-6fcb4b74f68c_800x.png?v=1668535065 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_4a0d6b8b-4a40-40ca-98c9-6fcb4b74f68c_900x.png?v=1668535065 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Black_4a0d6b8b-4a40-40ca-98c9-6fcb4b74f68c_1000x.png?v=1668535065 1000w';
+    var sneaker_harness_leash_set_taro = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_b9fc3213-35d4-4603-98e4-2a7444e9556b_200x.png?v=1668535128 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_b9fc3213-35d4-4603-98e4-2a7444e9556b_400x.png?v=1668535128 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_b9fc3213-35d4-4603-98e4-2a7444e9556b_600x.png?v=1668535128 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_b9fc3213-35d4-4603-98e4-2a7444e9556b_700x.png?v=1668535128 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_b9fc3213-35d4-4603-98e4-2a7444e9556b_800x.png?v=1668535128 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_b9fc3213-35d4-4603-98e4-2a7444e9556b_900x.png?v=1668535128 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Taro_b9fc3213-35d4-4603-98e4-2a7444e9556b_1000x.png?v=1668535128 1000w';
+    var sneaker_harness_leash_set_borough = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_13dc0655-ea74-4157-8b1a-38b4f4e78048_200x.png?v=1668535111 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_13dc0655-ea74-4157-8b1a-38b4f4e78048_400x.png?v=1668535111 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_13dc0655-ea74-4157-8b1a-38b4f4e78048_600x.png?v=1668535111 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_13dc0655-ea74-4157-8b1a-38b4f4e78048_700x.png?v=1668535111 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_13dc0655-ea74-4157-8b1a-38b4f4e78048_800x.png?v=1668535111 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_13dc0655-ea74-4157-8b1a-38b4f4e78048_900x.png?v=1668535111 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Borough_13dc0655-ea74-4157-8b1a-38b4f4e78048_1000x.png?v=1668535111 1000w';
+    var sneaker_harness_leash_set_bone = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_e54c8eb6-9793-4d27-9f2b-74e195258969_200x.png?v=1668535090 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_e54c8eb6-9793-4d27-9f2b-74e195258969_400x.png?v=1668535090 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_e54c8eb6-9793-4d27-9f2b-74e195258969_600x.png?v=1668535090 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_e54c8eb6-9793-4d27-9f2b-74e195258969_700x.png?v=1668535090 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_e54c8eb6-9793-4d27-9f2b-74e195258969_800x.png?v=1668535090 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_e54c8eb6-9793-4d27-9f2b-74e195258969_900x.png?v=1668535090 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Bone_e54c8eb6-9793-4d27-9f2b-74e195258969_1000x.png?v=1668535090 1000w';
+    var sneaker_harness_leash_set_midnight = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Midnight_200x.png?v=1669843693 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Midnight_400x.png?v=1669843693 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Midnight_600x.png?v=1669843693 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Midnight_700x.png?v=1669843693 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Midnight_800x.png?v=1669843693 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Midnight_900x.png?v=1669843693 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Midnight_1000x.png?v=1669843693 1000w';
+    var raincoat_boots_set_truffle = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_200x.png?v=1669143240 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_400x.png?v=1669143240 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_600x.png?v=1669143240 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_700x.png?v=1669143240 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_800x.png?v=1669143240 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_900x.png?v=1669143240 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Truffle_1000x.png?v=1669143240 1000w';
+    var raincoat_boots_set_bb = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_200x.png?v=1669143187 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_400x.png?v=1669143187 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_600x.png?v=1669143187 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_700x.png?v=1669143187 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_800x.png?v=1669143187 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_900x.png?v=1669143187 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Beef-and-Broc_1000x.png?v=1669143187 1000w';
+    var raincoat_boots_set_sakura = '//cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_200x.png?v=1669143223 200w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_400x.png?v=1669143223 400w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_600x.png?v=1669143223 600w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_700x.png?v=1669143223 700w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_800x.png?v=1669143223 800w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_900x.png?v=1669143223 900w, //cdn.shopify.com/s/files/1/0411/3845/4681/products/1Sakura_1000x.png?v=1669143223 1000w';
+        
+    //mouse enter on switchcolor
+    $('.ProductItem .ProductItem__Wrapper label.ColorSwatch').mouseenter(function(){
+      	$(this).parent().parent().find('label.ColorSwatch').removeClass('active');
+    	$(this).addClass('active');
+      
+        var selected_color = $(this).attr('title');
+        var product_item_title = $(this).parent().parent().parent().find('h2.ProductItem__Title a').text();
+      
+        //Applid for New Products
+        if (product_item_title.includes('Commuter Sneaker, Harness and Leash Set')){
+          switch (selected_color) {
+            case "Black":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', sneaker_harness_leash_set_black);
+              break;
+            case "Taro":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', sneaker_harness_leash_set_taro);
+              break;
+            case "Borough":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', sneaker_harness_leash_set_borough);
+              break;
+            case "Bone":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', sneaker_harness_leash_set_bone);
+              break;
+            case "Midnight":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', sneaker_harness_leash_set_midnight);
+              break;  
+          }
+        }
+  
+        if (product_item_title.includes('CLIMAPAW Raincoat and Boots Set')){
+          switch (selected_color) {
+            case "Truffle":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', raincoat_boots_set_truffle);
+              break;
+            case "Beef & Broccoli":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', raincoat_boots_set_bb);
+              break;
+            case "Sakura":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', raincoat_boots_set_sakura);
+              break;
+          }
+        }
+      
+        if (product_item_title.includes('Commuter Harness')){
+          if (product_item_title.includes('Commuter Harness and Leash Set')){
+            switch (selected_color) {
+              case "Black":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_leash_set_black);
+                break;
+              case "Taro":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_leash_set_taro);
+                break;
+              case "Borough":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_leash_set_borough);
+                break;
+              case "Bone":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_leash_set_bone);
+                break;  
+            }
+          } else {
+            switch (selected_color) {
+              case "Black":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_black);
+                break;
+              case "Taro":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_taro);
+                break;
+              case "Borough":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_borough);
+                break;
+              case "Bone":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_bone);
+                break;  
+            }
+          }
+        }
+
+        if (product_item_title.includes('Commuter Leash')){
+          switch (selected_color) {
+            case "Black":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', leash_black);
+              break;
+            case "Taro":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', leash_taro);
+              break;
+            case "Borough":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', leash_borough);
+              break;
+            case "Bone":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', leash_bone);
+              break;  
+          }
+        }
+
+        if (product_item_title.includes('Apollo 1')){
+          switch (selected_color) {
+            case "Truffle":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', apollo1_truffle);
+              break;
+            case "Beef & Broccoli":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', apollo1_bb);
+              break;
+            case "Sakura":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', apollo1_sakura);
+              break;
+          }
+        }
+
+        if (product_item_title.includes('Stormhunter Raincoat')){
+          switch (selected_color) {
+            case "Truffle":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', raincoat_truffle);
+              break;
+            case "Beef & Broccoli":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', raincoat_bb);
+              break;
+            case "Sakura":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', raincoat_sakura);
+              break;
+          }
+        }
+
+      
+        if (product_item_title.includes('Caesar 1')){
+          if (product_item_title.includes('Caesar 1S')){
+            switch (selected_color) {
+              case "Ice":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', ice_img);
+                break;
+              case "Bolt":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', bolt_img);
+                break;
+              case "Borough":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', borough_img);
+                break;
+              case "Guava":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', guava_img);
+                break;
+              case "Midnight":
+                  $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', midnight_img);
+                  break;
+              case "Barley":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', barley_img);
+                break;  
+            }
+          } else {
+            switch (selected_color) {
+              case "Taro":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', taro_img);
+                break;
+              case "Black":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', black_img);
+                break;
+              case "Blush":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', blush_img);
+                break;
+              case "Bone":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', bone_img);
+                break;  
+              case "Birch":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', birch_img);
+                break;
+              case "Wool":
+                  $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', wool_img);
+                  break;
+            }
+          }
+        }
+
+
+        if (product_item_title.includes('Essential Dog Hoodie')){
+          switch (selected_color) {
+            case "Jade":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', jade_img);
+              break;
+            case "Black":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', hoodie_black_img);
+              break;
+          }
+        }
+      
+    });
+    
+    
+    //mouse leave on switchcolor
+    $('.ProductItem .ProductItem__Wrapper label.ColorSwatch').mouseleave(function() {
+        $(this).removeClass('active');
+      	var first_color = $(this).parent().parent().find('.ProductItem__ColorSwatchItem:nth-child(1) label.ColorSwatch').attr('title');
+        var product_item_title = $(this).parent().parent().parent().find('h2.ProductItem__Title a').text();
+      
+        //Applid for New Products
+        if (product_item_title.includes('Commuter Sneaker, Harness and Leash Set')){
+          switch (first_color) {
+            case "Black":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', sneaker_harness_leash_set_black);
+              break;
+            case "Taro":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', sneaker_harness_leash_set_taro);
+              break;
+            case "Borough":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', sneaker_harness_leash_set_borough);
+              break;
+            case "Bone":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', sneaker_harness_leash_set_bone);
+              break;
+            case "Midnight":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', sneaker_harness_leash_set_midnight);
+              break;  
+          }
+        }
+  
+        if (product_item_title.includes('CLIMAPAW Raincoat and Boots Set')){
+          switch (first_color) {
+            case "Truffle":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', raincoat_boots_set_truffle);
+              break;
+            case "Beef & Broccoli":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', raincoat_boots_set_bb);
+              break;
+            case "Sakura":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', raincoat_boots_set_sakura);
+              break;
+          }
+        }
+      
+        if (product_item_title.includes('Commuter Harness')){
+          if (product_item_title.includes('Commuter Harness and Leash Set')){
+            switch (first_color) {
+              case "Black":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_leash_set_black);
+                break;
+              case "Taro":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_leash_set_taro);
+                break;
+              case "Borough":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_leash_set_borough);
+                break;
+              case "Bone":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_leash_set_bone);
+                break;  
+            }
+          } else {
+            switch (first_color) {
+              case "Black":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_black);
+                break;
+              case "Taro":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_taro);
+                break;
+              case "Borough":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_borough);
+                break;
+              case "Bone":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', harness_bone);
+                break;  
+            }
+          }
+        }
+
+        if (product_item_title.includes('Commuter Leash')){
+          switch (first_color) {
+            case "Black":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', leash_black);
+              break;
+            case "Taro":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', leash_taro);
+              break;
+            case "Borough":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', leash_borough);
+              break;
+            case "Bone":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', leash_bone);
+              break;  
+          }
+        }
+
+        if (product_item_title.includes('Apollo 1')){
+          switch (first_color) {
+            case "Truffle":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', apollo1_truffle);
+              break;
+            case "Beef & Broccoli":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', apollo1_bb);
+              break;
+            case "Sakura":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', apollo1_sakura);
+              break;
+          }
+        }
+
+        if (product_item_title.includes('Stormhunter Raincoat')){
+          switch (first_color) {
+            case "Truffle":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', raincoat_truffle);
+              break;
+            case "Beef & Broccoli":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', raincoat_bb);
+              break;
+            case "Sakura":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', raincoat_sakura);
+              break;
+          }
+        }
+
+
+        if (product_item_title.includes('Caesar 1')){
+          if (product_item_title.includes('Caesar 1S')){
+            switch (first_color) {
+              case "Ice":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', ice_img);
+                break;
+              case "Bolt":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', bolt_img);
+                break;
+              case "Borough":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', borough_img);
+                break;
+              case "Guava":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', guava_img);
+                break;
+              case "Midnight":
+                  $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', midnight_img);
+                  break;
+              case "Barley":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', barley_img);
+                break;  
+            }
+          } else {
+            switch (first_color) {
+              case "Taro":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', taro_img);
+                break;
+              case "Black":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', black_img);
+                break;
+              case "Blush":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', blush_img);
+                break;
+              case "Bone":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', bone_img);
+                break;  
+              case "Birch":
+                $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', birch_img);
+                break;
+              case "Wool":
+                  $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', wool_img);
+                  break;
+            }
+          }
+        }
+
+        if (product_item_title.includes('Essential Dog Hoodie')){
+          switch (first_color) {
+            case "Jade":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', jade_img);
+              break;
+            case "Black":
+              $(this).parent().parent().parent().parent().find('img.ProductItem__Image.Image--fadeIn').attr('srcset', hoodie_black_img);
+              break;
+          }
+        }
+
+    });
+    
+    
+    
+    //Collection prodcut item Color Swatch Click...
+    $('.ProductItem .ProductItem__Wrapper label.ColorSwatch').click(function(event){
+      event.preventDefault();
+      var color_value = $(this).attr('title');
+      var product_item_title = $(this).parent().parent().parent().find('h2.ProductItem__Title a').text();
+      
+      //Applid for New Products
+      if (product_item_title.includes('Commuter Sneaker, Harness and Leash Set')){
+        switch (color_value) {
+          case "Black":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-shoes-harness-and-leash-set?variant=42794606100633';
+            break;
+          case "Taro":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-shoes-harness-and-leash-set?variant=42794606264473';
+            break;
+          case "Borough":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-shoes-harness-and-leash-set?variant=42794606428313';
+            break;
+          case "Bone":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-shoes-harness-and-leash-set?variant=42794606592153';
+            break;
+          case "Midnight":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-shoes-harness-and-leash-set?variant=42844203679897';
+            break;  
+        }
+      }
+
+      if (product_item_title.includes('CLIMAPAW Raincoat and Boots Set')){
+        switch (color_value) {
+          case "Truffle":
+            window.location.href = 'https://rifrufqueens.com/products/climapaw-dog-raincoat-and-boots?variant=42794639032473';
+            break;
+          case "Beef & Broccoli":
+            window.location.href = 'https://rifrufqueens.com/products/climapaw-dog-raincoat-and-boots?variant=42794639360153';
+            break;
+          case "Sakura":
+            window.location.href = 'https://rifrufqueens.com/products/climapaw-dog-raincoat-and-boots?variant=42794639687833';
+            break;
+        }
+      }
+      
+      if (product_item_title.includes('Commuter Harness')){
+        if (product_item_title.includes('Commuter Harness and Leash Set')){
+          switch (color_value) {
+            case "Black":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness-and-leash-set?variant=42794577428633';
+              break;
+            case "Taro":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness-and-leash-set?variant=42794577592473';
+              break;
+            case "Borough":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness-and-leash-set?variant=42794577756313';
+              break;
+            case "Bone":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness-and-leash-set?variant=42794577920153';
+              break;  
+          }
+        } else {
+          switch (color_value) {
+            case "Black":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness?variant=42791679099033';
+              break;
+            case "Taro":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness?variant=42791680180377';
+              break;
+            case "Borough":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness?variant=42791705116825';
+              break;
+            case "Bone":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness?variant=42791705149593';
+              break;  
+          }
+        }
+      }
+
+      if (product_item_title.includes('Commuter Leash')){
+        switch (color_value) {
+          case "Black":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-leash?variant=42791810597017';
+            break;
+          case "Taro":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-leash?variant=42791810891929';
+            break;
+          case "Borough":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-leash?variant=42791811055769';
+            break;
+          case "Bone":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-leash?variant=42791811219609';
+            break;  
+        }
+      }
+
+      if (product_item_title.includes('Apollo 1')){
+        switch (color_value) {
+          case "Truffle":
+            window.location.href = 'https://rifrufqueens.com/products/apollo-1-dog-boots?variant=42792958361753';
+            break;
+          case "Beef & Broccoli":
+            window.location.href = 'https://rifrufqueens.com/products/apollo-1-dog-boots?variant=42792958689433';
+            break;
+          case "Sakura":
+            window.location.href = 'https://rifrufqueens.com/products/apollo-1-dog-boots?variant=42792959017113';
+            break;
+        }
+      }
+
+      if (product_item_title.includes('Stormhunter Raincoat')){
+        switch (color_value) {
+          case "Truffle":
+            window.location.href = 'https://rifrufqueens.com/products/stormhunter-dog-raincoat?variant=42791860043929';
+            break;
+          case "Beef & Broccoli":
+            window.location.href = 'https://rifrufqueens.com/products/stormhunter-dog-raincoat?variant=42791859880089';
+            break;
+          case "Sakura":
+            window.location.href = 'https://rifrufqueens.com/products/stormhunter-dog-raincoat?variant=42791860207769';
+            break;
+        }
+      }
+
+      
+      
+      if (product_item_title.includes('Essential Dog Hoodie')){
+        switch (color_value) {
+          case "Jade":
+            window.location.href = 'https://rifrufqueens.com/products/essential-dog-hoodie';
+            break;
+          case "Black":
+            window.location.href = 'https://rifrufqueens.com/products/essential-dog-hoodie?variant=41743418261657';
+            break;    
+        }
+      } 
+
+      if (product_item_title.includes('Caesar 1')){
+        if (product_item_title.includes('Caesar 1S')) {
+          switch (color_value) {
+            case "Ice":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1s?variant=41399071965337';
+              break;
+            case "Bolt":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1s?variant=41399080386713';
+              break;
+            case "Borough":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1s?variant=41399059218585';
+              break;
+            case "Guava":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1s?variant=42100207059097';
+              break;
+            case "Midnight":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1s?variant=42177784643737';
+              break;
+            case "Barley":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1s?variant=42758375735449';
+              break;
+          }
+        } else {
+          switch (color_value) {
+            case "Taro":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1?variant=41445777670297';
+              break;
+            case "Black":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1?variant=41445607669913';
+              break;
+            case "Blush":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1?variant=41445669634201';
+              break;
+            case "Bone":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1?variant=41445700075673';
+              break;
+            case "Birch":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1?variant=41445786484889';
+              break;
+            case "Wool":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1?variant=42758355779737';
+              break;  
+            case "KK9R":
+              window.location.href = 'https://rifrufqueens.com/collections/caesar-1/products/caesar-1-kk9r';
+              break;    
+          }
+        }
+      }  
+      
+    });
+    
+    
+    
+    //Collection product itme image Click...
+    $('.ProductItem a.ProductItem__ImageWrapper').click(function(event){
+      event.preventDefault();
+      var color_value_check = $(this).parent().find('.ProductItem__Info .ProductItem__ColorSwatchList .ProductItem__ColorSwatchItem').length;
+      var product_title_check = $(this).parent().find('.ProductItem__Info h2.ProductItem__Title a').text();
+      if (color_value_check == 0 ) {
+        window.location.href = $(this).attr('href');
+      }
+      var first_color = $(this).parent().find('.ProductItem__ColorSwatchList .ProductItem__ColorSwatchItem:nth-child(1) label.ColorSwatch').attr('title');
+      
+      //Applid for New Products
+      if (product_title_check.includes('Commuter Sneaker, Harness and Leash Set')){
+        switch (first_color) {
+          case "Black":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-shoes-harness-and-leash-set?variant=42794606100633';
+            break;
+          case "Taro":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-shoes-harness-and-leash-set?variant=42794606264473';
+            break;
+          case "Borough":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-shoes-harness-and-leash-set?variant=42794606428313';
+            break;
+          case "Bone":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-shoes-harness-and-leash-set?variant=42794606592153';
+            break;
+          case "Midnight":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-shoes-harness-and-leash-set?variant=42844203679897';
+            break;  
+        }
+      }
+
+      if (product_title_check.includes('CLIMAPAW Raincoat and Boots Set')){
+        switch (first_color) {
+          case "Truffle":
+            window.location.href = 'https://rifrufqueens.com/products/climapaw-dog-raincoat-and-boots?variant=42794639032473';
+            break;
+          case "Beef & Broccoli":
+            window.location.href = 'https://rifrufqueens.com/products/climapaw-dog-raincoat-and-boots?variant=42794639360153';
+            break;
+          case "Sakura":
+            window.location.href = 'https://rifrufqueens.com/products/climapaw-dog-raincoat-and-boots?variant=42794639687833';
+            break;
+        }
+      }
+      
+      if (product_title_check.includes('Commuter Harness')){
+        if (product_title_check.includes('Commuter Harness and Leash Set')){
+          switch (first_color) {
+            case "Black":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness-and-leash-set?variant=42794577428633';
+              break;
+            case "Taro":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness-and-leash-set?variant=42794577592473';
+              break;
+            case "Borough":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness-and-leash-set?variant=42794577756313';
+              break;
+            case "Bone":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness-and-leash-set?variant=42794577920153';
+              break;  
+          }
+        } else {
+          switch (first_color) {
+            case "Black":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness?variant=42791679099033';
+              break;
+            case "Taro":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness?variant=42791680180377';
+              break;
+            case "Borough":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness?variant=42791705116825';
+              break;
+            case "Bone":
+              window.location.href = 'https://rifrufqueens.com/products/commuter-dog-harness?variant=42791705149593';
+              break;  
+          }
+        }
+      }
+
+      if (product_title_check.includes('Commuter Leash')){
+        switch (first_color) {
+          case "Black":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-leash?variant=42791810597017';
+            break;
+          case "Taro":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-leash?variant=42791810891929';
+            break;
+          case "Borough":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-leash?variant=42791811055769';
+            break;
+          case "Bone":
+            window.location.href = 'https://rifrufqueens.com/products/commuter-dog-leash?variant=42791811219609';
+            break;  
+        }
+      }
+
+      if (product_title_check.includes('Apollo 1')){
+        switch (first_color) {
+          case "Truffle":
+            window.location.href = 'https://rifrufqueens.com/products/apollo-1-dog-boots?variant=42792958361753';
+            break;
+          case "Beef & Broccoli":
+            window.location.href = 'https://rifrufqueens.com/products/apollo-1-dog-boots?variant=42792958689433';
+            break;
+          case "Sakura":
+            window.location.href = 'https://rifrufqueens.com/products/apollo-1-dog-boots?variant=42792959017113';
+            break;
+        }
+      }
+
+      if (product_title_check.includes('Stormhunter Raincoat')){
+        switch (first_color) {
+          case "Truffle":
+            window.location.href = 'https://rifrufqueens.com/products/stormhunter-dog-raincoat?variant=42791860043929';
+            break;
+          case "Beef & Broccoli":
+            window.location.href = 'https://rifrufqueens.com/products/stormhunter-dog-raincoat?variant=42791859880089';
+            break;
+          case "Sakura":
+            window.location.href = 'https://rifrufqueens.com/products/stormhunter-dog-raincoat?variant=42791860207769';
+            break;
+        }
+      }
+
+
+      if (product_title_check.includes('Essential Dog Hoodie')){
+        switch (first_color) {
+          case "Jade":
+            window.location.href = 'https://rifrufqueens.com/products/essential-dog-hoodie';
+            break;
+          case "Black":
+            window.location.href = 'https://rifrufqueens.com/products/essential-dog-hoodie?variant=41743418261657';
+            break;    
+        }
+      } 
+
+      if (product_title_check.includes('Caesar 1')){
+        if (product_title_check.includes('Caesar 1S')) {
+          switch (first_color) {
+            case "Ice":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1s?variant=41399071965337';
+              break;
+            case "Bolt":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1s?variant=41399080386713';
+              break;
+            case "Borough":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1s?variant=41399059218585';
+              break;
+            case "Guava":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1s?variant=42100207059097';
+              break;
+            case "Midnight":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1s?variant=42177784643737';
+              break;
+            case "Barley":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1s?variant=42758375735449';
+              break;
+          }
+        } else {
+          switch (first_color) {
+            case "Taro":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1?variant=41445777670297';
+              break;
+            case "Black":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1?variant=41445607669913';
+              break;
+            case "Blush":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1?variant=41445669634201';
+              break;
+            case "Bone":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1?variant=41445700075673';
+              break;
+            case "Birch":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1?variant=41445786484889';
+              break;
+            case "Wool":
+              window.location.href = 'https://rifrufqueens.com/products/caesar-1?variant=42758355779737';
+              break;  
+            case "KK9R":
+              window.location.href = 'https://rifrufqueens.com/collections/caesar-1/products/caesar-1-kk9r';
+              break;    
+          }
+        }
+      }  
+      
+    });
+    
+    
+	//story tab click event
+    $('div.story_tab ul.shogun-tabs li.shogun-tab:nth-child(1)').click(function(){
+       	window.location.href = '/pages/story';
+    });
+    $('div.story_tab ul.shogun-tabs li.shogun-tab:nth-child(2)').click(function(){
+      	window.location.href = '/pages/our-quality';
+    });
+    $('div.story_tab ul.shogun-tabs li.shogun-tab:nth-child(3)').click(function(){
+    	window.location.href = '/pages/our-values';
+    });
+    
+    var recent_path = $(location).attr("href");
+    if (recent_path.includes('/pages/story')) {
+    	$('div.story_tab ul.shogun-tabs li.shogun-tab').removeClass('shogun-tab-active');
+        $('div.story_tab ul.shogun-tabs li.shogun-tab:nth-child(1)').addClass('shogun-tab-active');
+    } else if (recent_path.includes('/pages/our-quality')) {
+    	$('div.story_tab ul.shogun-tabs li.shogun-tab').removeClass('shogun-tab-active');
+        $('div.story_tab ul.shogun-tabs li.shogun-tab:nth-child(2)').addClass('shogun-tab-active');
+    } else {
+    	$('div.story_tab ul.shogun-tabs li.shogun-tab').removeClass('shogun-tab-active');
+        $('div.story_tab ul.shogun-tabs li.shogun-tab:nth-child(3)').addClass('shogun-tab-active');
+    }
+    
+    
+    
+    //filter by tag
+    $('.tag_reset').click(function(){
+    	var recent_path = $(location).attr("href");
+        if (recent_path.includes('/collections/all-sneakers')) {
+            window.location.href = 'https://rifrufqueens.com/collections/all-sneakers';
+        } else if (recent_path.includes('/collections/caesar-1')) {
+            window.location.href = 'https://rifrufqueens.com/collections/caesar-1';
+        } else if (recent_path.includes('/collections/caesar-1s')) {
+            window.location.href = 'https://rifrufqueens.com/collections/caesar-1s';
+        } else if (recent_path.includes('/collections/essential-hoodie')) {
+            window.location.href = 'https://rifrufqueens.com/collections/essential-hoodie';
+        } else if (recent_path.includes('/collections/all-products')) {
+            window.location.href = 'https://rifrufqueens.com/collections/all-products';
+        } else if (recent_path.includes('/collections/dog-boots')) {
+            window.location.href = 'https://rifrufqueens.com/collections/dog-boots';
+        } else if (recent_path.includes('/collections/dog-clothes')) {
+            window.location.href = 'https://rifrufqueens.com/collections/dog-clothes';
+        } else if (recent_path.includes('/collections/dog-raincoats')) {
+            window.location.href = 'https://rifrufqueens.com/collections/dog-raincoats';
+        } else if (recent_path.includes('/collections/walk')) {
+            window.location.href = 'https://rifrufqueens.com/collections/walk';
+        } else if (recent_path.includes('/collections/dog-harnesses')) {
+            window.location.href = 'https://rifrufqueens.com/collections/dog-harnesses';
+        } else if (recent_path.includes('/collections/dog-leashes')) {
+            window.location.href = 'https://rifrufqueens.com/collections/dog-leashes';
+        } else if (recent_path.includes('/collections/sets')) {
+            window.location.href = 'https://rifrufqueens.com/collections/sets';
+        } else if (recent_path.includes('/collections/commuter-dog-shoes-harness-and-leash-sets')) {
+            window.location.href = 'https://rifrufqueens.com/collections/commuter-dog-shoes-harness-and-leash-sets';
+        } else if (recent_path.includes('/collections/commuter-dog-harness-and-leash-sets')) {
+            window.location.href = 'https://rifrufqueens.com/collections/commuter-dog-harness-and-leash-sets';
+        } else if (recent_path.includes('/collections/climapaw-raincoat-boots-set')) {
+            window.location.href = 'https://rifrufqueens.com/collections/climapaw-raincoat-boots-set';
+        } else if (recent_path.includes('/collections/gift-card')) {
+            window.location.href = 'https://rifrufqueens.com/collections/gift-card';
+        } else {
+        	window.location.href = recent_path;
+        }
+    });
+    
+    $('button.EmptyState__Action.Button.Button--primary').click(function(){
+    	var recent_path = $(location).attr("href");
+        if (recent_path.includes('/collections/all-sneakers')) {
+            window.location.href = 'https://rifrufqueens.com/collections/all-sneakers';
+        } else if (recent_path.includes('/collections/caesar-1')) {
+            window.location.href = 'https://rifrufqueens.com/collections/caesar-1';
+        } else if (recent_path.includes('/collections/caesar-1s')) {
+            window.location.href = 'https://rifrufqueens.com/collections/caesar-1s';
+        } else if (recent_path.includes('/collections/essential-hoodie')) {
+            window.location.href = 'https://rifrufqueens.com/collections/essential-hoodie';
+        } else if (recent_path.includes('/collections/all-products')) {
+            window.location.href = 'https://rifrufqueens.com/collections/all-products';
+        } else if (recent_path.includes('/collections/dog-boots')) {
+            window.location.href = 'https://rifrufqueens.com/collections/dog-boots';
+        } else if (recent_path.includes('/collections/dog-clothes')) {
+            window.location.href = 'https://rifrufqueens.com/collections/dog-clothes';
+        } else if (recent_path.includes('/collections/dog-raincoats')) {
+            window.location.href = 'https://rifrufqueens.com/collections/dog-raincoats';
+        } else if (recent_path.includes('/collections/walk')) {
+            window.location.href = 'https://rifrufqueens.com/collections/walk';
+        } else if (recent_path.includes('/collections/dog-harnesses')) {
+            window.location.href = 'https://rifrufqueens.com/collections/dog-harnesses';
+        } else if (recent_path.includes('/collections/dog-leashes')) {
+            window.location.href = 'https://rifrufqueens.com/collections/dog-leashes';
+        } else if (recent_path.includes('/collections/sets')) {
+            window.location.href = 'https://rifrufqueens.com/collections/sets';
+        } else if (recent_path.includes('/collections/commuter-dog-shoes-harness-and-leash-sets')) {
+            window.location.href = 'https://rifrufqueens.com/collections/commuter-dog-shoes-harness-and-leash-sets';
+        } else if (recent_path.includes('/collections/commuter-dog-harness-and-leash-sets')) {
+            window.location.href = 'https://rifrufqueens.com/collections/commuter-dog-harness-and-leash-sets';
+        } else if (recent_path.includes('/collections/climapaw-raincoat-boots-set')) {
+            window.location.href = 'https://rifrufqueens.com/collections/climapaw-raincoat-boots-set';
+        } else if (recent_path.includes('/collections/gift-card')) {
+            window.location.href = 'https://rifrufqueens.com/collections/gift-card';
+        } else {
+        	window.location.href = recent_path;
+        }
+    });
+
+
+    $(".Linklist.tag .tag-filters__item .checkbox").change(function() {
+        if(this.checked) {
+            var active_tag = $(this).next().attr('href');
+            window.location.href = active_tag;
+        } else {
+            var recent_tag = $(this).val().replace(' ', '-').toLowerCase();
+            var deactive_tag = $(this).next().attr('href').replace(recent_tag, '');
+            window.location.href = deactive_tag;
+        }
+    });
+    
+    
+    $('.Linklist.tag .tag-filters__item').each(function() {
+      if($(this).hasClass('active')) {
+      	$(this).find('input[type=checkbox]').prop( "checked", true );
+      }
+    });
+
+    
+    // change 'sold out' to 'size not in stock?'
+    setInterval(function () {
+      var sold_btn = $('.Product__Info form.ProductForm button.ProductForm__AddToCart.Button--secondary').text();
+      var product_title = $('.ProductMeta h1.ProductMeta__Title span.product_name').text();
+      if (sold_btn == 'Size not in stock?') {
+        if (product_title == 'Commuter Leash') {
+          $('.Product__Info form.ProductForm button.ProductForm__AddToCart.Button--secondary').text('Product Not In Stock?');
+        }  
+      }
+      if (sold_btn == 'Sold Out') {
+        $('.Product__Info form.ProductForm button.ProductForm__AddToCart.Button--secondary').val('Size Not In Stock?');
+        $('.Product__Info form.ProductForm button.ProductForm__AddToCart.Button--secondary').text('Size Not In Stock?');
+      }
+      
+      var sold_len = $('.Product__Info form.ProductForm button.ProductForm__AddToCart.Button--secondary').length;
+      if (sold_len > 0) {
+        $('.Product__Info form.ProductForm button.ProductForm__AddToCart.Button--secondary').prop('disabled', false);
+      }
+    }, 300);
+
+    // when click sold out button, go to contact page
+    $('body').on('click', '.Product__Info form.ProductForm button.ProductForm__AddToCart', function() {
+        event.preventDefault();
+        // var product_name = $('.Product__Info .ProductMeta__Title').text() + ' ' + $('.Product__Info .ColorSwatch__Radio:checked').val(); 
+        // var size_name = $('.Product__Info .SizeSwatch__Radio:checked').val();
+        // var open_link = '/pages/sold-out?'+'p='+product_name+'&s='+size_name;
+        // window.open(open_link, "mywindow", "status=1,toolbar=1");
+        $('.bis-reset.bis-edge-left.bis-edge-top').click();
+    });
+
+    
+    //final sale message
+    var wheel_color = $('.ProductForm .ProductForm__Variants ul.ColorSwatchList input.ColorSwatch__Radio:checked').val();
+    var sale_produt_title = $('#shopify-section-product-template-new .ProductMeta h1.ProductMeta__Title span.product_name').text();
+    var sale_path = $(location).attr("href");
+    if (sale_path.includes('/products/caesar-1s')) {
+        $( "<span class='final_sale_msg'>All Clearance Items are Final Sale and Cannot be Returned or Exchanged.</span>" ).insertAfter( "ul.ColorSwatchList" );
+     }        
+
+    //badge display by color select on product page
+    setInterval(function () {
+      var recent_color = $('.ProductForm .ProductForm__Variants ul.ColorSwatchList input.ColorSwatch__Radio:checked').val();
+      var recent_produt_title = $('#shopify-section-product-template-new .ProductMeta h1.ProductMeta__Title span.product_name').text();
+      var recent_path = $(location).attr("href");
+      if (recent_path.includes('/products/commuter-dog-harness')) {
+        if (recent_produt_title == 'Commuter Harness and Leash Set') {
+          switch (recent_color) {
+            case "Taro":
+              $('.product_badge.item_product span').css('display', 'none');
+              $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+              $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+              break;
+            case "Black":
+              $('.product_badge.item_product span').css('display', 'none');
+              $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+              $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+              break;
+            case "Bone":
+              $('.product_badge.item_product span').css('display', 'none');
+              $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+              $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+              break;
+            case "Borough":
+              $('.product_badge.item_product span').css('display', 'none');
+              $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+              $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+              break;
+          }
+        } else {
+          switch (recent_color) {
+            case "Taro":
+              $('.product_badge.item_product span').css('display', 'none');
+              $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+              break;
+            case "Black":
+              $('.product_badge.item_product span').css('display', 'none');
+              $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+              break;
+            case "Bone":
+              $('.product_badge.item_product span').css('display', 'none');
+              $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+              break;
+            case "Borough":
+              $('.product_badge.item_product span').css('display', 'none');
+              $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+              break;
+          }
+        }
+      } else if (recent_path.includes('/products/commuter-dog-leash')) {
+        switch (recent_color) {
+          case "Taro":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            break;
+          case "Black":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            break;
+          case "Bone":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            break;
+          case "Borough":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            break;  
+        }
+      } else if (recent_path.includes('/products/stormhunter-dog-raincoat')) {
+        switch (recent_color) {
+          case "Truffle":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.waterproof').css('display', 'inline-block');
+            break;
+          case "Beef & Broccoli":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.waterproof').css('display', 'inline-block');
+            break;
+          case "Sakura":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.waterproof').css('display', 'inline-block');
+            break;
+        }
+      } else if (recent_path.includes('/products/apollo-1-dog-boots')) {
+        switch (recent_color) {
+          case "Truffle":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.waterproof').css('display', 'inline-block');
+            break;
+          case "Beef & Broccoli":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.waterproof').css('display', 'inline-block');
+            break;
+          case "Sakura":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.waterproof').css('display', 'inline-block');
+            break;
+        }
+      } else if (recent_path.includes('/products/commuter-dog-shoes-harness-and-leash-set')) {
+        switch (recent_color) {
+          case "Taro":
+            $('ul li.borough_show').css('display', 'none');
+            $('ul li.borough_hide').css('display', 'list-item');
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+            break;
+          case "Black":
+            $('ul li.borough_show').css('display', 'none');
+            $('ul li.borough_hide').css('display', 'list-item');
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+            break;
+          case "Bone":
+            $('ul li.borough_show').css('display', 'none');
+            $('ul li.borough_hide').css('display', 'list-item');
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+            break;
+          case "Borough":
+            $('ul li.borough_show').css('display', 'list-item');
+            $('ul li.borough_hide').css('display', 'none');
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+            break;
+          case "Midnight":
+            $('ul li.borough_show').css('display', 'list-item');
+            $('ul li.borough_hide').css('display', 'none');
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+            break;  
+        }
+      } else if (recent_path.includes('/products/climapaw-dog-raincoat-and-boots')) {
+        switch (recent_color) {
+          case "Truffle":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.waterproof').css('display', 'inline-block');
+            $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+            break;
+          case "Beef & Broccoli":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.waterproof').css('display', 'inline-block');
+            $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+            break;
+          case "Sakura":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            $('.product_badge.item_product span.waterproof').css('display', 'inline-block');
+            $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+            break;
+        }
+      } else {
+        switch (recent_color) {
+          case "Taro":
+            $('.product_badge.item_product span').css('display', 'none');
+            break;
+          case "Black":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.best_seller').css('display', 'inline-block');
+            $('.product_badge.item_product span.larger_sizes').css('display', 'inline-block');
+            break;
+          case "Blush":
+            $('.product_badge.item_product span').css('display', 'none');
+            break;
+          case "Bone":
+            $('.product_badge.item_product span').css('display', 'none');
+            break;
+          case "Birch":
+            $('.product_badge.item_product span').css('display', 'none');
+            break;
+  
+          case "Ice":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.last_call').css('display', 'inline-block');
+            break;
+          case "Bolt":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.last_call').css('display', 'inline-block');
+            break;
+          case "Borough":
+            $('span.final_sale_msg').removeClass('active');
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.best_seller').css('display', 'inline-block');
+            break;
+          case "Guava":
+            $('span.final_sale_msg').removeClass('active');
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.limited_edition').css('display', 'inline-block');
+            $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+            $('span.final_sale_msg').addClass('active');
+            break;
+          case "Midnight":
+            $('span.final_sale_msg').removeClass('active');
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.bundle_set').css('display', 'inline-block');
+            $('span.final_sale_msg').addClass('active');
+            break;
+  
+          case "KK9R":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.collaboration').css('display', 'inline-block');
+            break;
+  
+          case "Wool":
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            break;
+          case "Barley":
+            $('span.final_sale_msg').removeClass('active');
+            $('.product_badge.item_product span').css('display', 'none');
+            $('.product_badge.item_product span.new_product').css('display', 'inline-block');
+            break;
+        }
+      }
+
+    }, 300);
+
+    
+    //remove custom sections for other products.
+    var recent_url = $(location).attr('href');
+    if(!recent_url.includes('products/caesar-1')) {
+      	$('.new-custom-product-cls').hide();
+        $('#new-product.new-custom-product-cls').show();
+    } 
+    
+    //Care and Instructions section show/hide
+    if (recent_url.includes('/products/caesar-1')) {
+      	$('#shopify-section-product-template .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.care_insturctions').hide();
+        $('#shopify-section-product-template .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.shoes_section').show();
+    } else if (recent_url.includes('/products/essential-dog-hoodie')) {
+        $('#shopify-section-product-template .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.care_insturctions').hide();
+        $('#shopify-section-product-template .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.hoodies_section').show();
+  	} else if (recent_url.includes('/products/commuter-dog-harness')) {
+      $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.care_insturctions').hide();
+      if (recent_url.includes('/products/commuter-dog-harness-and-leash-set')) {
+        $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.harness_leash_section').show();
+      } else {
+        $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.harness_section').show();
+      }
+  	} else if (recent_url.includes('/products/commuter-dog-leash')) {
+        $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.care_insturctions').hide();
+        $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.leash_section').show();
+  	} else if (recent_url.includes('/products/commuter-dog-shoes-harness-and-leash-set')) {
+        $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.care_insturctions').hide();
+        $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.sneaker_harness_leash_section').show();
+  	} else if (recent_url.includes('/products/apollo-1-dog-boots')) {
+        $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.care_insturctions').hide();
+        $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.apollo_section').show();
+  	} else if (recent_url.includes('/products/stormhunter-dog-raincoat')) {
+        $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.care_insturctions').hide();
+        $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.raincoat_section').show();
+  	} else if (recent_url.includes('/products/climapaw-dog-raincoat-and-boots')) {
+        $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.care_insturctions').hide();
+        $('#shopify-section-product-template-new .Product__Tabs .Collapsible.Collapsible--large:nth-child(3) div.climapaw_RB_section').show();
+  	} else {
+  		$('#shopify-section-product-template .Product__Tabs .Collapsible.Collapsible--large:nth-child(3)').hide();
+    }
+  });
+
+  
+  //new product disable code start
+  setInterval(disable_product, 100);
+  function disable_product(){
+    $('select#corner-sticky-atc-select-1 option').each(function(){
+        var product_title =$(this).text();
+        $(this).addClass(product_title);
+    });
+
+    var selected_title = $("select#corner-sticky-atc-select-1 option:selected").val();
+    if (selected_title != 'Black') {
+      $('select#corner-sticky-atc-select-2 option').each(function(){
+          $(this).addClass('hide_size');
+      });
+    } else {
+      $('select#corner-sticky-atc-select-2 option').each(function(){
+          $(this).removeClass('hide_size');
+      });
+    }
+  }
+  //new product disable code end 
+
+  
+  //hide main product on collection page
+  $('.CollectionMain .ProductList div.Grid__Cell').each(function(){ 
+    var product_title = $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__Title a').text();
+    if (product_title == 'Caesar 1') {
+      $(this).hide();
+    }
+    if (product_title == 'Caesar 1S') {
+      $(this).hide();
+    }
+    if (product_title == 'Apollo 1') {
+      $(this).hide();
+    }
+    if (product_title == 'Stormhunter Raincoat') {
+      $(this).hide();
+    }
+    if (product_title == 'Commuter Harness') {
+      $(this).hide();
+    }
+    if (product_title == 'Commuter Leash') {
+      $(this).hide();
+    }
+    if (product_title == 'Commuter Harness and Leash Set') {
+      $(this).hide();
+    }
+    if (product_title == 'Commuter Sneaker, Harness and Leash Set') {
+      $(this).hide();
+    }
+    if (product_title == 'CLIMAPAW Raincoat and Boots Set') {
+      $(this).hide();
+    }
+    if (product_title == 'Essential Dog Hoodie') {
+      $(this).hide();
+    }
+  });
+  
+  //sale price display for discount start
+  //collection page
+  $('.ProductList div.Grid__Cell').each(function(){ 
+    var product_title = $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__Title a').text();
+    
+    // if (product_title.includes('Apollo 1')) {
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">$72</span>');
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">20% Off</span>');
+    // }
+
+    // if (product_title.includes('Stormhunter Raincoat')) {
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">$72</span>');
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">20% Off</span>');
+    // }
+
+    if (product_title.includes('CLIMAPAW Raincoat and Boots Set')) {
+      // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+      // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">$136</span>');
+      // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">15% Off</span>');
+      
+      $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+      $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').text('$160');
+      $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">SAVE - <strike>$180</strike></span>');
+      // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">$20 Off</span>');
+    }
+    
+    if (product_title.includes('Commuter Harness')) {
+      if (product_title.includes('Commuter Harness and Leash Set')) {
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('new_active');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price new_sale_price">$61.20</span>');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">28% Off</span>');
+
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').text('$85');
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">SAVE - <strike>$95</strike></span>');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">$10 Off</span>');
+      } else {
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('new_active');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price new_sale_price">$43.20</span>');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">28% Off</span>');
+      }
+    }
+
+    // if (product_title.includes('Commuter Leash')) {
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('new_active');
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price new_sale_price">$25.20</span>');
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">28% Off</span>');
+    // }
+
+    if (product_title.includes('Commuter Sneaker, Harness and Leash Set')) {
+      if (product_title.includes('Commuter Sneaker, Harness and Leash Set Borough')) {
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">$127.50</span>');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">15% Off</span>');
+
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').text('$150');
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">SAVE - <strike>$170</strike></span>');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">$20 Off</span>');
+      } else if (product_title.includes('Commuter Sneaker, Harness and Leash Set Midnight')) {
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">$127.50</span>');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">15% Off</span>');
+
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').text('$150');
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">SAVE - <strike>$170</strike></span>');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">$20 Off</span>');
+      } else {
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">$123.25</span>');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">15% Off</span>');
+
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').text('$145');
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">SAVE - <strike>$165</strike></span>');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">$20 Off</span>');
+      }
+    }
+    
+    // if (product_title.includes('Caesar 1 ')) {
+    //   if (product_title.includes('Caesar 1 KK9R')) {
+    //     $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+    //     $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">$49</span>');
+    //     $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">30% Off</span>');
+    //   } else {
+    //     $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+    //     $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">$56</span>');
+    //     $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">20% Off</span>');
+    //   }
+    // }
+    
+    if (product_title.includes('Caesar 1S ')) {
+      if (product_title.includes('Caesar 1S Guava')) {
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('new_active');
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price new_sale_price">$45</span>');
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">40% Off</span>');
+      } else if (product_title.includes('Caesar 1S Midnight')) {
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('new_active');
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price new_sale_price">$45</span>');
+        $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">40% Off</span>');
+      } else {
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">$60</span>');
+        // $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">20% Off</span>');
+      }
+    }
+    
+    // if (product_title.includes('Essential Dog Hoodie ')) {
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">$27</span>');
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">40% Off</span>');
+    // }
+    
+    // if (product_title.includes('RIFRUF Sock')) {
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').addClass('active');
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList').prepend('<span class="ProductItem__Price Price sale_price">$6</span>');
+    //   $(this).find('.ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued').append('<span class="sale_text">40% Off</span>');
+    // }   
+  });
+
+  
+  //product page
+  var selected_switch_color_new = $('#shopify-section-product-template-new .ProductForm .ProductForm__Variants ul.ColorSwatchList input.ColorSwatch__Radio:checked').val();
+  var current_url_new = $(location).attr("href");
+  
+  // if (current_url_new.includes('/products/apollo-1-dog-boots')) {
+  //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+  //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$72</span>');
+  //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+  // }
+  
+  // if (current_url_new.includes('/products/stormhunter-dog-raincoat')) {
+  //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+  //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$72</span>');
+  //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+  // }
+
+  if (current_url_new.includes('/products/climapaw-dog-raincoat-and-boots')) {
+    const myInterval_hide1 = setInterval(myTimer_hide1, 100);
+    function myTimer_hide1() {
+      var checkout_option = $('#corner-sticky-atc-outer-container').length;
+      if (checkout_option > 0) {
+        $('#corner-sticky-atc-outer-container').hide();
+        clearInterval(myInterval_hide1);
+      }
+    }
+    // $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+    // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$136</span>');
+    // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">15% Off</span>');
+
+    $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+    $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').text('$160');
+    $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">SAVE - <strike>$180</strike></span>');
+    // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">$20 Off</span>');
+  }
+  
+  if (current_url_new.includes('/products/commuter-dog-harness')) {
+    if (current_url_new.includes('/products/commuter-dog-harness-and-leash-set')) {
+      // $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('new_active');
+      // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="new_sale_price">$61.20</span>');
+      // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">28% Off</span>');
+
+      $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').text('$85');
+      $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">SAVE - <strike>$95</strike></span>');
+      // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">$10 Off</span>');
+    } else {
+      // $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('new_active');
+      // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="new_sale_price">$43.20</span>');
+      // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">28% Off</span>');
+    }
+  }
+
+  // if (current_url_new.includes('/products/commuter-dog-leash')) {
+  //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('new_active');
+  //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="new_sale_price">$25.20</span>');
+  //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">28% Off</span>');
+  // }
+
+  if (current_url_new.includes('/products/commuter-dog-shoes-harness-and-leash-set')) {
+    const myInterval_hide = setInterval(myTimer_hide, 100);
+    function myTimer_hide() {
+      var checkout_option = $('#corner-sticky-atc-outer-container').length;
+      if (checkout_option > 0) {
+        $('#corner-sticky-atc-outer-container').hide();
+        $('#infiniteoptions-container div.sneaker_size_option select option').each(function(){
+            var select_title = $(this).text();
+            select_title = select_title.replace('/','_'); 
+            $(this).addClass('sneaker_' + select_title);
+        });
+        clearInterval(myInterval_hide);
+      }
+    }
+    if (selected_switch_color_new == 'Borough') {
+      // $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$127.50</span>');
+      // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">15% Off</span>');
+
+      $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').text('$150');
+      $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">SAVE - <strike>$170</strike></span>');
+      // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">$20 Off</span>');
+      
+      const myInterval1 = setInterval(myTimer1, 100);
+      function myTimer1() {
+        var sneaker_option = $('#infiniteoptions-container').length;
+        if (sneaker_option > 0) {
+          $('div.sneaker_size_option select option:nth-child(16)').hide();
+          $('div.sneaker_size_option select option:nth-child(15)').hide();
+          $('div.sneaker_size_option select option:nth-child(9)').hide();
+          $('div.sneaker_size_option select option:nth-child(8)').hide();
+          $('div.sneaker_size_option select option.sneaker_6').attr('disabled', 'disabled');
+          $('div.sneaker_size_option select option.sneaker_7').attr('disabled', 'disabled');
+          $('div.sneaker_size_option select option.sneaker_5_6').attr('disabled', 'disabled');
+          $('div.sneaker_size_option select option.sneaker_6_7').attr('disabled', 'disabled');
+          clearInterval(myInterval1);
+        }
+      }
+    } else if (selected_switch_color_new == 'Midnight') {
+      // $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$127.50</span>');
+      // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">15% Off</span>');
+
+      $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').text('$150');
+      $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">SAVE - <strike>$170</strike></span>');
+      // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">$20 Off</span>');
+      
+      const myInterval12 = setInterval(myTimer12, 100);
+      function myTimer12() {
+        var sneaker_option = $('#infiniteoptions-container').length;
+        if (sneaker_option > 0) {
+          $('div.sneaker_size_option select option:nth-child(16)').hide();
+          $('div.sneaker_size_option select option:nth-child(15)').hide();
+          $('div.sneaker_size_option select option:nth-child(9)').hide();
+          $('div.sneaker_size_option select option:nth-child(8)').hide();
+          $('div.sneaker_size_option select option.sneaker_6').attr('disabled', 'disabled');
+          $('div.sneaker_size_option select option.sneaker_7').attr('disabled', 'disabled');
+          $('div.sneaker_size_option select option.sneaker_5_6').attr('disabled', 'disabled');
+          $('div.sneaker_size_option select option.sneaker_6_7').attr('disabled', 'disabled');
+          clearInterval(myInterval12);
+        }
+      }
+    } else if (selected_switch_color_new == 'Black') {
+      // $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$123.25</span>');
+      // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">15% Off</span>');
+
+      $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').text('$145');
+      $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">SAVE - <strike>$165</strike></span>');
+      // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">$20 Off</span>');
+    } else {
+      // $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$123.25</span>');
+      // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">15% Off</span>');
+
+      $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').text('$145');
+      $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">SAVE - <strike>$165</strike></span>');
+      // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">$20 Off</span>');
+
+      const myInterval11 = setInterval(myTimer11, 100);
+      function myTimer11() {
+        var sneaker_option = $('#infiniteoptions-container').length;
+        if (sneaker_option > 0) {
+          $('div.sneaker_size_option select option:nth-child(16)').hide();
+          $('div.sneaker_size_option select option:nth-child(15)').hide();
+          $('div.sneaker_size_option select option:nth-child(9)').hide();
+          $('div.sneaker_size_option select option:nth-child(8)').hide();
+          $('div.sneaker_size_option select option.sneaker_6').attr('disabled', 'disabled');
+          $('div.sneaker_size_option select option.sneaker_7').attr('disabled', 'disabled');
+          $('div.sneaker_size_option select option.sneaker_5_6').attr('disabled', 'disabled');
+          $('div.sneaker_size_option select option.sneaker_6_7').attr('disabled', 'disabled');
+          clearInterval(myInterval11);
+        }
+      }
+    }
+
+    $('#shopify-section-product-template-new .ProductForm .ProductForm__Variants ul.ColorSwatchList label.ColorSwatch').click(function(){
+      var clicked_color_new = $(this).attr('data-tooltip');
+      $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.sale_price').remove();
+      $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.sale_text').remove();
+      
+      $('div.sneaker_size_option select option:nth-child(16)').show();
+      $('div.sneaker_size_option select option:nth-child(15)').show();
+      $('div.sneaker_size_option select option:nth-child(9)').show();
+      $('div.sneaker_size_option select option:nth-child(8)').show();
+      $('div.sneaker_size_option select option.sneaker_6').prop('disabled', false);
+      $('div.sneaker_size_option select option.sneaker_7').prop('disabled', false);
+      $('div.sneaker_size_option select option.sneaker_5_6').attr('disabled', false);
+      $('div.sneaker_size_option select option.sneaker_6_7').attr('disabled', false);
+      setTimeout(function() { 
+        switch (clicked_color_new) {
+          case "Black":
+            // $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+            // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$123.25</span>');
+            // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">15% Off</span>');
+
+            $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+            $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').text('$145');
+            $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">SAVE - <strike>$165</strike></span>');
+            // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">$20 Off</span>');
+            break;
+            
+          case "Taro":
+            // $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+            // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$123.25</span>');
+            // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">15% Off</span>');
+
+            $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+            $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').text('$145');
+            $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">SAVE - <strike>$165</strike></span>');
+            // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">$20 Off</span>');
+            
+            const myInterval2 = setInterval(myTimer2, 100);
+            function myTimer2() {
+              var sneaker_option = $('#infiniteoptions-container').length;
+              if (sneaker_option > 0) {
+                $('div.sneaker_size_option select option:nth-child(16)').hide();
+                $('div.sneaker_size_option select option:nth-child(15)').hide();
+                $('div.sneaker_size_option select option:nth-child(9)').hide();
+                $('div.sneaker_size_option select option:nth-child(8)').hide();
+                $('div.sneaker_size_option select option.sneaker_6').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_7').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_5_6').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_6_7').attr('disabled', 'disabled');
+                clearInterval(myInterval2);
+              }
+            }
+            break;
+          case "Borough":
+            // $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+            // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$127.50</span>');
+            // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">15% Off</span>');
+
+            $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+            $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').text('$150');
+            $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">SAVE - <strike>$170</strike></span>');
+            // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">$20 Off</span>');
+            const myInterval3 = setInterval(myTimer3, 100);
+            function myTimer3() {
+              var sneaker_option = $('#infiniteoptions-container').length;
+              if (sneaker_option > 0) {
+                $('div.sneaker_size_option select option:nth-child(16)').hide();
+                $('div.sneaker_size_option select option:nth-child(15)').hide();
+                $('div.sneaker_size_option select option:nth-child(9)').hide();
+                $('div.sneaker_size_option select option:nth-child(8)').hide();
+                $('div.sneaker_size_option select option.sneaker_6').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_7').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_5_6').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_6_7').attr('disabled', 'disabled');
+                clearInterval(myInterval3);
+              }
+            }
+            break;
+          case "Midnight":
+            // $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+            // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$127.50</span>');
+            // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">15% Off</span>');
+
+            $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+            $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').text('$150');
+            $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">SAVE - <strike>$170</strike></span>');
+            // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">$20 Off</span>');
+            const myInterval33 = setInterval(myTimer33, 100);
+            function myTimer33() {
+              var sneaker_option = $('#infiniteoptions-container').length;
+              if (sneaker_option > 0) {
+                $('div.sneaker_size_option select option:nth-child(16)').hide();
+                $('div.sneaker_size_option select option:nth-child(15)').hide();
+                $('div.sneaker_size_option select option:nth-child(9)').hide();
+                $('div.sneaker_size_option select option:nth-child(8)').hide();
+                $('div.sneaker_size_option select option.sneaker_6').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_7').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_5_6').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_6_7').attr('disabled', 'disabled');
+                clearInterval(myInterval33);
+              }
+            }
+            break;  
+          case "Bone":
+            // $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+            // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$123.25</span>');
+            // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">15% Off</span>');
+
+            $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+            $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').text('$145');
+            $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">SAVE - <strike>$165</strike></span>');
+            // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">$20 Off</span>');
+            
+            const myInterval4 = setInterval(myTimer4, 100);
+            function myTimer4() {
+              var sneaker_option = $('#infiniteoptions-container').length;
+              if (sneaker_option > 0) {
+                $('div.sneaker_size_option select option:nth-child(16)').hide();
+                $('div.sneaker_size_option select option:nth-child(15)').hide();
+                $('div.sneaker_size_option select option:nth-child(9)').hide();
+                $('div.sneaker_size_option select option:nth-child(8)').hide();
+                $('div.sneaker_size_option select option.sneaker_6').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_7').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_5_6').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_6_7').attr('disabled', 'disabled');
+                clearInterval(myInterval4);
+              }
+            }
+            break;
+          case "Midnight":
+            // $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+            // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$123.25</span>');
+            // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">15% Off</span>');
+
+            $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+            $('#shopify-section-product-template-new .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').text('$145');
+            $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">SAVE - <strike>$165</strike></span>');
+            // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">$20 Off</span>');
+            
+            const myInterval5 = setInterval(myTimer5, 100);
+            function myTimer5() {
+              var sneaker_option = $('#infiniteoptions-container').length;
+              if (sneaker_option > 0) {
+                $('div.sneaker_size_option select option:nth-child(16)').hide();
+                $('div.sneaker_size_option select option:nth-child(15)').hide();
+                $('div.sneaker_size_option select option:nth-child(9)').hide();
+                $('div.sneaker_size_option select option:nth-child(8)').hide();
+                $('div.sneaker_size_option select option.sneaker_6').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_7').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_5_6').attr('disabled', 'disabled');
+                $('div.sneaker_size_option select option.sneaker_6_7').attr('disabled', 'disabled');
+                clearInterval(myInterval5);
+              }
+            }
+            break;  
+        }
+      }, 100);
+    });
+  }
+
+   
+  var selected_switch_color = $('#shopify-section-product-template .ProductForm .ProductForm__Variants ul.ColorSwatchList input.ColorSwatch__Radio:checked').val();
+  var current_url = $(location).attr("href");
+
+  // if (current_url.includes('/products/sock')) {
+  //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+  //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$6</span>');
+  //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">40% Off</span>');
+  // }
+  
+  if (current_url.includes('/products/essential-dog-hoodie')) {
+    // $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+    // $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$27</span>');
+    // $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">40% Off</span>');
+  } else {
+    console.log(current_url);
+    switch (selected_switch_color) {
+      // case "Taro":
+      //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$56</span>');
+      //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+      //   break;
+      // case "Black":
+      //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$56</span>');
+      //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+      //   break;
+      // case "Blush":
+      //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$56</span>');
+      //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+      //   break;
+      // case "Bone":
+      //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$56</span>');
+      //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+      //   break;
+      // case "Birch":
+      //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$56</span>');
+      //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+      //   break;
+  
+      // case "Ice":
+      //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$60</span>');
+      //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+      //   break;
+      // case "Bolt":
+      //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$60</span>');
+      //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+      //   break;
+      // case "Borough":
+      //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$60</span>');
+      //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+      //   break;
+      case "Guava":
+        $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('new_active');
+        $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="new_sale_price">$45</span>');
+        $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">40% Off</span>');
+        break;
+      case "Midnight":
+        $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('new_active');
+        $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="new_sale_price">$45</span>');
+        $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">40% Off</span>');
+        break;
+  
+      // case "KK9R":
+      //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$49</span>');
+      //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">30% Off</span>');
+      //   break;
+  
+      // case "Wool":
+      //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$56</span>');
+      //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+      //   break;
+      // case "Barley":
+      //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+      //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$60</span>');
+      //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+      //   break;
+    }
+
+    $('#shopify-section-product-template .ProductForm .ProductForm__Variants ul.ColorSwatchList label.ColorSwatch').click(function(){
+      var clicked_color = $(this).attr('data-tooltip');
+      $('#shopify-section-product-template .ProductMeta .ProductMeta__PriceList span.new_sale_price').remove();
+      $('#shopify-section-product-template .ProductMeta .ProductMeta__PriceList span.sale_text').remove();
+      $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').removeClass('new_active');
+      //$('#corner-sticky-atc-product_price span.sale_price').remove();
+      switch (clicked_color) {
+        // case "Taro":
+        //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+        //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$56</span>');
+        //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+        //   break;
+        // case "Black":
+        //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+        //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$56</span>');
+        //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+        //   break;
+        // case "Blush":
+        //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+        //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$56</span>');
+        //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+        //   break;
+        // case "Bone":
+        //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+        //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$56</span>');
+        //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+        //   break;
+        // case "Birch":
+        //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+        //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$56</span>');
+        //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+        //   break;
+    
+        // case "Ice":
+        //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+        //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$60</span>');
+        //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+        //   break;
+        // case "Bolt":
+        //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+        //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$60</span>');
+        //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+        //   break;
+        // case "Borough":
+        //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+        //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$60</span>');
+        //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+        //   break;
+        case "Guava":
+          $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('new_active');
+          $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="new_sale_price">$45</span>');
+          $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">40% Off</span>');
+          break;
+        case "Midnight":
+          $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('new_active');
+          $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="new_sale_price">$45</span>');
+          $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">40% Off</span>');
+          break;
+    
+        // case "KK9R":
+        //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+        //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$49</span>');
+        //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">30% Off</span>');
+        //   break;
+    
+        // case "Wool":
+        //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+        //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$56</span>');
+        //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+        //   break;
+        // case "Barley":
+        //   $('.ProductMeta .ProductMeta__PriceList span.Price.Text--subdued').addClass('active');
+        //   $('.ProductMeta .ProductMeta__PriceList').prepend('<span class="sale_price">$60</span>');
+        //   $('.ProductMeta .ProductMeta__PriceList').append('<span class="sale_text">20% Off</span>');
+        //   break;
+      }
+    });
+  }
+  //sale price display for discount end
+
+
+  
+  //sneaker option move to color option below
+  const myInterval = setInterval(myTimer, 100);
+  function myTimer() {
+    var sneaker_option = $('#infiniteoptions-container').length;
+    if (sneaker_option > 0) {
+      $('#infiniteoptions-container').appendTo("form.ProductForm .ProductForm__Variants div.ProductForm__Option:nth-child(1)");
+      //$('#infiniteoptions-container div.sneaker_size_option label').append('<span class="fake_size_guide"><a href="/products/caesar-1?variant=41445607669913" target="_blank"><img class="kiwi-svg kiwi-injectable" src="https://cdn.kiwisizing.com/icons/ruler4.min.svg?v=5-inject2" style="width: 15px; position: absolute; margin-top: 6.5px;"><span class="_ks_text">Size Guide</span></a></span>');
+      clearInterval(myInterval);
+    }
+  }
+  
+  //short description in mobile version
+  setInterval(function(){
+    $('#shopify-section-product-template .ProductMeta__Description').click(function() {
+      if ($(this).hasClass('fullview')) {
+        $(this).removeClass('fullview');
+      } else {
+        $(this).addClass('fullview');
+      }
+    });
+    $('#shopify-section-product-template-new .ProductMeta__Description').click(function() {
+      if ($(this).hasClass('fullview')) {
+        $(this).removeClass('fullview');
+      } else {
+        $(this).addClass('fullview');
+      }
+    });
+  }, 100);
+</script>
+
+    
+    
+<style>
+  button.ProductForm__AddToCart.Button--secondary[disabled] {
+    pointer-events: auto !important;
+  }
+  button.ProductForm__AddToCart.Button--secondary[disabled] {
+    cursor: pointer !important;
+  }
+  .bis-reset.bis-edge-left.bis-edge-top {
+    opacity: 0 !important;
+  }
+  
+
+  /* sale price display for discount start */
+  .ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.sale_price {
+    color: #000;
+    margin-right: 5px;
+    font-size: 100%;
+  }
+  .ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.new_sale_price {
+    color: #000;
+    margin-right: 5px;
+    font-size: 125%;
+  }
+  .ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued {
+    color: #000;
+    font-size: 125%;
+  }
+  .ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued.active {
+    font-size: 115%;
+    color: #EE520F;
+  }
+  .ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued.new_active {
+    color: #858585;
+    text-decoration: line-through;
+    font-size: 110%;
+  }
+  .ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued.active .sale_text {
+    margin-left: 10px;
+    position: absolute;
+    color: red;
+  }
+  .ProductItem .ProductItem__Wrapper .ProductItem__Info .ProductItem__PriceList span.Price.Text--subdued.new_active .sale_text {
+    margin-left: 10px;
+    position: absolute;
+    color: red;
+  }
+
+  .ProductMeta .ProductMeta__PriceList .sale_price {
+    color: #000;
+    margin-right: 5px;
+    font-size: 100%;
+  }
+  .ProductMeta .ProductMeta__PriceList .new_sale_price {
+    color: #000;
+    margin-right: 5px;
+    font-size: 125%;
+  }
+  .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued.active {
+    font-size: 115%;
+    color: #EE520F;
+    background: none;
+  }
+  .ProductMeta .ProductMeta__PriceList span.Price.Text--subdued.new_active {
+    color: #858585;
+    text-decoration: line-through;
+    font-size: 110%;
+    background: none;
+  }
+  .ProductMeta .ProductMeta__PriceList .sale_text {
+    margin-left: 10px;
+    color: red;
+  }
+  /* sale price display for discount end */
+  
+  
+  /* new product disable code start*/
+/*   .ProductList .ProductItem .ProductItem__ColorSwatchItem:has(label.ColorSwatch[data-tooltip="Wool"]) {
+      display: none !important;
+  }
+  ul.ColorSwatchList li.HorizontalList__Item:has(label.ColorSwatch[data-tooltip="Wool"]) {
+      display: none !important;                         
+  }
+  select#corner-sticky-atc-select-1 option.Wool {
+      display: none !important;
+  } */
+  /* new product disable code end*/
+
+  span.final_sale_msg {
+    margin-top: 10px;
+    color: #ff0000;
+    line-height: 1.05em;
+    display: block;
+    font-size: 14px;
+    display: none;
+  }
+  span.final_sale_msg.active {
+    display: block!important;
+  }
+</style>
+
+    
+<script async type="text/javascript" data-src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Y32Jpz"></script>
+  
+{% include 'swymSnippet' %}
+   
+
+
+<!-- GSSTART Show variants BODY. Do not change -->{% if collection.products %}
+<div style="display: none !important;">
+  {% paginate collection.products by 50 %}{% for product in collection.products %}{% assign imagescount = product.images | size %}{% if imagescount > 1 %}
+  <div style="display: none !important;" class="gsProductVariants" gsProductHandler="{{ product.handle }}" >{% assign variantImgsUsedStr = "" %} {% assign variantBySizeUsedStr = "" %}{% assign sizeoptionnr = 0 %}
+{% for option in product.options %}{% capture optioncaseins %}{{option | downcase}}{% endcapture %}{% if optioncaseins contains "size" or optioncaseins contains "rösse" or optioncaseins contains "المقاس" or optioncaseins contains "oko" or optioncaseins contains "eden" or optioncaseins contains "größe" or optioncaseins contains "éret" or optioncaseins contains "ozmiar" or optioncaseins contains "torlek" or optioncaseins contains "aille" or optioncaseins contains "aglia" or optioncaseins contains "alla" or optioncaseins contains "amaño" or optioncaseins contains "גודל" or optioncaseins contains "サイズ" or optioncaseins contains "taille" or optioncaseins contains "eggiseno" or optioncaseins contains "aat" or optioncaseins contains "tamanho" or optioncaseins contains "rrelse" or optioncaseins contains "siza" %}{% assign sizeoptionnr = forloop.index %}{% if product.options.size == 1 %}{% endif %}{% if optioncaseins contains "color" or optioncaseins contains "colour" or optioncaseins contains "farge"  %}{% assign sizeoptionnr = 0 %}{% endif %}{% endif %}{% endfor %}
+    {% for variant in product.variants %}{% assign featuredImageSize = variant.featured_image | size %}{% if featuredImageSize > 0  %}{% if variantImgsUsedStr contains "IGNOREGS" %}{% else %}{% assign variantImgsUsedStr = variantImgsUsedStr | append: variant.featured_image %}{% assign canAddVariant = true %}{% if sizeoptionnr == 1 %}{% assign optionCheckVal = ";" | append: variant.option2 | append: variant.option3 | append: ";" %}{% if variantBySizeUsedStr contains optionCheckVal %}{% assign canAddVariant = false %}{% else %}{% assign variantBySizeUsedStr = variantBySizeUsedStr | append: ";" | append: variant.option2 | append: variant.option3 | append: ";" %}{% endif %}{% endif %}
+    {% if sizeoptionnr == 2 %}{% assign optionCheckVal = ";" | append: variant.option1 | append: variant.option3 | append: ";" %}{% if variantBySizeUsedStr contains optionCheckVal %}
+                {% assign canAddVariant = false %}{% else %}{% assign variantBySizeUsedStr = variantBySizeUsedStr | append: ";" | append: variant.option1 | append: variant.option3 | append: ";" %}{% endif %}{% endif %} {% if sizeoptionnr == 3 %}{% assign optionCheckVal = ";" | append: variant.option1 | append: variant.option2 | append: ";" %}{% if variantBySizeUsedStr contains optionCheckVal %}
+                {% assign canAddVariant = false %}{% else %}{% assign variantBySizeUsedStr = variantBySizeUsedStr | append: ";" | append: variant.option1 | append: variant.option2 | append: ";" %}{% endif %}{% endif %} {% if canAddVariant == true %}
+    <p vcontinue="{{ variant.inventory_policy }}" vquantity="{{ variant.inventory_quantity }}" vavailable="{{ variant.available }}" variantpriceid="{{ variant.id }}" originalcompprice='{{ product.compare_at_price_min | money_without_trailing_zeros | escape }}' originalprice='{{ product.price | money_without_trailing_zeros | escape }}' minprice='{{ product.price_min | money_without_trailing_zeros | escape }}' comparePrice='{{ variant.compare_at_price | money_without_trailing_zeros | escape }}' variantPrice='{{ variant.price | money_without_trailing_zeros | escape }}'></p>
+    <p varianttitleid="{{ variant.id }}" sizeoptionnr="{{ sizeoptionnr }}" optionuidtwo="{{ product.id }}{{ variant.option2 | escape }}" optiontwo="{{ variant.option2 | escape }}" originaltitle="{{ product.title | escape }}" variantTitle="{{ variant.title | escape }}" optionuid="{{ product.id }}{{ variant.option1 | escape }}"></p>
+       <span variantid="{{ variant.id }}" imgwidth="{{ variant.featured_image.width }}" imgheight="{{ variant.featured_image.height }}" gsvariantimage="{{ variant.featured_image | img_url: '256x' }}"></span>
+    {% endif %}{% endif %}{% endif %}{% endfor %}
+  </div>{% endif %}{% endfor %}{% endpaginate %}{% endif %}
+  {% if collection.products %}
+        <div style="display: none !important;" class="gsProductImages" >
+        {% paginate collection.products by 50 %}{% for product in collection.products %} {% assign imagescount = product.images | size %}{% if imagescount > 1 %}{% for image in product.images  limit:1 %}
+                                        <span gsProductHandle="{{ product.handle }}" firstImage="{{ image | img_url: '256x' }}"></span>
+                                {% endfor %}{% endif %}{% endfor %}{% endpaginate %}
+  </div>
+  </div>
+    {% endif %} <!-- Show variants code end BODY. Do not change GSEND -->{% include "aph_cart" %}
+    <script data-src="//code.tidio.co/fsoocvliqrmsefducdrsvimpd0mwqfo7.js?extensionVersion=1.1.0" async></script>
+      <script type="text/javascript" defer>
+  var createImg=document.createElement("img");createImg.src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSI5OTk5OXB4IiBoZWlnaHQ9Ijk5OTk5cHgiIHZpZXdCb3g9IjAgMCA5OTk5OSA5OTk5OSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48ZyBzdHJva2U9Im5vbmUiIGZpbGw9Im5vbmUiIGZpbGwtb3BhY2l0eT0iMCI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9Ijk5OTk5IiBoZWlnaHQ9Ijk5OTk5Ij48L3JlY3Q+IDwvZz4gPC9zdmc+",createImg.setAttribute("style","pointer-events: none; position: absolute; top: 0; left: 0; width: 96vw; height: 96vh; max-width: 99vw; max-height: 99vh;"),document.body.insertBefore(createImg,document.body.firstChild);var script_loaded=!1;function loadJSscripts(){script_loaded||(void 0!==observer&&observer.disconnect(),void 0!==window.yett&&window.yett.unblock(),script_loaded=!0,document.querySelectorAll("iframe[data-src], script[data-src],img[data-src]").forEach(e=>{datasrc=e.dataset.src,null!=datasrc&&(e.src=datasrc)}),document.querySelectorAll("link[data-href]").forEach(e=>{datahref=e.dataset.href,null!=datahref&&(e.href=datahref)}),document.querySelectorAll("script[type='text/lazyload']").forEach(e=>{var t=document.createElement("script");for(a=0;a<e.attributes.length;a++){var r=e.attributes[a];t.setAttribute(r.name,r.value)}t.type="text/javascript",t.innerHTML=e.innerHTML,e.parentNode.insertBefore(t,e),e.parentNode.removeChild(e)}),document.dispatchEvent(new CustomEvent("asyncLazyLoad")))}var activityEvents=["mousedown","mousemove","keydown","scroll","touchstart","click","keypress","touchmove"];activityEvents.forEach(function(e){window.addEventListener(e,loadJSscripts,!1)});
+  
+</script>
+
+	{{ shop.metafields.loox["global_html_body"] }}
+{% if content_for_header contains 'product_label' %}{% include 'bss-product-label-js' %}{% include 'bss-label-style-css' %}{% endif %}
+
+{% render 'preorder-now' %}
+
+<!--Gorgias Chat Widget Start--><script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=21940"></script>
+<script id="gorgias-chat-shopify-install">!function(_){_.SHOPIFY_PERMANENT_DOMAIN="{{shop.permanent_domain}}",_.SHOPIFY_CUSTOMER_ID="{{customer.id}}",_.SHOPIFY_CUSTOMER_EMAIL="{{customer.email}}"}(window||{});</script><!--Gorgias Chat Widget End-->
+
+<!-- **BEGIN** Hextom QAB Integration // Main Include - DO NOT MODIFY -->
+    {% render 'hextom_qab_main', product: product, customer: customer %}
+    <!-- **END** Hextom QAB Integration // Main Include - DO NOT MODIFY -->
+    
+<!-- landing page button clickable     -->
+<script>
+  window.onload = function(){
+    if($('#button_group').length) {
+      $(window).resize(function(e){
+        const [imageHeight, imageWidth] = [$('#button_group').height(), $('#button_group').width()];
+        
+        const buy1_coords = [1050,1210,1595,1210,1565,1365,1020,1365];
+        const buy1_resize_coords = buy1_coords.map((v, index)=>Math.round(index%2==0?v*imageWidth/3840:v*imageHeight/1632)).join(',');
+        $('#buy_now_1').attr('coords', buy1_resize_coords);
+
+        const buy2_coords = [2235,1210,2780,1210,2755,1365,2210,1365];
+        const buy2_resize_coords = buy2_coords.map((v, index)=>Math.round(index%2==0?v*imageWidth/3840:v*imageHeight/1632)).join(',');
+        $('#buy_now_2').attr('coords', buy2_resize_coords);
+        
+      }).resize();
+    }
+  };
+</script>
+
+<!-- Back in Stock helper snippet -->
+{% render 'back-in-stock-helper' %}
+<!-- End Back in Stock helper snippet -->
+</body>
+</html>

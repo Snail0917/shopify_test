@@ -1,0 +1,40 @@
+<script>
+  if(typeof(Spurit) === 'undefined'){
+    var Spurit = {};
+  }
+  if(!Spurit.OneClickCheckout3){
+    Spurit.OneClickCheckout3 = {};
+  }
+  if(!Spurit.OneClickCheckout3.snippet){
+    Spurit.OneClickCheckout3.snippet = {};
+  }
+  Spurit.OneClickCheckout3.snippet.shopHash = '5935527004e52cb2e7c8f80e384f4250';
+  Spurit.OneClickCheckout3.snippet.cacheTimestamp = 1677789723;
+  Spurit.OneClickCheckout3.snippet.pageType = '{{ request.page_type }}';
+
+  {% if product %}
+      Spurit.OneClickCheckout3.snippet.product = {{ product | json }};
+      Spurit.OneClickCheckout3.snippet.product.selected_or_first_available_variant = {{ product.selected_or_first_available_variant | json }};
+      Spurit.OneClickCheckout3.snippet.product.options = {{ product.options_with_values | json }};
+      {% if product.featured_image %}
+        Spurit.OneClickCheckout3.snippet.product.featured_image = '{{ product.featured_image | image_url: width: 100, height: 100 }}';
+      {% endif %}
+      Spurit.OneClickCheckout3.snippet.collections = {{ product.collections | json }};
+  {% endif %}
+
+  if (typeof(Spurit.globalSnippet) === 'undefined') {
+      Spurit.globalSnippet = {
+          shop_currency: '{{ shop.currency }}',
+          money_format: '{{ shop.money_format }}',
+          cart: {{ cart | json }},
+          customer_id: '{{ customer.id }}'
+      };
+  }
+</script>
+
+<script src="https://cdn.occ-app.com/all-apps/spurit.global-2.x.min.js" async></script>
+<script src="https://cdn.occ-app.com/shopify-apps/one-click-checkout/store/5935527004e52cb2e7c8f80e384f4250.js?1677789723" async></script>
+<link href="https://cdn.occ-app.com/shopify-apps/one-click-checkout/store/5935527004e52cb2e7c8f80e384f4250.css?1677789723" rel="stylesheet" type="text/css" media="all">
+
+    <script src="https://cdn.occ-app.com/shopify-apps/one-click-checkout/common.js"></script>
+    <link href="https://cdn.occ-app.com/shopify-apps/one-click-checkout/common.css" rel="stylesheet" type="text/css" media="all">

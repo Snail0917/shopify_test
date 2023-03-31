@@ -1,0 +1,10 @@
+{% assign my_blogs = "blog" | split: "," %}
+  {% for blog_handle in my_blogs %}
+  {% assign this_blog = blogs[blog_handle] %}
+    {% for article in this_blog.articles%}
+    {% capture tags %}{{article.tags}}{% endcapture%}
+      {%- if tags contains 'Top Story' -%}
+      	{%- render 'article-item', article: article -%}
+      {%- endif -%}
+    {% endfor %}
+{% endfor %}

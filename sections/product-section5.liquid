@@ -1,0 +1,252 @@
+<section id="section-{{ section.id }}" data-section-id="{{ section.id }}">
+  <header class="PageHeader">
+    {%- if section.settings.title_heading != blank -%}
+    <h1 class="title_heading">{{ section.settings.title_heading| escape }}</h1>
+    {%- endif -%}
+  </header>
+
+  <div class="CollectionList CollectionList--grid {% if section.settings.add_spacing %}CollectionList--spaced{% endif %}">
+    {%- if linklist.handle != blank -%}
+    {%- for link in linklist.links -%}
+    {%- if link.type != 'collection_link' -%}
+    {%- continue -%}
+    {%- endif -%}
+
+    {%- render 'product-collection-item', collection: link.object, apply_overlay: section.settings.apply_overlay -%}
+    {%- endfor -%}
+    {%- else -%}
+    {%- if section.settings.collections_to_show == 'all' -%}
+    {%- for collection in collections -%}
+    {%- unless collection.handle == 'frontpage' -%}
+    {%- render 'product-collection-item', collection: collection, apply_overlay: section.settings.apply_overlay -%}
+    {%- endunless -%}
+    {%- endfor -%}
+    {%- else -%}
+    {%- for block in section.blocks -%}
+    {%- assign collection = collections[block.settings.collection] -%}
+    {%- render 'product-collection-item', collection: collection, apply_overlay: section.settings.apply_overlay, block: block -%}
+    {%- endfor -%}
+    {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+
+<style>
+  #section-{{ section.id }} .CollectionItem .Heading {
+    color: {{ section.settings.text_color }};
+  }
+
+  #section-{{ section.id }} .CollectionItem__Link {
+    color: {{ section.settings.button_color }};
+    border-color: {{ section.settings.text_color }};
+  }
+
+  #section-{{ section.id }} .CollectionItem__Link::before {
+    background-color: {{ section.settings.text_color }};
+  }
+
+  @media (-moz-touch-enabled: 0), (hover: hover) {
+    #section-{{ section.id }} .CollectionItem__Link:hover {
+      color: {{ section.settings.text_color }};
+    }
+  }
+  div#shopify-section-product-section5 h1.Heading {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      color: #000000 !important;
+      margin-bottom: 15px;
+  }
+  div#shopify-section-product-section5 .CollectionItem.CollectionItem--expand {
+      margin: 25px;
+      min-width: 30%;
+  }
+  
+  
+  
+  @media only screen and (max-width: 640px) {
+    div#shopify-section-product-section5 .CollectionItem.CollectionItem--expand {
+        margin: 0px;
+        margin-bottom: 15px;
+    }
+    div#shopify-section-product-section5 h1.Heading {
+      margin-bottom: 0px;
+	}
+  }
+  
+</style>
+
+
+
+
+{% schema %}
+{
+  "name": "Product Section5",
+  "settings": [
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "text",
+      "id": "title_heading",
+      "label": "Title Heading",
+      "default": "Wearing shoes are as easy as..."
+    },
+    {
+      "type": "checkbox",
+      "id": "add_spacing",
+      "label": "Add spacing",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "expand_collection",
+      "label": "Expand collections to fill row",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "apply_overlay",
+      "label": "Apply overlay on image",
+      "info": "This can improve text visibility.",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button text",
+      "default": "#363636"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1120 x 1200px .jpg recommended"
+        },
+        {
+          "type": "select",
+          "id": "image_alignment",
+          "label": "Image alignment",
+          "options": [
+            {
+              "value": "top left",
+              "label": "Top left"
+            },
+            {
+              "value": "top center",
+              "label": "Top center"
+            },
+            {
+              "value": "top right",
+              "label": "Top right"
+            },
+            {
+              "value": "center left",
+              "label": "Middle left"
+            },
+            {
+              "value": "center center",
+              "label": "Middle center"
+            },
+            {
+              "value": "center right",
+              "label": "Middle right"
+            },
+            {
+              "value": "bottom left",
+              "label": "Bottom left"
+            },
+            {
+              "value": "bottom center",
+              "label": "Bottom center"
+            },
+            {
+              "value": "bottom right",
+              "label": "Bottom right"
+            }
+          ],
+          "default": "center center"
+        },
+        {
+          "type": "select",
+          "id": "content_position",
+          "label": "Text position",
+          "options": [
+            {
+              "value": "top left",
+              "label": "Top left"
+            },
+            {
+              "value": "middleLeft",
+              "label": "Middle left"
+            },
+            {
+              "value": "middleRight",
+              "label": "Middle right"
+            },
+            {
+              "value": "middleCenter",
+              "label": "Middle center"
+            },
+            {
+              "value": "bottomLeft",
+              "label": "Bottom left"
+            },
+            {
+              "value": "bottomRight",
+              "label": "Bottom right"
+            },
+            {
+              "value": "bottomCenter",
+              "label": "Bottom center"
+            }
+          ],
+          "default": "bottomLeft"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Sub-heading",
+          "default": "Sub-heading"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

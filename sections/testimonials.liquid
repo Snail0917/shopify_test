@@ -1,0 +1,204 @@
+{%- capture flickity_options -%}
+{
+  "prevNextButtons": true,
+  "wrapAround": true,
+  "dragThreshold": 16,
+  "pageDots": {% if section.blocks.size > 1 %}true{% else %}false{% endif %},
+  "autoPlay": {% if section.settings.autoplay %}{{ section.settings.cycle_speed | times: 1000 }}{% else %}false{% endif %}
+}
+{%- endcapture -%}
+
+{%- assign should_show_nav = false -%}
+
+{%- for block in section.blocks -%}
+  {%- if block.settings.logo -%}
+    {%- assign should_show_nav = true -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<section class="Section Section--spacingNormal" id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="testimonials">
+  <div class="testimonial_title">
+    <h2 class="SectionHeader__Heading Heading u-h1">{{ section.settings.testimonial_title }}</h2>
+  </div>
+  <div class="TestimonialList {% if should_show_nav %}TestimonialList--withNav{% endif %} Carousel Carousel--fadeIn" data-flickity-config='{{ flickity_options }}'>
+    {%- for block in section.blocks -%}
+      <div id="block-{{ block.id }}" class="Carousel__Cell Testimonial {% if forloop.first %}is-selected{% endif %}" {{ block.shopify_attributes }} data-slide-index="{{ forloop.index0 }}">
+        <div class="testimonial_content">
+          <div class="testimonial_row">
+            {%- if block.settings.logo != blank -%}
+              <img src="{{ block.settings.logo | img_url: '900x' }}" alt="{{ block.settings.logo.alt | escape }}">
+            {%- endif -%}
+          </div>
+          <div class="testimonial_row">
+            {%- if block.settings.quote != blank -%}
+              <div class="Testimonial__Content">
+                <img src="{{ block.settings.star_image | img_url: '180x' }}" alt="{{ block.settings.star_image.alt | escape }}">
+                {{ block.settings.quote }}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+<style>
+  #section-{{ section.id }} {
+    color: {{ section.settings.text_color }};
+    background: {{ section.settings.background }};
+  }
+
+  #section-{{ section.id }} .flickity-page-dots .dot:not(.is-selected) {
+    border-color: {{section.settings.background | color_mix: section.settings.text_color, 85}};
+  }
+  
+  div#shopify-section-16196855069be05d56 {
+      background: #d9d9d9;
+  }
+  .Carousel__Cell.Testimonial.is-selected {
+  	  z-index: 1;
+  }
+  .testimonial_title {
+      padding: 50px 50px 30px;
+      text-align: center;
+  }
+  .testimonial_content {
+  	  display: flex;
+      padding: 0px 75px;
+  }
+  .testimonial_row {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  .testimonial_row .Testimonial__Content {
+      margin-top: 15px;
+      padding: 10px;
+  }
+  .testimonial_row .Testimonial__Content p {
+      margin-top: 10px;
+  }
+  .TestimonialList .flickity-prev-next-button.previous {
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+  .TestimonialList .flickity-prev-next-button.next {
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .testimonial_title {
+        padding: 20px;
+    }
+    .testimonial_content {
+  	    display: block;
+        padding: 0px 10px;
+    }
+    .testimonial_row {
+        width: 100%;
+        display: block;
+    }
+    .TestimonialList .flickity-prev-next-button {
+    	display: none;
+    }
+    .js .TestimonialList .flickity-page-dots {
+      margin-bottom: 30px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "class": "shopify-section--bordered",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "testimonial_title",
+      "label": "Testimonial Title",
+      "default": "Testimonial Title"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto rotate between testimonials",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "cycle_speed",
+      "min": 3,
+      "max": 8,
+      "step": 1,
+      "unit": "sec",
+      "label": "Change testimonials every",
+      "default": 5
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#eaeaea"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1c1b1b"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Main Image"
+        },
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Quote",
+          "default": "<p>Share what your customers are saying about your products, your company...</p>",
+          "info": "For best results, keep the word count consistent in each quote."
+        },
+        {
+          "type": "image_picker",
+          "id": "star_image",
+          "label": "Logo Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Testimonials",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {}
+        },
+        {
+          "type": "testimonial",
+          "settings": {}
+        },
+        {
+          "type": "testimonial",
+          "settings": {}
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

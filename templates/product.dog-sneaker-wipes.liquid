@@ -1,0 +1,130 @@
+{% comment %} {% section 'product-template-dog-sneaker-wipes' %} {% endcomment %}
+<div id="dog-sneaker-wipes">
+{% section 'product-template' %}
+</div>
+<div id ="recommend_products">
+ {% section 'featured-collections-sneaker-recommend' %}
+</div>
+
+<!-- proudct main section -->
+<div class="Rte">
+  <div class="col-2 left"></div>
+  <div class="col-2 right">
+    <iframe id="refcandy-candyjar" data-id="o3i6ziejpsrasdgpu3ho7ech7" data-height="900" data-width="100%" frameborder="0" data-src="//portal.referralcandy.com/embed/o3i6ziejpsrasdgpu3ho7ech7/?&amp;&amp;&amp;" scrolling="no" height="900px" width="100%"></iframe>
+  </div>
+</div>
+
+<style>
+  .ProductForm__QuantitySelector:before {
+      content: 'Quantity:';
+      display: block;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 5px;
+  }
+  .Product__InfoWrapper .Product__Info .Container form.ProductForm {
+      padding: 15px 15px 55px;
+  }
+  #shopify-section-product-template .Product.Product--medium {
+      min-height: auto;
+  }
+  @media only screen and (min-width: 451px) {
+    #shopify-section-product-template .ProductForm__AddToCart.Button {
+        margin-top: 3px;
+    }
+  }
+  @media only screen and (max-width: 450px) {
+    .Product__InfoWrapper .Product__Info .Container form.ProductForm {
+        padding: 15px 15px 0px;
+    }
+  }
+  
+/*   div#shopify-section-product-template-dog-sneaker-wipes section.category_filter {
+    width: 300px;
+    transition-delay: 0.25s;
+    float: left;
+    margin-top: 40px;
+  }
+  div#shopify-section-product-template-dog-sneaker-wipes section.category_filter.active {
+    margin-top: -20px !important;
+  }
+  div#shopify-section-product-template-dog-sneaker-wipes div.product_content {
+    width: calc(100% - 300px);
+    float: right;
+  }
+  div#shopify-section-product-template-dog-sneaker-wipes div.product_content section.Product {
+    margin: 0 auto !important;
+    max-width: 1450px;
+  }
+  div#shopify-section-product-template-dog-sneaker-wipes div.product_content section.Product form.ProductForm {
+    background: none;
+    padding: 0;
+  }
+  div#shopify-section-product-template-dog-sneaker-wipes div.product_content section.Product form.ProductForm .swym-button-bar {
+    display: none;
+  }
+  div#shopify-section-product-template-dog-sneaker-wipes div.product_content section.Product form.ProductForm .QuantitySelector {
+    width: 100%;
+    justify-content: space-between;
+  }
+  div#shopify-section-product-template-dog-sneaker-wipes div.product_content section.Product form.ProductForm .ProductForm__AddToCart.Button {
+      color: #ffffff;
+      margin-top: -15px;
+  }
+  div#shopify-section-product-template-dog-sneaker-wipes p.free_shipping_text {
+    background: none;
+    padding: 0;
+    margin-top: 10px !important;
+  } 
+  div#shopify-section-product-template-dog-sneaker-wipes div.product_content section.Product form.ProductForm .ProductForm__AddToCart.Button:before {
+      background-color: #000000 !important;
+  }
+  div#shopify-section-product-template-dog-sneaker-wipes div.product_content section.Product form.ProductForm .ProductForm__AddToCart.Button:hover {
+      color: #000000;
+  }
+  div#shopify-section-product-template-dog-sneaker-wipes div.product_content section.Product form.ProductForm .ProductForm__AddToCart.Button:hover::before {
+      background-color: #ffffff !important;
+  }
+  div#shopify-section-product-template-dog-sneaker-wipes div.mobile_category_filter {
+      margin-top: 22px;
+      padding: 3px;
+  }
+  @media only screen and (max-width: 1007px) {
+    div#shopify-section-product-template-dog-sneaker-wipes .Product__InfoWrapper {
+      margin-bottom: 50px;
+    }
+    div#shopify-section-product-template-dog-sneaker-wipes section.category_filter {
+      width: 300px;
+      transition-delay: 0.25s;
+      float: left;
+      margin-top: 10px;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    div#shopify-section-product-template-dog-sneaker-wipes div.product_content {
+      width: 100%;
+      float: none;
+    }
+  } */
+</style>  
+<script data-src="https://widget.sezzle.com/v1/javascript/price-widget?uuid=0dd1bbfd-02f1-4bd7-9e13-ccb816ef3f09"></script>
+<script type="text/javascript">
+  //smart size popup js
+  function myTimeout1(){
+    if ($(".ks-code select#select-new").length >=1) {
+    	var selected_opt = $(".ks-code select#select-new").val();
+        $(".ks-code .box").not("." + selected_opt).hide();
+        $(".ks-code ." + selected_opt).show(); 
+    }
+  }
+    
+  $(document).ready(function(){
+    setInterval(myTimeout1, 100); 
+  });
+</script>
+
+<!-- RYVIU APP :: WIDGET -->
+<div class="lt-block-reviews"> 
+	<ryviu-widget handle="{{product.handle}}" product_id="{{product.id}}" title_product="{{product.title}}" image_product="{{ product.featured_image.src | img_url: '180x' }}"></ryviu-widget>
+</div>
+<!-- / RYVIU APP -->

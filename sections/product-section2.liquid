@@ -1,0 +1,334 @@
+<section class="Section {% unless section.settings.image %}Section--spacingNormal{% endunless %}">
+  {%- capture section_content -%}
+    <div class="FeatureText__ContentWrapper">
+      <div class="FeatureText__Content">
+   
+          <header class="SectionHeader">
+            {%- if section.settings.subheading != blank -%}
+              <h3 class="SectionHeader__SubHeading Heading u-h6">{{ section.settings.subheading | escape }}</h3>
+            {%- endif -%}
+
+            {%- if section.settings.title != blank -%}
+              <h2 class="SectionHeader__Heading Heading u-h1">{{ section.settings.title | escape }}</h2>
+            {%- endif -%}
+
+            {%- if section.settings.content != blank -%}
+              <div class="SectionHeader__Description Rte">
+                {{ section.settings.content }}
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.link_text != blank -%}
+              <a href="{{ section.settings.link_url }}" class="Link Link--underline">{{ section.settings.link_text | escape }}</a>
+            {%- endif -%}
+          </header>
+     
+      </div>
+    </div>
+  {%- endcapture -%}
+
+  {%- capture section_image -%}
+    {%- if section.settings.image != blank -%}
+      <div class="FeatureText__ImageWrapper">
+        {%- capture supported_sizes -%}{%- render 'image-size', sizes: '400,600,700,800,900,1000,1200', image: section.settings.image -%}{%- endcapture -%}
+
+        <div class="AspectRatio img1" style="max-width: {{ section.settings.image.width }}px; --aspect-ratio: {{ section.settings.image.aspect_ratio }}">
+          {%- assign image_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img class="Image--lazyLoad Image--slide{{ section.settings.image_position | capitalize }}" data-src="{{ image_url }}" data-expand="-200" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ section.settings.image.alt | escape }}">
+        </div>
+        <div class="AspectRatio img2" style="max-width: {{ section.settings.image1.width }}px; --aspect-ratio: {{ section.settings.image1.aspect_ratio }}">
+          {%- assign image_url = section.settings.image1 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img class="Image--lazyLoad Image--slide{{ section.settings.image_position | capitalize }}" data-src="{{ image_url }}" data-expand="-200" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ section.settings.image1.alt | escape }}">
+        </div>
+        <div class="AspectRatio img3" style="max-width: {{ section.settings.image2.width }}px; --aspect-ratio: {{ section.settings.image2.aspect_ratio }}">
+          {%- assign image_url = section.settings.image2 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img class="Image--lazyLoad Image--slide{{ section.settings.image_position | capitalize }}" data-src="{{ image_url }}" data-expand="-200" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ section.settings.image2.alt | escape }}">
+        </div>
+        
+        
+        <div class="hover_state">
+          <ul>
+            <li class="state1"><div></div></li>
+            <li class="state2"><div></div></li>
+            <li class="state3"><div></div></li>
+          </ul>  
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endcapture -%}
+
+  <div class="FeatureText {% if section.settings.image != blank %}FeatureText--withImage FeatureText--image{{ section.settings.image_position | capitalize }}{% endif %}">
+    {%- if section.settings.image_position == 'left' -%}
+      {{- section_image -}}
+      {{- section_content -}}
+    {%- else -%}
+      {{- section_content -}}
+      {{- section_image -}}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Section2",
+  "class": "shopify-section--bordered",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Sub-heading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image1",
+      "info": "1200 x 1200px .png recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "image1",
+      "label": "Image2",
+      "info": "1200 x 1200px .png recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "image2",
+      "label": "Image3",
+      "info": "1200 x 1200px .png recommended"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Text",
+      "default": "<p>Add your own custom content to give more information about your store, availability details...</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Product Section",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
+
+
+
+<style>
+  #shopify-section-product-section2 div.FeatureText__ImageWrapper{
+      padding: 100px;
+  }
+  #shopify-section-product-section2 div.FeatureText__ImageWrapper .AspectRatio {
+      z-index: -1;
+  }
+  #shopify-section-product-section2 div.FeatureText__ImageWrapper .AspectRatio.img2 {
+     display: none;
+  }
+  #shopify-section-product-section2 div.FeatureText__ImageWrapper .AspectRatio.img3 {
+     display: none;
+  }
+  #shopify-section-product-section2 .FeatureText__ContentWrapper .SectionHeader__Description.Rte{
+     width: 80%;
+     text-align: left;
+     margin: 0px;
+  }
+  #shopify-section-product-section2 .FeatureText__ContentWrapper .SectionHeader__Description.Rte h1{
+     font-size: 30px;
+  }
+  #shopify-section-product-section2 .FeatureText__ContentWrapper .SectionHeader__Description.Rte h2{
+     margin: 0px;
+     color: #9d9d9d;
+     cursor: pointer;
+  }
+  #shopify-section-product-section2 .FeatureText__ContentWrapper .SectionHeader__Description.Rte h2.hover{
+     color: #000000;
+  }
+  #shopify-section-product-section2 .FeatureText__ContentWrapper .SectionHeader__Description.Rte h2:before {
+  	 content: '➤';
+     position: absolute;
+     margin-left: -30px;
+     display: none;
+  }
+  #shopify-section-product-section2 .FeatureText__ContentWrapper .SectionHeader__Description.Rte h2.hover:before{
+     display: block;
+  }
+  #shopify-section-product-section2 .FeatureText__ContentWrapper .SectionHeader__Description.Rte h5{
+     margin: 0px;
+     margin-bottom: 25px;
+     color: #9d9d9d;
+  }
+   #shopify-section-product-section2 .FeatureText__ContentWrapper .SectionHeader__Description.Rte h5.hover{
+     color: #000000;
+  }
+  @media only screen and (max-width: 999px) {
+    #shopify-section-product-section2 div.FeatureText__ImageWrapper {
+        padding: 30px;
+    }
+    #shopify-section-product-section2 .FeatureText__ContentWrapper .SectionHeader__Description.Rte{
+     	width: 100%;
+        max-width:100%
+    }
+  }
+  
+  .hover_state {
+    z-index: 999;
+    margin-top: -30px;
+  }
+  .hover_state ul {
+  	text-align: center;
+  }
+  .hover_state ul li {
+  	display: inline-block;
+    width: 30%;
+    height: 15px;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+  }
+  .hover_state ul li div {
+    height: 15px;
+    border-radius: 10px;
+    background: #000;
+  }
+/*   .hover_state ul li div.hover {
+  	background: #000;
+  } */
+  
+  @media only screen and (max-width: 640px) {
+    #shopify-section-product-section2 div.FeatureText__ContentWrapper .FeatureText__Content {
+        margin: 0px;
+        margin-left: 30px;
+    }
+    #shopify-section-product-section2 .SectionHeader__Description h1 {
+      margin: 0px auto 10px !important;
+      line-height: 1.2em;
+      margin-left: -25px !important;
+    }
+    #shopify-section-product-section2 .FeatureText__ContentWrapper {
+      padding: 15px;
+    }
+    #shopify-section-product-section2 .FeatureText__ImageWrapper {
+      padding: 0px !important;
+    }
+  }
+  
+  
+</style>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  var i = 0;
+  function step() {
+    const myInterval = setInterval(myTimer, 35);
+    function myTimer() {
+        if(i<101) {
+			$('.hover_state ul li.state3 div').css('width', '0%');
+            $('.hover_state ul li.state2 div').css('width', '0%');
+            $('.hover_state ul li.state1 div').css('width', i+'%');
+          	$('.AspectRatio.img2').css('display', 'none');
+			$('.AspectRatio.img3').css('display', 'none');
+			$('.AspectRatio.img1').css('display', 'block');
+            $('.img_btn h2').removeClass('hover');
+            $('.img_btn h5').removeClass('hover');
+            $('.img_but1 h2').addClass('hover');
+            $('.img_but1 h5').addClass('hover');
+            
+        }
+        if(i>100) {
+			$('.hover_state ul li.state1 div').css('width', '0%');
+            $('.hover_state ul li.state3 div').css('width', '0%');
+            $('.hover_state ul li.state2 div').css('width', i-100+'%');
+            $('.AspectRatio.img1').css('display', 'none');
+			$('.AspectRatio.img3').css('display', 'none');
+			$('.AspectRatio.img2').css('display', 'block');
+            $('.img_btn h2').removeClass('hover');
+            $('.img_btn h5').removeClass('hover');
+            $('.img_but2 h2').addClass('hover');
+            $('.img_but2 h5').addClass('hover');
+        }
+        if(i>200) {
+            $('.hover_state ul li.state1 div').css('width', '0%');
+            $('.hover_state ul li.state2 div').css('width', '0%');
+            $('.hover_state ul li.state3 div').css('width', i-200+'%');
+            $('.AspectRatio.img1').css('display', 'none');
+			$('.AspectRatio.img2').css('display', 'none');
+			$('.AspectRatio.img3').css('display', 'block');
+            $('.img_btn h2').removeClass('hover');
+            $('.img_btn h5').removeClass('hover');
+            $('.img_but3 h2').addClass('hover');
+            $('.img_but3 h5').addClass('hover');
+        }
+        i = i+1;
+        if(i>300) {
+            i=0;
+        }
+    }
+  }
+  
+  $(document).ready(function(){
+    const myTimeout = setTimeout(step, 300);
+    $('.img_but1 h2').click(function(){
+        clearTimeout(myTimeout);
+        i = 0;
+    });
+    $('.img_but2 h2').click(function(){
+        clearTimeout(myTimeout);
+        i = 101;
+    }); 
+    $('.img_but3 h2').click(function(){
+        clearTimeout(myTimeout);
+        i = 201;
+    });
+    $('.hover_state ul li.state1').click(function(){
+        clearTimeout(myTimeout);
+        i = 0;
+    });
+    $('.hover_state ul li.state2').click(function(){
+        clearTimeout(myTimeout);
+        i = 101;
+    }); 
+    $('.hover_state ul li.state3').click(function(){
+        clearTimeout(myTimeout);
+        i = 201;
+    });
+    
+  });
+  
+  
+</script>

@@ -1,0 +1,324 @@
+{%- capture section_settings -%}
+{
+  "navigationStyle": {{ section.settings.navigation_style | json }},
+  "hasTransparentHeader": {% if use_transparent_header %}true{% else %}false{% endif %},
+  "isSticky": {% if section.settings.use_sticky_header %}true{% else %}false{% endif %}
+}
+{%- endcapture -%}
+
+<header id="section-{{ section.id }}"
+        class="Header Header--{{ section.settings.navigation_style }} {% if section.settings.navigation_style != 'inline' and section.settings.navigation_style != 'logoLeft' %} {% if use_transparent_header %}Header--transparent{% endif %} Header--withIcons{% endif %}"
+        data-section-id="{{ section.id }}"
+        data-section-type="header"
+        data-section-settings='{{ section_settings }}'
+        role="banner">
+  <div class="Header__Wrapper">
+    {%- capture header_logo -%}
+      <a href="{{ routes.root_url }}" class="Header__LogoLink">
+        {%- if section.settings.logo != blank -%}
+          {%- capture image_size -%}{{ section.settings.logo_max_width }}x{%- endcapture -%}
+
+          <img class="Header__LogoImage Header__LogoImage--primary"
+               src="{{ section.settings.logo | img_url: image_size }}"
+               srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+               width="{{ section.settings.logo_max_width }}"
+               alt="{{ section.settings.logo.alt | default: shop.name | escape }}">
+        {%- else -%}
+          <span class="Heading u-h4">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    {%- endcapture -%}
+
+    <div class="Header__FlexItem Header__FlexItem--logo">
+      {%- if template == 'index' -%}
+        <h1 class="Header__Logo">{{ header_logo }}</h1>
+      {%- else -%}
+        <div class="Header__Logo">{{ header_logo }}</div>
+      {%- endif -%}
+    </div>
+    
+    <div class="Header_button">
+      	<a href="{{ section.settings.subscribe_url }}" class="subscribe_btn">SUBSCRIBE</a>
+    </div>
+    
+    <div class="Header__FlexItem Header__FlexItem--fill">
+      {%- comment -%}
+      --------------------------------------------------------------------------------------------------------------------
+      DESKTOP NAVIGATION (if not using the sidebar mode)
+      --------------------------------------------------------------------------------------------------------------------
+      {%- endcomment -%}
+
+      {%- unless use_sidebar_menu -%}
+        {%- assign main_menu_handle = section.settings.navigation_menu | default: 'main-menu' -%}
+        {%- assign main_menu = linklists[main_menu_handle] -%}
+        <nav class="Header__MainNav hidden-pocket hidden-lap" aria-label="{{ 'header.navigation.title' | t }}">
+          <ul class="HorizontalList HorizontalList--spacingExtraLoose">
+            {%- for link in main_menu.links -%}
+              {%- assign downcased_link_title = link.title | downcase | strip -%}       
+
+              {%- capture menu_item_dropdown -%}
+                {%- if mega_menu_names contains downcased_link_title -%}
+                  {%- for block in section.blocks -%}
+ 
+                    <div class="MegaMenu {% if push_image_count != 0 and link.links.size == 0 %}MegaMenu--spacingCenter{% elsif should_space_evenly %}MegaMenu--spacingEvenly{% endif %} {% if push_image_count == 0 and link.links.size > 4 %}MegaMenu--grid{% endif %}" aria-hidden="true" {{ block.shopify_attributes }}>
+                      <div class="MegaMenu__Inner">
+                        {%- for sub_link in link.links -%}
+                          <div class="MegaMenu__Item MegaMenu__Item--fit">
+                            <a href="{{ sub_link.url }}" class="MegaMenu__Title Heading Text--subdued u-h7">{{ sub_link.title | title }}</a>
+
+                            {%- if sub_link.links != blank -%}
+                              <ul class="Linklist">
+                                {%- for sub_sub_link in sub_link.links -%}
+                                  <li class="Linklist__Item">
+                                    <a href="{{ sub_sub_link.url }}" class="Link Link--secondary">{{ sub_sub_link.title | escape }}</a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                            {%- endif -%}
+                          </div>
+                        {%- endfor -%}
+
+                      </div>
+                    </div>
+                  {%- endfor -%}
+                {%- elsif link.links != blank -%}
+                {%- endif -%}
+              {%- endcapture -%}
+
+              <li class="HorizontalList__Item {% if link.links == blank and link.active %}is-active{% endif %}" {% if menu_item_dropdown != blank %}aria-haspopup="true"{% endif %}>
+                <a href="{{ link.url }}" class="Heading u-h6">
+                  {{- link.title | escape -}}
+
+                  {%- if use_mega_menu or menu_item_dropdown == blank -%}
+                    <span class="Header__LinkSpacer">{{ link.title | escape }}</span>
+                  {%- endif -%}
+                </a>
+
+                {{- menu_item_dropdown -}}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </nav>
+
+        {{- localization_form -}}
+      {%- endunless -%}
+    </div>
+  </div>
+ 
+</header>
+
+
+
+
+
+<style>
+  {%- if section.settings.use_sticky_header -%}
+    :root {
+      --use-sticky-header: 1;
+      --use-unsticky-header: 0;
+    }
+
+    .shopify-section--header {
+      position: -webkit-sticky;
+      position: sticky;
+    }
+  {%- else -%}
+    :root {
+      --use-sticky-header: 0;
+      --use-unsticky-header: 1;
+    }
+  {%- endif -%}
+
+  {%- if section.settings.logo -%}
+    @media screen and (max-width: 640px) {
+      .Header__LogoImage {
+        max-width: {{ section.settings.mobile_logo_max_width }}px;
+      }
+    }
+  {%- endif -%}
+
+  {%- if use_transparent_header -%}
+    :root {
+      --header-is-not-transparent: 0;
+      --header-is-transparent: 1;
+    }
+
+    .shopify-section--header {
+      margin-bottom: calc(-1 * var(--header-height));
+    }
+  {%- endif -%}
+      
+      
+/*   custom code     */
+      div#shopify-section-blog-menu .Header__Wrapper {
+            padding: 15px 50px 15px 50px;
+      }
+      div#shopify-section-blog-menu .Header__LinkSpacer::after {
+        	bottom: 15px;
+      }
+      div#shopify-section-blog-menu a.subscribe_btn {
+            background: #000;
+            color: #fff;
+            padding: 7.5px 15px;
+            font-size: 14px;
+            margin-left: 30px;
+            border: solid 1px #000;
+            transition-delay: 0.25s;
+            font-weight: bold;
+      }
+      div#shopify-section-blog-menu a.subscribe_btn:hover {
+            background: #fff;
+            color: #000;
+      }
+      div#shopify-section-blog-menu .Header__MainNav.hidden-pocket.hidden-lap {
+          display: block !important;
+      }
+      
+      div#shopify-section-blog-menu .Header__FlexItem.Header__FlexItem--logo {
+      	  padding-left: 0px;
+      }
+      
+      div#shopify-section-blog-menu .Header_button {
+        order: 1;
+      }
+      div#shopify-section-blog-menu .Header__FlexItem.Header__FlexItem--fill{
+        flex: auto;	
+      }
+      body.template-blog #shopify-section-header {
+      	display: none;
+      }
+      
+      @media only screen and (max-width: 700px) {
+          div#shopify-section-blog-menu .Header__Wrapper {
+            padding: 20px 20px 10px 20px;
+    		display: block;
+          }
+          div#shopify-section-blog-menu .Header__FlexItem.Header__FlexItem--logo {
+            display:block;
+            width: 50%;
+          }
+          div#shopify-section-blog-menu .Header__FlexItem.Header__FlexItem--logo img {
+			margin: 0;
+          }
+          div#shopify-section-blog-menu .Header_button {
+            display:block;
+            width: 100%;
+            text-align: right;
+            margin-top: -25px;
+          }
+          div#shopify-section-blog-menu .Header__FlexItem.Header__FlexItem--fill{
+            flex: none;
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 15px;
+          }
+      }
+      
+</style>
+
+
+
+
+<script>
+  document.documentElement.style.setProperty('--header-height', document.getElementById('shopify-section-header').offsetHeight + 'px');
+</script>
+
+<script>
+  $(document).ready(function(){
+    $(".subscribe_btn").click(function(){
+      event.preventDefault()
+      $('#footer-newsletter input.Form__Input').focus();
+    });
+  });
+</script>
+
+
+
+
+{% schema %}
+{
+  "name": "Blog Menu",
+  "class": "shopify-section--header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "use_sticky_header",
+      "label": "Use sticky header",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Image",
+      "info": "200 x 60px .png recommended"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 50,
+      "max": 350,
+      "step": 5,
+      "unit": "px",
+      "label": "Image width",
+      "default": 140
+    },
+    {
+      "type": "range",
+      "id": "mobile_logo_max_width",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile image width",
+      "default": 90
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "navigation_menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "select",
+      "id": "navigation_style",
+      "label": "Navigation style",
+      "info": "Setting will default to center style if screen width cannot fit all the links.",
+      "options": [
+        {
+          "value": "sidebar",
+          "label": "Sidebar"
+        },
+        {
+          "value": "inline",
+          "label": "Inline"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "logoLeft",
+          "label": "Logo left"
+        }
+      ],
+      "default": "inline"
+    },
+	{
+      "type": "url",
+      "id": "subscribe_url",
+      "label": "Subscribe URL"
+    }
+  ]
+}
+{% endschema %}
+
+

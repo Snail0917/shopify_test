@@ -1,0 +1,256 @@
+<section id="section-{{ section.id }}" data-section-id="{{ section.id }}">
+  <header class="PageHeader">
+    {%- if section.settings.title_heading != blank -%}
+    <h1 class="title_heading">{{ section.settings.title_heading| escape }}</h1>
+    <p class="sub_title_heading">{{ section.settings.sub_title_heading| escape }}</p>  
+    {%- endif -%}
+  </header>
+  <div class="CollectionList CollectionList--grid {% if section.settings.add_spacing %}CollectionList--spaced{% endif %}">
+    {%- if linklist.handle != blank -%}
+    {%- for link in linklist.links -%}
+    {%- if link.type != 'collection_link' -%}
+    {%- continue -%}
+    {%- endif -%}
+
+    {%- render 'product-size-guide-item', collection: link.object, apply_overlay: section.settings.apply_overlay -%}
+    {%- endfor -%}
+    {%- else -%}
+    {%- if section.settings.collections_to_show == 'all' -%}
+    {%- for collection in collections -%}
+    {%- unless collection.handle == 'frontpage' -%}
+    {%- render 'product-size-guide-item', collection: collection, apply_overlay: section.settings.apply_overlay -%}
+    {%- endunless -%}
+    {%- endfor -%}
+    {%- else -%}
+    {%- for block in section.blocks -%}
+    {%- assign collection = collections[block.settings.collection] -%}
+    {%- render 'product-size-guide-item', collection: collection, apply_overlay: section.settings.apply_overlay, block: block -%}
+    {%- endfor -%}
+    {%- endif -%}
+    {%- endif -%}
+  </div>
+  
+<div class="size_guide_buttons">
+<!-- START KiwiSizing code !-->
+  <div id="KiwiSizingChart" 
+    class="size_guide_but1"
+    data-sizing-id="26150745"
+    data-display-mode="1"
+    data-recommender-display-mode="1"
+    data-layout-type="0">
+  </div>
+<!-- END KiwiSizing code !--> 
+  
+<!-- START KiwiSizing code !-->
+  <div id="KiwiSizingChart" 
+    class="size_guide_but2"
+    data-sizing-id="26150783"
+    data-display-mode="1"
+    data-recommender-display-mode="1"
+    data-layout-type="0">
+  </div>
+<!-- END KiwiSizing code !-->
+
+<!-- START KiwiSizing code !-->
+  <div id="KiwiSizingChart" 
+    class="size_guide_but3"
+    data-sizing-id="26150840"
+    data-display-mode="1"
+    data-recommender-display-mode="1"
+    data-layout-type="0">
+  </div>
+<!-- END KiwiSizing code !-->
+  
+<!-- START KiwiSizing code !-->
+  <div id="KiwiSizingChart" 
+    class="size_guide_but4"
+    data-sizing-id="19587366"
+    data-display-mode="1"
+    data-recommender-display-mode="1"
+    data-layout-type="1">
+  </div>
+<!-- END KiwiSizing code !-->
+</div>
+  
+</section>
+
+
+<style>
+  #section-{{ section.id }} .CollectionItem .Heading {
+    color: {{ section.settings.text_color }};
+  }
+
+  #section-{{ section.id }} .CollectionItem__Link {
+    color: {{ section.settings.button_color }};
+    border-color: {{ section.settings.text_color }};
+  }
+
+  #section-{{ section.id }} .CollectionItem__Link::before {
+    background-color: {{ section.settings.text_color }};
+  }
+
+  @media (-moz-touch-enabled: 0), (hover: hover) {
+    #section-{{ section.id }} .CollectionItem__Link:hover {
+      color: {{ section.settings.text_color }};
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Size Guide",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_heading",
+      "label": "Title Heading",
+      "default": "Title..."
+    },
+    {
+      "type": "text",
+      "id": "sub_title_heading",
+      "label": "Sub Title Heading",
+      "default": "Sub Title..."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Product Image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1120 x 1200px .jpg recommended"
+        },
+        {
+          "type": "select",
+          "id": "image_alignment",
+          "label": "Image alignment",
+          "options": [
+            {
+              "value": "top left",
+              "label": "Top left"
+            },
+            {
+              "value": "top center",
+              "label": "Top center"
+            },
+            {
+              "value": "top right",
+              "label": "Top right"
+            },
+            {
+              "value": "center left",
+              "label": "Middle left"
+            },
+            {
+              "value": "center center",
+              "label": "Middle center"
+            },
+            {
+              "value": "center right",
+              "label": "Middle right"
+            },
+            {
+              "value": "bottom left",
+              "label": "Bottom left"
+            },
+            {
+              "value": "bottom center",
+              "label": "Bottom center"
+            },
+            {
+              "value": "bottom right",
+              "label": "Bottom right"
+            }
+          ],
+          "default": "center center"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Button",
+          "default": "Button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+<style>
+  div#shopify-section-product-size-guide h1.title_heading {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 0px;
+  }
+  div#shopify-section-product-size-guide p.sub_title_heading {
+      text-align: center;
+      font-weight: 600;
+  }
+  div#shopify-section-product-size-guide .CollectionList .product_item__ImageWrapper {
+      padding: 10px;
+      width: 25%;
+  }
+  div#shopify-section-product-size-guide .CollectionList .product_item__ImageWrapper div.Sectionbutton {
+      margin-bottom: 40px;
+      text-align: center;
+  }
+  div#shopify-section-product-size-guide .CollectionList .product_item__ImageWrapper img {
+    cursor: pointer;
+  }
+  div#shopify-section-product-size-guide .CollectionList .product_item__ImageWrapper img:hover {
+    opacity: 0.5;
+  }
+  div#shopify-section-product-size-guide .CollectionList .product_item__ImageWrapper div.Sectionbutton button {
+      margin-top: 20px;
+      padding: 5px 10px;
+      background: #000;
+      color: #fff;
+      line-height: 1.25em;
+      border: solid 1px #000;
+      text-transform: capitalize;
+      font-size: 15px;
+      font-weight: 600;
+  }
+  div#shopify-section-product-size-guide .CollectionList .product_item__ImageWrapper div.Sectionbutton button:hover {
+      background: #fff;
+      color: #000;
+  }
+  .size_guide_buttons {
+      display: none;
+  }
+  @media only screen and (max-width: 1024px) and (min-width:768px ) {
+    div#shopify-section-product-size-guide .CollectionList .product_item__ImageWrapper {
+        width: 50%;
+    }
+    div#shopify-section-product-size-guide .CollectionList .product_item__ImageWrapper div.Sectionbutton {
+        margin-bottom: 30px;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    div#shopify-section-product-size-guide .CollectionList .product_item__ImageWrapper {
+        padding: 10px;
+        width: 100%;
+    }
+	div#shopify-section-product-size-guide h1.title_heading {
+      font-size: 20px;
+      margin-top: 75px;
+    }
+    div#shopify-section-product-size-guide .CollectionList .product_item__ImageWrapper div.Sectionbutton {
+      margin-bottom: 20px;
+    }
+  }
+
+</style>

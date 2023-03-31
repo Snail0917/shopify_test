@@ -1,0 +1,104 @@
+{%- if product.type == 'GSC_HIDDEN_PRODUCT' -%}{%- break -%}{%- endif -%}
+{% render 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{% section 'product-template-new' %}
+
+<!-- proudct custom section -->
+<div id="new-product" class="new-custom-product-cls">
+  <div class="Container">
+    {% section 'product-section3-harness' %}
+    {% section 'product-section4-harness' %}
+    {% section 'product-section5' %}
+    <div class="reeview-app-widget" id="reeview-app-widget_637b4f367ba858002ae8f55d"></div>
+  </div>
+</div>
+
+<!-- {% section 'product-recommendations' %}
+{% section 'recently-viewed-products' %} -->
+
+<div id ="recommend_products">
+ {% section 'featured-collections-harness' %}
+</div>
+
+<script>
+  window.ShopifyXR=window.ShopifyXR||function(){(ShopifyXR.q=ShopifyXR.q||[]).push(arguments)};
+  ShopifyXR('addModels', {{ product.media | where: 'media_type', 'model' | json }});
+</script>
+
+{{product.metafields.shogun.below}}
+
+<!-- proudct mail section -->
+<div class="Rte">
+  <div class="col-2 left"></div>
+  <div class="col-2 right">
+    <iframe id="refcandy-candyjar" data-id="o3i6ziejpsrasdgpu3ho7ech7" data-height="900" data-width="100%" frameborder="0" data-src="//portal.referralcandy.com/embed/o3i6ziejpsrasdgpu3ho7ech7/?&amp;&amp;&amp;" scrolling="no" height="900px" width="100%"></iframe>
+  </div>
+</div>
+
+
+<script data-src="https://widget.sezzle.com/v1/javascript/price-widget?uuid=0dd1bbfd-02f1-4bd7-9e13-ccb816ef3f09"></script>
+
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+  
+  
+  //smart size popup js
+  function myTimeout1(){
+    if ($(".ks-code select#select-new").length >=1) {
+    	var selected_opt = $(".ks-code select#select-new").val();
+        $(".ks-code .box").not("." + selected_opt).hide();
+        $(".ks-code ." + selected_opt).show(); 
+    }
+  }
+
+    
+  $(document).ready(function(){
+    setInterval(myTimeout1, 100);
+
+    //size guide popup header 
+    setInterval(function () {
+      var head_check_title = $('.ks-modal-content-wrapper .ks-calculator-header span.hidden_content').text();
+      if (head_check_title.includes('Harness')) {
+        $('.ks-modal-content-wrapper .modal-title-header').text('Harness Size Guide');
+      }
+      if (head_check_title.includes('Raincoat')) {
+        $('.ks-modal-content-wrapper .modal-title-header').text('Raincoat Size Guide');
+      }
+      if (head_check_title.includes('Sneaker')) {
+        $('.ks-modal-content-wrapper .modal-title-header').text('Sneaker Size Guide');
+      }
+    }, 300);
+  });
+  
+</script>
+
+<!-- RYVIU APP :: WIDGET -->
+<div class="lt-block-reviews"> 
+	<ryviu-widget handle="{{product.handle}}" product_id="{{product.id}}" title_product="{{product.title}}" image_product="{{ product.featured_image.src | img_url: '180x' }}"></ryviu-widget>
+</div>
+<!-- / RYVIU APP -->
